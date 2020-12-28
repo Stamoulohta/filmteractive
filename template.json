@@ -1,0 +1,14 @@
+{
+    "poster": "assets/name/frame-00027.png",
+    "enter": "loading",
+    "vsources": "public",
+    "events": [
+        {
+            "type": "click",
+            "what": "loading"
+        }
+    ],
+    "scenes": null,
+    "sizes": null
+}
+
