@@ -1,0 +1,19 @@
+/* vim: set expandtab ts=4 sw=4: */
+
+html {
+    background-color: #222;
+    height: 100vh;
+    overflow: hidden;
+}
+
+body {
+    height: 100vh;
+}
+
+video {
+    display: block;
+    position: relative;
+    margin: 0 auto;
+    top: 25vh;
+    height: 50vh;
+}

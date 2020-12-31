@@ -1,7 +1,7 @@
 #! /usr/bin/env bash
 
 scene_init() {
-    jq ". += {\"events\":[], \"vsrc\":\"${1#**/}.mp4\"}" <<< '{}' > "$1/scene.json"
+    jq ". += {\"name\":\"${1#**/}\", \"events\":[], \"vsrc\":\"${1#**/}.mp4\"}" <<< '{}' > "$1/scene.json"
     echo -e "EXT_IN = .png\nFPS = 10" > "$1/config.mk"
 }
 

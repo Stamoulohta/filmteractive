@@ -1,0 +1,20 @@
+{
+  "name": "filmteractive",
+  "version": "a.0.1",
+  "description": "Interactive web video framework.",
+  "main": "app.js",
+  "keywords": [
+    "ia",
+    "web",
+    "film",
+    "movie",
+    "video",
+    "player",
+    "events",
+    "dynamic",
+    "interactive",
+    "presentation"
+  ],
+  "author": "George Stamoulis",
+  "dependencies": {}
+}
