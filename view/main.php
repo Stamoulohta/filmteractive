@@ -10,7 +10,7 @@
 
   <!-- TODO: Open Graph -->
 
-  <link rel="stylesheet" href="<?= bust('style') ?>">
+  <link rel="stylesheet" href="<?= bust($style) ?>">
 
   <script id="scenario" type="application/json">
     <?php include($json) ?>
@@ -27,7 +27,8 @@
   </div><!-- .main -->
 
   <footer>
-    <script src="<?= bust($js) ?>"></script>
+    <script src="<?= bust($player) ?>"></script>
+    <script src="<?= bust($app) ?>"></script>
   </footer>
 </body>
 </html>

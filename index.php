@@ -1,12 +1,13 @@
 <?php
 
-function bust($name)
+function bust($filename)
 {
-    sprintf('%s?v=%d', $name, filemtime($name));
+    return sprintf('%s?v=%d', $filename, filemtime($filename));
 }
 
-$js = 'js/app.js';
+$app = 'js/app.js';
+$player = 'js/player.js';
 $json = 'scenario.json';
 $style = 'css/style.css';
 
-include('view.php');
+include('view/main.php');
