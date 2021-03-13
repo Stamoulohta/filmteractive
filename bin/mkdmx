@@ -1,0 +1,71 @@
+#!/usr/bin/env bash
+# vim: expandtab:ts=4:sw=4
+
+FLAG_DURATION=0
+FRAME_DURATION=0.5
+PERCISION=5
+
+OUT=input.dmx
+EXT_IN=png
+
+get_framerate () {
+    local frames_default=0
+    local duration_left=$TOTAL_DURATION
+
+    for frame_input in "$1"/*."$EXT_IN"; do
+        base_name=$(basename $frame_input)
+        rate_var=${base_name//."$EXT_IN"}
+
+        if [ -z ${!rate_var+x} ]; then
+            let frames_default++
+        else
+            duration_left=$(echo "scale=$PERCISION; x=$duration_left-${!rate_var}; if(x<1) print 0; x" | bc)
+        fi
+    done
+    unset frame_input
+    FRAME_DURATION=$(echo "scale=$PERCISION; x=$duration_left/$frames_default; if(x<1) print 0; x" | bc)
+}
+
+while getopts ":d:r:f:e:o:" opt; do
+    case "$opt" in
+        d ) FLAG_DURATION=1
+            TOTAL_DURATION="$OPTARG"
+            ;;
+        r ) FRAME_DURATION=$(echo "scale=$PERCISION; x=1/$OPTARG; if(x<1) print 0; x" | bc)
+            ;;
+        f ) eval $OPTARG
+            ;;
+        e ) EXT_IN="$OPTARG"
+            ;;
+        o ) OUT="$OPTARG"
+            ;;
+        [?] ) printf '%s: illegal option -- %c\n' $(basename "$0") "$OPTARG"
+            exit 2
+            ;;
+    esac
+done
+shift $((OPTIND -1))
+
+test -z "${1// }" && printf '%s: missing argument -- input directory\n' $(basename "$0") && exit 3
+test -d "$1" || { printf '%s: invalid directory -- %s\n' $(basename "$0") "$1" && exit 4; }
+
+test $FLAG_DURATION -ne 0 && get_framerate "$1"
+
+: | tee "$1/$OUT"
+
+for frame_input in "$1"/*."$EXT_IN"; do
+    base_name=$(basename $frame_input)
+    rate_var=${base_name//."$EXT_IN"}
+
+    if [ -z ${!rate_var+x} ]; then
+        duration=$FRAME_DURATION
+    else
+        duration=${!rate_var}
+    fi
+
+    echo -e "file '$base_name'\nduration $duration" >> "$1/$OUT"
+done
+
+# Due to a quirk, the last image has to be specified twice - the 2nd time without any duration directive
+# https://trac.ffmpeg.org/wiki/Slideshow
+echo "file '$base_name'" >> "$1/$OUT"
