@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # vim: expandtab:ts=4:sw=4
 
-FLAG_DURATION=0
+TOTAL_DURATION=0
 FRAME_DURATION=0.5
 PERCISION=5
 
@@ -28,8 +28,7 @@ get_framerate () {
 
 while getopts ":d:r:f:e:o:" opt; do
     case "$opt" in
-        d ) FLAG_DURATION=1
-            TOTAL_DURATION="$OPTARG"
+        d ) TOTAL_DURATION="$OPTARG"
             ;;
         r ) FRAME_DURATION=$(echo "scale=$PERCISION; x=1/$OPTARG; if(x<1) print 0; x" | bc)
             ;;
@@ -49,7 +48,7 @@ shift $((OPTIND -1))
 test -z "${1// }" && printf '%s: missing argument -- input directory\n' $(basename "$0") && exit 3
 test -d "$1" || { printf '%s: invalid directory -- %s\n' $(basename "$0") "$1" && exit 4; }
 
-test $FLAG_DURATION -ne 0 && get_framerate "$1"
+test $TOTAL_DURATION -ne 0 && get_framerate "$1"
 
 : | tee "$1/$OUT"
 

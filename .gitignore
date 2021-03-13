@@ -3,3 +3,6 @@ assets/
 archive/
 node_modules/
 http-log/
+
+scenario.json
+todo.md

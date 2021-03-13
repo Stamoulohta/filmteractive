@@ -4,11 +4,7 @@ M_ENC = ./bin/mkdmx
 V_ENC = ffmpeg
 V_ENC_FLAGS = -c:v libx264 -crf 18 -preset veryslow -pix_fmt yuv420p
 A_ENC_FLAGS = -c:a copy
-EXT_OUT = .mp4
-
-# -tune slideshow; for .png EXT_IN
-# https://ffmpeg.org/ffmpeg-formats.html#concat
-# https://trac.ffmpeg.org/wiki/Slideshow
+EXT_OUT = mp4
 
 RM = rm -rf
 
@@ -18,7 +14,7 @@ SCENE_JSON = scene.json
 SCENE_DMX  = input.dmx
 SCENE_AUDIO = audio
 
-DIR_IN = assets_test
+DIR_IN = assets
 DIR_OUT = public
 
 SCENARIO_OUT = scenario.json
@@ -26,13 +22,13 @@ SCENARIO_IN = template.json
 
 DEPENDENCIES = $(S_ENC) $(V_ENC)
 
-EXT_IMG = png
+EXT_IMG = png jpg
 EXT_AUDIO = m4a mp3
 EXT_VALID = $(EXT_IMG) $(EXT_AUDIO)
 
 QUALIFIERS_OUT = $(addprefix $(DIR_OUT)/, $(SIZES))
-SCENES_OUT = $(foreach size_dir, $(QUALIFIERS_OUT), $(subst $(DIR_IN), $(size_dir), $(addsuffix $(EXT_OUT), $(wildcard $(DIR_IN)/*))))
-SCENES_OUT_PATTERN = $(addsuffix /%$(EXT_OUT), $(QUALIFIERS_OUT))
+SCENES_OUT = $(foreach size_dir, $(QUALIFIERS_OUT), $(subst $(DIR_IN), $(size_dir), $(addsuffix .$(EXT_OUT), $(wildcard $(DIR_IN)/*))))
+SCENES_OUT_PATTERN = $(addsuffix /%.$(EXT_OUT), $(QUALIFIERS_OUT))
 
 SCENES_DMX_PATTERN = $(addsuffix /%/$(SCENE_DMX), $(DIR_IN))
 
@@ -49,7 +45,7 @@ define configure
 	include $(1)/$(SCENE_MAKE)
 endef
 
-all : $(DEPENDENCIES) $(QUALIFIERS_OUT) $(SCENES_OUT)# $(SCENARIOU_OUT)
+all : $(DEPENDENCIES) $(QUALIFIERS_OUT) $(SCENES_OUT) $(SCENARIO_OUT)
 
 $(SCENARIO_OUT) : $(wildcard $(DIR_IN)/*/$(SCENE_JSON))
 	$(eval $@_BUFFER = $(shell mktemp))
@@ -57,14 +53,13 @@ $(SCENARIO_OUT) : $(wildcard $(DIR_IN)/*/$(SCENE_JSON))
 	jq -s '.[1].sizes = .[0] | .[1]' <(echo -n $(SIZES) | jq -R -s -c 'split(" ")') $($@_BUFFER) > $(SCENARIO_OUT)
 	$(RM) $($@_BUFFER)
 
-$(SCENES_OUT_PATTERN) : $(foreach EXT, .$(EXT_VALID), $(wildcard $(DIR_IN)/%/*$(EXT))) $(SCENES_DMX_PATTERN)
+$(SCENES_OUT_PATTERN) : $(foreach EXT, $(EXT_VALID), $(wildcard $(DIR_IN)/%/*.$(EXT))) $(SCENES_DMX_PATTERN)
 	$(eval AUDIO_INPUT =  $(if $(wildcard $(addprefix $(<D)/$(SCENE_AUDIO)., $(EXT_AUDIO))), -i $(firstword $(wildcard $(addprefix $(<D)/$(SCENE_AUDIO)., $(EXT_AUDIO))))))
-	$(V_ENC) -y -f concat -i "$(<D)/$(SCENE_DMX)" $(AUDIO_INPUT) $(foreach HEIGHT, $(SIZES), -vf scale=-1:$(HEIGHT) $(V_ENC_FLAGS) $(if $(AUDIO_INPUT), $(A_ENC_FLAGS)) $(DIR_OUT)/$(HEIGHT)/$*$(EXT_OUT))
-#	$(V_ENC) -y -f concat -i "$(<D)/$(SCENE_DMX)" $(foreach HEIGHT, $(SIZES), -vf scale=-1:$(HEIGHT) $(V_ENC_FLAGS) $(DIR_OUT)/$(HEIGHT)/$*$(EXT_OUT))
+	$(V_ENC) -y -f concat -i "$(<D)/$(SCENE_DMX)" $(AUDIO_INPUT) $(foreach HEIGHT, $(SIZES), -vf scale=-1:$(HEIGHT) $(V_ENC_FLAGS) $(if $(AUDIO_INPUT), $(A_ENC_FLAGS)) $(DIR_OUT)/$(HEIGHT)/$*.$(EXT_OUT))
 
 $(SCENES_DMX_PATTERN) &: $(DIR_IN)/%/$(SCENE_MAKE)
 	$(eval $(call configure, $(<D)))
-	$(M_ENC) $(if $(DURATION), -d $(DURATION), -r $(FPS)) $(addprefix -f , $(DURATIONS)) -e $(EXT_IN) -o $(SCENE_DMX) $(<D)
+	$(M_ENC) $(if $(DURATION), -d $(DURATION), -r $(FPS)) -e $(EXT_IN) -o $(SCENE_DMX) $(addprefix -f , $(DURATIONS)) $(<D)
 
 $(DEPENDENCIES) :
 	$(foreach DEPENDENCY, $(DEPENDENCIES), $(if $(shell command -v $(DEPENDENCY)),,$(error "No $(DEPENDENCY) in $$PATH")))
@@ -74,7 +69,7 @@ $(QUALIFIERS_OUT) :
 	touch $(wildcard $(DIR_IN)/*/$(SCENE_MAKE))
 
 clean :
-	$(RM) $(DIR_OUT) $(SCENARIO_OUT)
+	$(RM) $(wildcard $(DIR_OUT)) $(wildcard $(SCENARIO_OUT)) $(wildcard $(DIR_IN)/*/$(SCENE_DMX))
 
 .PHONY : clean $(DEPENDENCIES)
 .PRECIOUS : $(SCENES_DMX_PATTERN)
