@@ -3,7 +3,7 @@ S_ENC = jq
 M_ENC = ./bin/mkdmx
 V_ENC = ffmpeg
 V_ENC_FLAGS = -c:v libx264 -crf 18 -preset veryslow -pix_fmt yuv420p
-A_ENC_FLAGS = -c:a copy
+A_ENC_FLAGS = -c:a copy # -af "afade=t=in:st=0:d=1,afade=t=out:st=-1:d=1" --shortest
 EXT_OUT = mp4
 
 RM = rm -rf
@@ -69,7 +69,7 @@ $(QUALIFIERS_OUT) :
 	touch $(wildcard $(DIR_IN)/*/$(SCENE_MAKE))
 
 clean :
-	$(RM) $(wildcard $(DIR_OUT)) $(wildcard $(SCENARIO_OUT)) $(wildcard $(DIR_IN)/*/$(SCENE_DMX))
+	echo $(foreach OUT_SIZE, $(addprefix $(DIR_OUT)/, $(SIZES)), $(wildcard $(OUT_SIZE))) $(wildcard $(SCENARIO_OUT)) $(wildcard $(DIR_IN)/*/$(SCENE_DMX))
 
 .PHONY : clean $(DEPENDENCIES)
 .PRECIOUS : $(SCENES_DMX_PATTERN)
