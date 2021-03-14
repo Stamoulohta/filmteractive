@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+FRAME_NAME="frame_"
+TEMP_NAME="temp_"
+PERCISION=%03d
+
+IDX=0
+for frame in "$@"; do
+    let ++IDX
+    EXTENSION=".${frame##*.}"
+    mv "$frame" $(printf "$TEMP_NAME$PERCISION$EXTENSION" $IDX)
+done
+
+rename $TEMP_NAME $FRAME_NAME $TEMP_NAME*
