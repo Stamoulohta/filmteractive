@@ -3,8 +3,14 @@
 test -d "$1" || { printf '%s: invalid directory -- %s\n' $(basename "$0") "$1" && exit 4; }
 
 scene_init() {
+    test -f "$1/audio.mp3" && (test ! -e "$1/config.mk" || test -z $(grep -o "DURATION " "$1/config.mk")) && DURATION=$(echo "scale=3; $(mediainfo --Output='Audio;%Duration%' "$1/audio.mp3")/1000" | bc)
+    if [ -n "$DURATION" ]; then
+        CONFIG="DURATION = $DURATION"
+    else
+        CONFIG="FPS = 6"
+    fi
     jq ". += {\"name\":\"${1#**/}\", \"events\":[], \"vsrc\":\"${1#**/}.mp4\"}" <<< '{}' > "$1/scene.json"
-    echo -e "EXT_IN = png\nFPS = 6" > "$1/config.mk"
+    echo -e "$CONFIG" > "$1/config.mk"
 }
 
 export -f scene_init

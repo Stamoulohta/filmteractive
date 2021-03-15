@@ -1,14 +1,37 @@
 {
-    "poster": "assets/name/frame-00027.png",
-    "enter": "loading",
-    "vsources": "public",
+    "thumb": "thumb.png",
+    "enter": "00_1",
+    "sources": "public",
+    "audio": "audio",
+    "image": "image",
     "events": [
         {
             "type": "click",
-            "what": "loading"
+            "sound": "fx/click.mp3"
+        },
+        {
+            "type": "timeout",
+            "span": 120000,
+            "restart": "ON_STEP",
+            "sound": [
+                "clip_01.mp3",
+                "clip_02.mp3",
+                "clip_03.mp3",
+                "clip_04.mp3",
+                "clip_05.mp3",
+                "clip_06.mp3",
+                "clip_07.mp3",
+                "clip_08.mp3",
+                "clip_09.mp3",
+                "clip_10.mp3",
+                "clip_11.mp3",
+                "clip_12.mp3",
+                "clip_13.mp3",
+                "clip_14.mp3",
+                "clip_15.mp3"
+            ]
         }
     ],
-    "scenes": null,
-    "sizes": null
+    "sizes": null,
+    "scenes": null
 }
-

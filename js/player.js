@@ -1,31 +1,72 @@
 function Filmteractive(id, scenario) {
-    const vplayer = document.getElementById(id);
-    let scene = null;
-    let unbound_events = null;
-    let bound_events = null;
 
-    const director = function() {
+    const vplayer = document.getElementById(id);
+    let director = null;
+    let scene = null;
+    const audio_path = `${scenario.sources}/${scenario.audio}/`;
+    const image_path = `${scenario.sources}/${scenario.image}/`;
+
+    console.log(image_path);
+
+    const getVideoPath = function() {
+        const size = scenario.sizes.sort((a, b) => a - b).find((size, index, array) => {
+            if (index === array.length - 1) {
+                return size;
+            }
+            size >= window.screen.height;
+        });
+
+        return `${scenario.sources}/${size}/`;
+    }
+
+    let video_path = getVideoPath();
+
+    Event = function(evt_opts) {
+
+        let repeats = false;
+        let ignores = false;
+
+
+        const activate = function(evt) {
+            if(evt_opts.sound) {
+                (new Audio(audio_path + evt_opts.sound)).play();
+            }
+            if(evt_opts.scene) {
+
+                director.setScene(evt_opts.scene);
+            }
+        }
+
+        const abord = function() {
+            vplayer.removeEventListener("click", activate)
+        }
+
+        switch(true) {
+            case evt_opts.type === "click" :
+            case evt_opts.type === "ended" :
+                vplayer.addEventListener(evt_opts.type, activate)
+                break;
+            case evt_opts.type === "timeout" :
+                setTimeout(activate, evt_opts.span);
+                break;
+            default :
+                return;
+        }
+    }
+
+    const Director = function() {
 
         const vsource = document.createElement("source");
-        let vpath = '/';
 
         const init = function() {
-            document.createElement("source");
             vsource.setAttribute("type", "video/mp4");
             vplayer.appendChild(vsource);
+            addEvents(scenario.events)
+            setScene(scenario.enter)
+        }
 
-            scene = scenario.scenes[scenario.enter]
-
-            vpath = (() => {
-                const size = scenario.sizes.sort((a, b) => a - b).find((size, index, array) => {
-                    if (index === array.length - 1) {
-                        return size;
-                    }
-                    size >= window.screen.height;
-                });
-
-                return `${scenario.vsources}/${size}/`;
-            })();
+        const setScene = function(scene_id) {
+            scene = scenario.scenes[scene_id];
             act();
         }
 
@@ -34,26 +75,29 @@ function Filmteractive(id, scenario) {
         }
 
         const set = function() {
-            vsource.setAttribute("src", vpath + scene.vsrc);
+            vsource.setAttribute("src", video_path + scene.vsrc);
             vplayer.load();
             vplayer.play();
-            evts();
+            addEvents(scene.events);
         }
 
-        const evts = function() {
-            bound_events = null;
-            //scene.events.forEach(evt => evt.type(evt));
+        const addEvents = function(evt_arr) {
+            evt_arr.forEach(options => new Event(options))
         }
 
         init();
+
+        return {
+            setScene : setScene
+        }
     }
 
     const init = function () {
-        scenario.poster && vplayer.setAttribute("poster", scenario.poster);
+        scenario.thumb && vplayer.setAttribute("poster", image_path + scenario.thumb);
         vplayer.addEventListener("click", function handle() {
             this.removeEventListener("click", handle);
             toggleFullScreen(this);
-            director();
+            director = Director();
         });
     }
 
