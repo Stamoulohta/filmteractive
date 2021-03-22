@@ -23,15 +23,15 @@ SCENARIO_IN = template.json
 
 DEPENDENCIES = $(S_ENC) $(V_ENC)
 
-EXT_IMG = png jpg
 EXT_AUDIO = m4a mp3
-EXT_VALID = $(EXT_IMG) $(EXT_AUDIO)
+EXT_IMAGE = png
 
 QUALIFIERS_OUT = $(addprefix $(DIR_OUT)/, $(SIZES))
+
 SCENES_OUT = $(foreach SIZE_DIR, $(QUALIFIERS_OUT), $(subst $(DIR_IN), $(SIZE_DIR), $(addsuffix .$(EXT_OUT), $(wildcard $(DIR_IN)/*))))
 SCENES_OUT_PATTERN = $(addsuffix /%.$(EXT_OUT), $(QUALIFIERS_OUT))
 
-SCENES_DMX_PATTERN = $(addsuffix /%/$(SCENE_DMX), $(DIR_IN))
+SCENES_DMX_PATTERN = $(DIR_IN)/%/$(SCENE_DMX)
 
 ifneq (,$(wildcard $(SCENARIO_OUT)))
     SCENARIO_IN = $(SCENARIO_OUT)
@@ -54,11 +54,11 @@ $(SCENARIO_OUT) : $(wildcard $(DIR_IN)/*/$(SCENE_JSON))
 	jq -s '.[1].sizes = .[0] | .[1]' <(echo -n $(SIZES) | jq -R -s -c 'split(" ")') $($@_BUFFER) > $(SCENARIO_OUT)
 	$(RM) $($@_BUFFER)
 
-$(SCENES_OUT_PATTERN) &: $(foreach EXT, $(EXT_VALID), $(wildcard $(DIR_IN)/%/*.$(EXT))) $(SCENES_DMX_PATTERN) $(QUALIFIERS_OUT)
+$(SCENES_OUT_PATTERN) &: $(SCENES_DMX_PATTERN) | $(QUALIFIERS_OUT)
 	$(eval AUDIO_INPUT =  $(if $(wildcard $(addprefix $(<D)/$(SCENE_AUDIO)., $(EXT_AUDIO))), -i $(firstword $(wildcard $(addprefix $(<D)/$(SCENE_AUDIO)., $(EXT_AUDIO))))))
 	$(V_ENC) -y -f concat -i "$(<D)/$(SCENE_DMX)" $(AUDIO_INPUT) $(foreach HEIGHT, $(SIZES), -vf scale=-1:$(HEIGHT) $(V_ENC_FLAGS) $(if $(AUDIO_INPUT), $(A_ENC_FLAGS)) $(DIR_OUT)/$(HEIGHT)/$*.$(EXT_OUT))
 
-$(SCENES_DMX_PATTERN) : $(DIR_IN)/%/$(SCENE_MAKE)
+$(SCENES_DMX_PATTERN) : $(DIR_IN)/%/$(SCENE_MAKE) $(DIR_IN)/%/*.$(EXT_IMAGE)
 	$(eval $(call configure, $(<D)))
 	$(M_ENC) $(if $(DURATION), -d $(DURATION), -r $(FPS)) -e $(EXT_IN) -o $(SCENE_DMX) $(addprefix -f , $(DURATIONS)) $(<D)
 

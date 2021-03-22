@@ -1,0 +1,2303 @@
+{
+  "thumb": "thumb.png",
+  "enter": "00_1",
+  "sources": "public",
+  "audio": "audio",
+  "image": "image",
+  "events": [
+    {
+      "type": "click",
+      "sound": "fx/click.mp3"
+    },
+    {
+      "type": "timeout",
+      "span": 120000,
+      "restart": "ON_STEP",
+      "sound": [
+        "clip_01.mp3",
+        "clip_02.mp3",
+        "clip_03.mp3",
+        "clip_04.mp3",
+        "clip_05.mp3",
+        "clip_06.mp3",
+        "clip_07.mp3",
+        "clip_08.mp3",
+        "clip_09.mp3",
+        "clip_10.mp3",
+        "clip_11.mp3",
+        "clip_12.mp3",
+        "clip_13.mp3",
+        "clip_14.mp3",
+        "clip_15.mp3"
+      ]
+    }
+  ],
+  "sizes": [
+    "360"
+  ],
+  "scenes": {
+    "00_1": {
+      "name": "00_1",
+      "onend": "00_2",
+      "vsrc": "00_1.mp4"
+    },
+    "00_2": {
+      "name": "00_2",
+      "onend": "00_3b",
+      "vsrc": "00_2.mp4"
+    },
+    "00_3_1": {
+      "name": "00_3_1",
+      "onend": "00_4b",
+      "vsrc": "00_3_1.mp4"
+    },
+    "00_3_2": {
+      "name": "00_3_2",
+      "onend": "00_4b",
+      "vsrc": "00_3_2.mp4"
+    },
+    "00_3_3": {
+      "name": "00_3_3",
+      "onend": "00_4b",
+      "vsrc": "00_3_3.mp4"
+    },
+    "00_3_4": {
+      "name": "00_3_4",
+      "onend": "00_4b",
+      "vsrc": "00_3_4.mp4"
+    },
+    "00_3_5": {
+      "name": "00_3_5",
+      "onend": "00_4b",
+      "vsrc": "00_3_5.mp4"
+    },
+    "00_3b": {
+      "name": "00_3b",
+      "events": [
+        {
+          "type": "click",
+          "scene": "00_3_1",
+          "constraints": {
+            "timespan": [
+              14
+            ],
+            "hitbox": [
+              5.11,
+              54.68,
+              18.51,
+              45.26
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "00_3_2",
+          "constraints": {
+            "timespan": [
+              14
+            ],
+            "hitbox": [
+              22.96,
+              58.64,
+              34.44,
+              40.2
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "00_3_3",
+          "constraints": {
+            "timespan": [
+              14
+            ],
+            "hitbox": [
+              39.62,
+              62.39,
+              51.48,
+              37.29
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "00_3_4",
+          "constraints": {
+            "timespan": [
+              14
+            ],
+            "hitbox": [
+              57.22,
+              75.93,
+              69.25,
+              26.97
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "00_3_5",
+          "constraints": {
+            "timespan": [
+              14
+            ],
+            "hitbox": [
+              76.66,
+              74.06,
+              88.88,
+              28.43
+            ]
+          }
+        }
+      ],
+      "vsrc": "00_3b.mp4"
+    },
+    "00_4_1": {
+      "name": "00_4_1",
+      "onend": "00_5",
+      "vsrc": "00_4_1.mp4"
+    },
+    "00_4_2": {
+      "name": "00_4_2",
+      "onend": "00_5",
+      "vsrc": "00_4_2.mp4"
+    },
+    "00_4_3": {
+      "name": "00_4_3",
+      "onend": "00_5",
+      "vsrc": "00_4_3.mp4"
+    },
+    "00_4_4": {
+      "name": "00_4_4",
+      "onend": "00_5",
+      "vsrc": "00_4_4.mp4"
+    },
+    "00_4_5": {
+      "name": "00_4_5",
+      "onend": "00_5",
+      "vsrc": "00_4_5.mp4"
+    },
+    "00_4b": {
+      "name": "00_4b",
+      "events": [
+        {
+          "type": "click",
+          "scene": "00_4_1",
+          "constraints": {
+            "timespan": [
+              15
+            ],
+            "hitbox": [
+              27.31,
+              79.88,
+              40.74,
+              22.44
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "00_4_2",
+          "constraints": {
+            "timespan": [
+              15
+            ],
+            "hitbox": [
+              41.48,
+              84.21,
+              55.09,
+              17.7
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "00_4_3",
+          "constraints": {
+            "timespan": [
+              15
+            ],
+            "hitbox": [
+              56.01,
+              80.26,
+              68.33,
+              23.07
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "00_4_4",
+          "constraints": {
+            "timespan": [
+              15
+            ],
+            "hitbox": [
+              69.44,
+              82.13,
+              82.4,
+              20.41
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "00_4_5",
+          "constraints": {
+            "timespan": [
+              15
+            ],
+            "hitbox": [
+              83.33,
+              73.43,
+              95.92,
+              25.93
+            ]
+          }
+        }
+      ],
+      "vsrc": "00_4b.mp4"
+    },
+    "00_5": {
+      "name": "00_5",
+      "onend": "00_6",
+      "vsrc": "00_5.mp4"
+    },
+    "00_6": {
+      "name": "00_6",
+      "onend": "01a",
+      "vsrc": "00_6.mp4"
+    },
+    "01_1": {
+      "name": "01_1",
+      "onend": "02a",
+      "vsrc": "01_1.mp4"
+    },
+    "01_2": {
+      "name": "01_2",
+      "onend": "02a",
+      "vsrc": "01_2.mp4"
+    },
+    "01_3": {
+      "name": "01_3",
+      "onend": "02a",
+      "vsrc": "01_3.mp4"
+    },
+    "01_4": {
+      "name": "01_4",
+      "onend": "02a",
+      "vsrc": "01_4.mp4"
+    },
+    "01_5": {
+      "name": "01_5",
+      "onend": "02a",
+      "vsrc": "01_5.mp4"
+    },
+    "01_6": {
+      "name": "01_6",
+      "onend": "02a",
+      "vsrc": "01_6.mp4"
+    },
+    "01_7": {
+      "name": "01_7",
+      "onend": "02a",
+      "vsrc": "01_7.mp4"
+    },
+    "01_8": {
+      "name": "01_8",
+      "onend": "01b",
+      "vsrc": "01_8.mp4"
+    },
+    "01a": {
+      "name": "01a",
+      "onend": "01b",
+      "events": [
+        {
+          "type": "timeout",
+          "span": 1,
+          "sound": {
+            "src": "bg/01b.mp3",
+            "loop": true
+          },
+          "scene_span": {
+            "startswith": "01"
+          }
+        }
+      ],
+      "vsrc": "01a.mp4"
+    },
+    "01b": {
+      "name": "01b",
+      "events": [
+        {
+          "type": "click",
+          "scene": "01_1",
+          "constraints": {
+            "timespan": [
+              17
+            ],
+            "hitbox": [
+              9.25,
+              49.89,
+              20.37,
+              15.72
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "01_2",
+          "constraints": {
+            "timespan": [
+              17
+            ],
+            "hitbox": [
+              9.62,
+              84.06,
+              20.92,
+              50.2
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "01_3",
+          "constraints": {
+            "timespan": [
+              17
+            ],
+            "hitbox": [
+              20.74,
+              49.79,
+              30.92,
+              15.62
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "01_4",
+          "constraints": {
+            "timespan": [
+              17
+            ],
+            "hitbox": [
+              21.48,
+              84.27,
+              31.66,
+              50.31
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "01_5",
+          "constraints": {
+            "timespan": [
+              17
+            ],
+            "hitbox": [
+              31.48,
+              49.52,
+              40.74,
+              15.75
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "01_6",
+          "constraints": {
+            "timespan": [
+              17
+            ],
+            "hitbox": [
+              32.22,
+              42.03,
+              81.41,
+              48.48
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "01_7",
+          "constraints": {
+            "timespan": [
+              17
+            ],
+            "hitbox": [
+              42.4,
+              82.6,
+              52.22,
+              16.04
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "01_8",
+          "constraints": {
+            "timespan": [
+              17
+            ],
+            "hitbox": [
+              53.7,
+              82.91,
+              63.51,
+              15.93
+            ]
+          }
+        }
+      ],
+      "vsrc": "01b.mp4"
+    },
+    "02_1": {
+      "name": "02_1",
+      "onend": "03a",
+      "vsrc": "02_1.mp4"
+    },
+    "02_2": {
+      "name": "02_2",
+      "onend": "03a",
+      "vsrc": "02_2.mp4"
+    },
+    "02_3": {
+      "name": "02_3",
+      "onend": "03a",
+      "vsrc": "02_3.mp4"
+    },
+    "02_4": {
+      "name": "02_4",
+      "onend": "03a",
+      "vsrc": "02_4.mp4"
+    },
+    "02_5": {
+      "name": "02_5",
+      "onend": "03a",
+      "vsrc": "02_5.mp4"
+    },
+    "02_6": {
+      "name": "02_6",
+      "onend": "03a",
+      "vsrc": "02_6.mp4"
+    },
+    "02_7": {
+      "name": "02_7",
+      "onend": "03a",
+      "vsrc": "02_7.mp4"
+    },
+    "02_8": {
+      "name": "02_8",
+      "onend": "02b",
+      "vsrc": "02_8.mp4"
+    },
+    "02a": {
+      "name": "02a",
+      "onend": "03b",
+      "events": [
+        {
+          "type": "timeout",
+          "span": 1,
+          "sound": {
+            "src": "bg/02.mp3",
+            "loop": true
+          },
+          "scene_span": {
+            "startswith": "02"
+          }
+        }
+      ],
+      "vsrc": "02a.mp4"
+    },
+    "02b": {
+      "name": "02b",
+      "events": [
+        {
+          "type": "click",
+          "scene": "02_1",
+          "constraints": {
+            "timespan": [
+              17
+            ],
+            "hitbox": [
+              9.25,
+              49.89,
+              20.37,
+              15.72
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "02_2",
+          "constraints": {
+            "timespan": [
+              17
+            ],
+            "hitbox": [
+              9.62,
+              84.06,
+              20.92,
+              50.2
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "02_3",
+          "constraints": {
+            "timespan": [
+              17
+            ],
+            "hitbox": [
+              20.74,
+              49.79,
+              30.92,
+              15.62
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "02_4",
+          "constraints": {
+            "timespan": [
+              17
+            ],
+            "hitbox": [
+              21.48,
+              84.27,
+              31.66,
+              50.31
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "02_5",
+          "constraints": {
+            "timespan": [
+              17
+            ],
+            "hitbox": [
+              31.48,
+              49.52,
+              40.74,
+              15.75
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "02_6",
+          "constraints": {
+            "timespan": [
+              17
+            ],
+            "hitbox": [
+              32.22,
+              42.03,
+              81.41,
+              48.48
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "02_7",
+          "constraints": {
+            "timespan": [
+              17
+            ],
+            "hitbox": [
+              42.4,
+              82.6,
+              52.22,
+              16.04
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "02_8",
+          "constraints": {
+            "timespan": [
+              17
+            ],
+            "hitbox": [
+              53.7,
+              82.91,
+              63.51,
+              15.93
+            ]
+          }
+        }
+      ],
+      "vsrc": "02b.mp4"
+    },
+    "03_1": {
+      "name": "03_1",
+      "onend": "04a",
+      "vsrc": "03_1.mp4"
+    },
+    "03_2": {
+      "name": "03_2",
+      "onend": "04a",
+      "vsrc": "03_2.mp4"
+    },
+    "03_3": {
+      "name": "03_3",
+      "onend": "04a",
+      "vsrc": "03_3.mp4"
+    },
+    "03_4": {
+      "name": "03_4",
+      "onend": "04a",
+      "vsrc": "03_4.mp4"
+    },
+    "03_5": {
+      "name": "03_5",
+      "onend": "04a",
+      "vsrc": "03_5.mp4"
+    },
+    "03_6": {
+      "name": "03_6",
+      "onend": "04a",
+      "vsrc": "03_6.mp4"
+    },
+    "03_7": {
+      "name": "03_7",
+      "onend": "04a",
+      "vsrc": "03_7.mp4"
+    },
+    "03_8": {
+      "name": "03_8",
+      "onend": "03b",
+      "vsrc": "03_8.mp4"
+    },
+    "03a": {
+      "name": "03a",
+      "onend": "03b",
+      "events": [
+        {
+          "type": "timeout",
+          "span": 1,
+          "sound": {
+            "src": "bg/03.mp3",
+            "loop": true
+          },
+          "scene_span": {
+            "startswith": "03"
+          }
+        }
+      ],
+      "vsrc": "03a.mp4"
+    },
+    "03b": {
+      "name": "03b",
+      "events": [
+        {
+          "type": "click",
+          "scene": "03_1",
+          "constraints": {
+            "timespan": [
+              17
+            ],
+            "hitbox": [
+              9.25,
+              49.89,
+              20.37,
+              15.72
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "03_2",
+          "constraints": {
+            "timespan": [
+              17
+            ],
+            "hitbox": [
+              9.62,
+              84.06,
+              20.92,
+              50.2
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "03_3",
+          "constraints": {
+            "timespan": [
+              17
+            ],
+            "hitbox": [
+              20.74,
+              49.79,
+              30.92,
+              15.62
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "03_4",
+          "constraints": {
+            "timespan": [
+              17
+            ],
+            "hitbox": [
+              21.48,
+              84.27,
+              31.66,
+              50.31
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "03_5",
+          "constraints": {
+            "timespan": [
+              17
+            ],
+            "hitbox": [
+              31.48,
+              49.52,
+              40.74,
+              15.75
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "03_6",
+          "constraints": {
+            "timespan": [
+              17
+            ],
+            "hitbox": [
+              32.22,
+              42.03,
+              81.41,
+              48.48
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "03_7",
+          "constraints": {
+            "timespan": [
+              17
+            ],
+            "hitbox": [
+              42.4,
+              82.6,
+              52.22,
+              16.04
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "03_8",
+          "constraints": {
+            "timespan": [
+              17
+            ],
+            "hitbox": [
+              53.7,
+              82.91,
+              63.51,
+              15.93
+            ]
+          }
+        }
+      ],
+      "vsrc": "03b.mp4"
+    },
+    "04_1": {
+      "name": "04_1",
+      "onend": "05a",
+      "vsrc": "04_1.mp4"
+    },
+    "04_2": {
+      "name": "04_2",
+      "onend": "05a",
+      "vsrc": "04_2.mp4"
+    },
+    "04_3": {
+      "name": "04_3",
+      "onend": "05a",
+      "vsrc": "04_3.mp4"
+    },
+    "04_4": {
+      "name": "04_4",
+      "onend": "05a",
+      "vsrc": "04_4.mp4"
+    },
+    "04_5": {
+      "name": "04_5",
+      "onend": "05a",
+      "vsrc": "04_5.mp4"
+    },
+    "04_6": {
+      "name": "04_6",
+      "onend": "05a",
+      "vsrc": "04_6.mp4"
+    },
+    "04_7": {
+      "name": "04_7",
+      "onend": "05a",
+      "vsrc": "04_7.mp4"
+    },
+    "04_8": {
+      "name": "04_8",
+      "onend": "04b",
+      "vsrc": "04_8.mp4"
+    },
+    "04a": {
+      "name": "04a",
+      "onend": "04b",
+      "events": [
+        {
+          "type": "timeout",
+          "span": 1,
+          "sound": {
+            "src": "bg/04.mp3",
+            "loop": true
+          },
+          "scene_span": {
+            "startswith": "04"
+          }
+        }
+      ],
+      "vsrc": "04a.mp4"
+    },
+    "04b": {
+      "name": "04b",
+      "events": [
+        {
+          "type": "click",
+          "scene": "04_1",
+          "constraints": {
+            "timespan": [
+              17
+            ],
+            "hitbox": [
+              9.25,
+              49.89,
+              20.37,
+              15.72
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "04_2",
+          "constraints": {
+            "timespan": [
+              17
+            ],
+            "hitbox": [
+              9.62,
+              84.06,
+              20.92,
+              50.2
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "04_3",
+          "constraints": {
+            "timespan": [
+              17
+            ],
+            "hitbox": [
+              20.74,
+              49.79,
+              30.92,
+              15.62
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "04_4",
+          "constraints": {
+            "timespan": [
+              17
+            ],
+            "hitbox": [
+              21.48,
+              84.27,
+              31.66,
+              50.31
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "04_5",
+          "constraints": {
+            "timespan": [
+              17
+            ],
+            "hitbox": [
+              31.48,
+              49.52,
+              40.74,
+              15.75
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "04_6",
+          "constraints": {
+            "timespan": [
+              17
+            ],
+            "hitbox": [
+              32.22,
+              42.03,
+              81.41,
+              48.48
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "04_7",
+          "constraints": {
+            "timespan": [
+              17
+            ],
+            "hitbox": [
+              42.4,
+              82.6,
+              52.22,
+              16.04
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "04_8",
+          "constraints": {
+            "timespan": [
+              17
+            ],
+            "hitbox": [
+              53.7,
+              82.91,
+              63.51,
+              15.93
+            ]
+          }
+        }
+      ],
+      "vsrc": "04b.mp4"
+    },
+    "05_1": {
+      "name": "05_1",
+      "onend": "07a",
+      "vsrc": "05_1.mp4"
+    },
+    "05_2": {
+      "name": "05_2",
+      "onend": "07a",
+      "vsrc": "05_2.mp4"
+    },
+    "05_3": {
+      "name": "05_3",
+      "onend": "07a",
+      "vsrc": "05_3.mp4"
+    },
+    "05_4": {
+      "name": "05_4",
+      "onend": "07a",
+      "vsrc": "05_4.mp4"
+    },
+    "05_5": {
+      "name": "05_5",
+      "onend": "07a",
+      "vsrc": "05_5.mp4"
+    },
+    "05_6": {
+      "name": "05_6",
+      "onend": "07a",
+      "vsrc": "05_6.mp4"
+    },
+    "05_7": {
+      "name": "05_7",
+      "onend": "07a",
+      "vsrc": "05_7.mp4"
+    },
+    "05_8": {
+      "name": "05_8",
+      "onend": "05b",
+      "vsrc": "05_8.mp4"
+    },
+    "05a": {
+      "name": "05a",
+      "onend": "05b",
+      "events": [
+        {
+          "type": "timeout",
+          "span": 1,
+          "sound": {
+            "src": "bg/05.mp3",
+            "loop": true
+          },
+          "scene_span": {
+            "startswith": "05"
+          }
+        }
+      ],
+      "vsrc": "05a.mp4"
+    },
+    "05b": {
+      "name": "05b",
+      "events": [
+        {
+          "type": "click",
+          "scene": "05_1",
+          "constraints": {
+            "timespan": [
+              17
+            ],
+            "hitbox": [
+              9.25,
+              49.89,
+              20.37,
+              15.72
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "05_2",
+          "constraints": {
+            "timespan": [
+              17
+            ],
+            "hitbox": [
+              9.62,
+              84.06,
+              20.92,
+              50.2
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "05_3",
+          "constraints": {
+            "timespan": [
+              17
+            ],
+            "hitbox": [
+              20.74,
+              49.79,
+              30.92,
+              15.62
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "05_4",
+          "constraints": {
+            "timespan": [
+              17
+            ],
+            "hitbox": [
+              21.48,
+              84.27,
+              31.66,
+              50.31
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "05_5",
+          "constraints": {
+            "timespan": [
+              17
+            ],
+            "hitbox": [
+              31.48,
+              49.52,
+              40.74,
+              15.75
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "05_6",
+          "constraints": {
+            "timespan": [
+              17
+            ],
+            "hitbox": [
+              32.22,
+              42.03,
+              81.41,
+              48.48
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "05_7",
+          "constraints": {
+            "timespan": [
+              17
+            ],
+            "hitbox": [
+              42.4,
+              82.6,
+              52.22,
+              16.04
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "05_8",
+          "constraints": {
+            "timespan": [
+              17
+            ],
+            "hitbox": [
+              53.7,
+              82.91,
+              63.51,
+              15.93
+            ]
+          }
+        }
+      ],
+      "vsrc": "05b.mp4"
+    },
+    "07_1": {
+      "name": "07_1",
+      "onend": "08a",
+      "vsrc": "07_1.mp4"
+    },
+    "07_2": {
+      "name": "07_2",
+      "onend": "08a",
+      "vsrc": "07_2.mp4"
+    },
+    "07_3": {
+      "name": "07_3",
+      "onend": "08a",
+      "vsrc": "07_3.mp4"
+    },
+    "07_4": {
+      "name": "07_4",
+      "onend": "08a",
+      "vsrc": "07_4.mp4"
+    },
+    "07_5": {
+      "name": "07_5",
+      "onend": "08a",
+      "vsrc": "07_5.mp4"
+    },
+    "07_6": {
+      "name": "07_6",
+      "onend": "08a",
+      "vsrc": "07_6.mp4"
+    },
+    "07_7": {
+      "name": "07_7",
+      "onend": "08a",
+      "vsrc": "07_7.mp4"
+    },
+    "07_8": {
+      "name": "07_8",
+      "onend": "07b",
+      "vsrc": "07_8.mp4"
+    },
+    "07a": {
+      "name": "07a",
+      "onend": "07b",
+      "events": [
+        {
+          "type": "timeout",
+          "span": 1,
+          "sound": {
+            "src": "bg/07.mp3",
+            "loop": true
+          },
+          "scene_span": {
+            "startswith": "07"
+          }
+        }
+      ],
+      "vsrc": "07a.mp4"
+    },
+    "07b": {
+      "name": "07b",
+      "events": [
+        {
+          "type": "click",
+          "scene": "07_1",
+          "constraints": {
+            "timespan": [
+              17
+            ],
+            "hitbox": [
+              9.25,
+              49.89,
+              20.37,
+              15.72
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "07_2",
+          "constraints": {
+            "timespan": [
+              17
+            ],
+            "hitbox": [
+              9.62,
+              84.06,
+              20.92,
+              50.2
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "07_3",
+          "constraints": {
+            "timespan": [
+              17
+            ],
+            "hitbox": [
+              20.74,
+              49.79,
+              30.92,
+              15.62
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "07_4",
+          "constraints": {
+            "timespan": [
+              17
+            ],
+            "hitbox": [
+              21.48,
+              84.27,
+              31.66,
+              50.31
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "07_5",
+          "constraints": {
+            "timespan": [
+              17
+            ],
+            "hitbox": [
+              31.48,
+              49.52,
+              40.74,
+              15.75
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "07_6",
+          "constraints": {
+            "timespan": [
+              17
+            ],
+            "hitbox": [
+              32.22,
+              42.03,
+              81.41,
+              48.48
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "07_7",
+          "constraints": {
+            "timespan": [
+              17
+            ],
+            "hitbox": [
+              42.4,
+              82.6,
+              52.22,
+              16.04
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "07_8",
+          "constraints": {
+            "timespan": [
+              17
+            ],
+            "hitbox": [
+              53.7,
+              82.91,
+              63.51,
+              15.93
+            ]
+          }
+        }
+      ],
+      "vsrc": "07b.mp4"
+    },
+    "08_1": {
+      "name": "08_1",
+      "onend": "09a",
+      "vsrc": "08_1.mp4"
+    },
+    "08_2": {
+      "name": "08_2",
+      "onend": "09a",
+      "vsrc": "08_2.mp4"
+    },
+    "08_3": {
+      "name": "08_3",
+      "onend": "09a",
+      "vsrc": "08_3.mp4"
+    },
+    "08_4": {
+      "name": "08_4",
+      "onend": "09a",
+      "vsrc": "08_4.mp4"
+    },
+    "08_5": {
+      "name": "08_5",
+      "onend": "09a",
+      "vsrc": "08_5.mp4"
+    },
+    "08_6": {
+      "name": "08_6",
+      "onend": "09a",
+      "vsrc": "08_6.mp4"
+    },
+    "08_7": {
+      "name": "08_7",
+      "onend": "09a",
+      "vsrc": "08_7.mp4"
+    },
+    "08_8": {
+      "name": "08_8",
+      "onend": "08b",
+      "vsrc": "08_8.mp4"
+    },
+    "08a": {
+      "name": "08a",
+      "onend": "08b",
+      "events": [
+        {
+          "type": "timeout",
+          "span": 1,
+          "sound": {
+            "src": "bg/08.mp3",
+            "loop": true
+          },
+          "scene_span": {
+            "startswith": "08"
+          }
+        }
+      ],
+      "vsrc": "08a.mp4"
+    },
+    "08b": {
+      "name": "08b",
+      "events": [
+        {
+          "type": "click",
+          "scene": "08_1",
+          "constraints": {
+            "timespan": [
+              17
+            ],
+            "hitbox": [
+              9.25,
+              49.89,
+              20.37,
+              15.72
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "08_2",
+          "constraints": {
+            "timespan": [
+              17
+            ],
+            "hitbox": [
+              9.62,
+              84.06,
+              20.92,
+              50.2
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "08_3",
+          "constraints": {
+            "timespan": [
+              17
+            ],
+            "hitbox": [
+              20.74,
+              49.79,
+              30.92,
+              15.62
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "08_4",
+          "constraints": {
+            "timespan": [
+              17
+            ],
+            "hitbox": [
+              21.48,
+              84.27,
+              31.66,
+              50.31
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "08_5",
+          "constraints": {
+            "timespan": [
+              17
+            ],
+            "hitbox": [
+              31.48,
+              49.52,
+              40.74,
+              15.75
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "08_6",
+          "constraints": {
+            "timespan": [
+              17
+            ],
+            "hitbox": [
+              32.22,
+              42.03,
+              81.41,
+              48.48
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "08_7",
+          "constraints": {
+            "timespan": [
+              17
+            ],
+            "hitbox": [
+              42.4,
+              82.6,
+              52.22,
+              16.04
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "08_8",
+          "constraints": {
+            "timespan": [
+              17
+            ],
+            "hitbox": [
+              53.7,
+              82.91,
+              63.51,
+              15.93
+            ]
+          }
+        }
+      ],
+      "vsrc": "08b.mp4"
+    },
+    "09_1": {
+      "name": "09_1",
+      "events": [],
+      "vsrc": "09_1.mp4"
+    },
+    "09_2": {
+      "name": "09_2",
+      "events": [],
+      "vsrc": "09_2.mp4"
+    },
+    "09_3": {
+      "name": "09_3",
+      "events": [],
+      "vsrc": "09_3.mp4"
+    },
+    "09_4": {
+      "name": "09_4",
+      "events": [],
+      "vsrc": "09_4.mp4"
+    },
+    "09_5": {
+      "name": "09_5",
+      "events": [],
+      "vsrc": "09_5.mp4"
+    },
+    "09_6": {
+      "name": "09_6",
+      "events": [],
+      "vsrc": "09_6.mp4"
+    },
+    "09_7": {
+      "name": "09_7",
+      "events": [],
+      "vsrc": "09_7.mp4"
+    },
+    "09_8": {
+      "name": "09_8",
+      "events": [],
+      "vsrc": "09_8.mp4"
+    },
+    "09_9": {
+      "name": "09_9",
+      "events": [],
+      "vsrc": "09_9.mp4"
+    },
+    "09a": {
+      "name": "09a",
+      "onend": "09b",
+      "vsrc": "09a.mp4"
+    },
+    "09b": {
+      "name": "09b",
+      "events": [
+        {
+          "type": "click",
+          "scene": "09_1",
+          "constraints": {
+            "timespan": [
+              35
+            ],
+            "hitbox": [
+              6.11,
+              43.75,
+              18.15,
+              9.27
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "09_2",
+          "constraints": {
+            "timespan": [
+              35
+            ],
+            "hitbox": [
+              5.93,
+              92.92,
+              17.59,
+              58.33
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "09_3",
+          "constraints": {
+            "timespan": [
+              35
+            ],
+            "hitbox": [
+              19.26,
+              43.12,
+              30.93,
+              9.27
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "09_4",
+          "constraints": {
+            "timespan": [
+              35
+            ],
+            "hitbox": [
+              19.63,
+              92.92,
+              31.67,
+              58.54
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "09_5",
+          "constraints": {
+            "timespan": [
+              35
+            ],
+            "hitbox": [
+              34.26,
+              83.54,
+              46.48,
+              15.73
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "09_6",
+          "constraints": {
+            "timespan": [
+              35
+            ],
+            "hitbox": [
+              47.41,
+              45.42,
+              59.44,
+              6.88
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "09_7",
+          "constraints": {
+            "timespan": [
+              35
+            ],
+            "hitbox": [
+              48.7,
+              92.71,
+              60.19,
+              58.44
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "09_8",
+          "constraints": {
+            "timespan": [
+              35
+            ],
+            "hitbox": [
+              62.22,
+              83.85,
+              85.19,
+              16.46
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "09_8",
+          "constraints": {
+            "timespan": [
+              35
+            ],
+            "hitbox": [
+              86.67,
+              82.6,
+              97.96,
+              15.42
+            ]
+          }
+        }
+      ],
+      "vsrc": "09b.mp4"
+    },
+    "10_1": {
+      "name": "10_1",
+      "events": [],
+      "vsrc": "10_1.mp4"
+    },
+    "10_2": {
+      "name": "10_2",
+      "events": [],
+      "vsrc": "10_2.mp4"
+    },
+    "10_3": {
+      "name": "10_3",
+      "events": [],
+      "vsrc": "10_3.mp4"
+    },
+    "10_4": {
+      "name": "10_4",
+      "events": [],
+      "vsrc": "10_4.mp4"
+    },
+    "10_5": {
+      "name": "10_5",
+      "events": [],
+      "vsrc": "10_5.mp4"
+    },
+    "10_6": {
+      "name": "10_6",
+      "events": [],
+      "vsrc": "10_6.mp4"
+    },
+    "10_7": {
+      "name": "10_7",
+      "events": [],
+      "vsrc": "10_7.mp4"
+    },
+    "10_8": {
+      "name": "10_8",
+      "events": [],
+      "vsrc": "10_8.mp4"
+    },
+    "10a": {
+      "name": "10a",
+      "onend": "10b",
+      "events": [
+        {
+          "type": "timeout",
+          "span": 1,
+          "sound": {
+            "src": "bg/10.mp3",
+            "loop": true
+          },
+          "scene_span": {
+            "startswith": "10"
+          }
+        }
+      ],
+      "vsrc": "10a.mp4"
+    },
+    "10b": {
+      "name": "10b",
+      "events": [
+        {
+          "type": "click",
+          "scene": "10_1",
+          "constraints": {
+            "timespan": [
+              17
+            ],
+            "hitbox": [
+              9.25,
+              49.89,
+              20.37,
+              15.72
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "10_2",
+          "constraints": {
+            "timespan": [
+              17
+            ],
+            "hitbox": [
+              9.62,
+              84.06,
+              20.92,
+              50.2
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "10_3",
+          "constraints": {
+            "timespan": [
+              17
+            ],
+            "hitbox": [
+              20.74,
+              49.79,
+              30.92,
+              15.62
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "10_4",
+          "constraints": {
+            "timespan": [
+              17
+            ],
+            "hitbox": [
+              21.48,
+              84.27,
+              31.66,
+              50.31
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "10_5",
+          "constraints": {
+            "timespan": [
+              17
+            ],
+            "hitbox": [
+              31.48,
+              49.52,
+              40.74,
+              15.75
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "10_6",
+          "constraints": {
+            "timespan": [
+              17
+            ],
+            "hitbox": [
+              32.22,
+              42.03,
+              81.41,
+              48.48
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "10_7",
+          "constraints": {
+            "timespan": [
+              17
+            ],
+            "hitbox": [
+              42.4,
+              82.6,
+              52.22,
+              16.04
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "10_8",
+          "constraints": {
+            "timespan": [
+              17
+            ],
+            "hitbox": [
+              53.7,
+              82.91,
+              63.51,
+              15.93
+            ]
+          }
+        }
+      ],
+      "vsrc": "10b.mp4"
+    },
+    "11_1": {
+      "name": "11_1",
+      "events": [],
+      "vsrc": "11_1.mp4"
+    },
+    "11_2": {
+      "name": "11_2",
+      "events": [],
+      "vsrc": "11_2.mp4"
+    },
+    "11_3": {
+      "name": "11_3",
+      "events": [],
+      "vsrc": "11_3.mp4"
+    },
+    "11_4": {
+      "name": "11_4",
+      "events": [],
+      "vsrc": "11_4.mp4"
+    },
+    "11_5": {
+      "name": "11_5",
+      "events": [],
+      "vsrc": "11_5.mp4"
+    },
+    "11_6": {
+      "name": "11_6",
+      "events": [],
+      "vsrc": "11_6.mp4"
+    },
+    "11_7": {
+      "name": "11_7",
+      "events": [],
+      "vsrc": "11_7.mp4"
+    },
+    "11_8": {
+      "name": "11_8",
+      "events": [],
+      "vsrc": "11_8.mp4"
+    },
+    "11a": {
+      "name": "11a",
+      "onend": "11b",
+      "events": [
+        {
+          "type": "timeout",
+          "span": 1,
+          "sound": {
+            "src": "bg/11.mp3",
+            "loop": true
+          },
+          "scene_span": {
+            "startswith": "11"
+          }
+        }
+      ],
+      "vsrc": "11a.mp4"
+    },
+    "11b": {
+      "name": "11b",
+      "events": [
+        {
+          "type": "click",
+          "scene": "11_1",
+          "constraints": {
+            "timespan": [
+              17
+            ],
+            "hitbox": [
+              9.25,
+              49.89,
+              20.37,
+              15.72
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "11_2",
+          "constraints": {
+            "timespan": [
+              17
+            ],
+            "hitbox": [
+              9.62,
+              84.06,
+              20.92,
+              50.2
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "11_3",
+          "constraints": {
+            "timespan": [
+              17
+            ],
+            "hitbox": [
+              20.74,
+              49.79,
+              30.92,
+              15.62
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "11_4",
+          "constraints": {
+            "timespan": [
+              17
+            ],
+            "hitbox": [
+              21.48,
+              84.27,
+              31.66,
+              50.31
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "11_5",
+          "constraints": {
+            "timespan": [
+              17
+            ],
+            "hitbox": [
+              31.48,
+              49.52,
+              40.74,
+              15.75
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "11_6",
+          "constraints": {
+            "timespan": [
+              17
+            ],
+            "hitbox": [
+              32.22,
+              42.03,
+              81.41,
+              48.48
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "11_7",
+          "constraints": {
+            "timespan": [
+              17
+            ],
+            "hitbox": [
+              42.4,
+              82.6,
+              52.22,
+              16.04
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "11_8",
+          "constraints": {
+            "timespan": [
+              17
+            ],
+            "hitbox": [
+              53.7,
+              82.91,
+              63.51,
+              15.93
+            ]
+          }
+        }
+      ],
+      "vsrc": "11b.mp4"
+    },
+    "12_1": {
+      "name": "12_1",
+      "events": [],
+      "vsrc": "12_1.mp4"
+    },
+    "12_2": {
+      "name": "12_2",
+      "events": [],
+      "vsrc": "12_2.mp4"
+    },
+    "12_3": {
+      "name": "12_3",
+      "events": [],
+      "vsrc": "12_3.mp4"
+    },
+    "12_4": {
+      "name": "12_4",
+      "events": [],
+      "vsrc": "12_4.mp4"
+    },
+    "12_5": {
+      "name": "12_5",
+      "events": [],
+      "vsrc": "12_5.mp4"
+    },
+    "12_6": {
+      "name": "12_6",
+      "events": [],
+      "vsrc": "12_6.mp4"
+    },
+    "12_7": {
+      "name": "12_7",
+      "events": [],
+      "vsrc": "12_7.mp4"
+    },
+    "12_8": {
+      "name": "12_8",
+      "events": [],
+      "vsrc": "12_8.mp4"
+    },
+    "12a": {
+      "name": "12a",
+      "onend": "12b",
+      "events": [
+        {
+          "type": "timeout",
+          "span": 1,
+          "sound": {
+            "src": "bg/12.mp3",
+            "loop": true
+          },
+          "scene_span": {
+            "startswith": "12"
+          }
+        }
+      ],
+      "vsrc": "12a.mp4"
+    },
+    "12b": {
+      "name": "12b",
+      "events": [
+        {
+          "type": "click",
+          "scene": "12_1",
+          "constraints": {
+            "timespan": [
+              17
+            ],
+            "hitbox": [
+              9.25,
+              49.89,
+              20.37,
+              15.72
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "12_2",
+          "constraints": {
+            "timespan": [
+              17
+            ],
+            "hitbox": [
+              9.62,
+              84.06,
+              20.92,
+              50.2
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "12_3",
+          "constraints": {
+            "timespan": [
+              17
+            ],
+            "hitbox": [
+              20.74,
+              49.79,
+              30.92,
+              15.62
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "12_4",
+          "constraints": {
+            "timespan": [
+              17
+            ],
+            "hitbox": [
+              21.48,
+              84.27,
+              31.66,
+              50.31
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "12_5",
+          "constraints": {
+            "timespan": [
+              17
+            ],
+            "hitbox": [
+              31.48,
+              49.52,
+              40.74,
+              15.75
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "12_6",
+          "constraints": {
+            "timespan": [
+              17
+            ],
+            "hitbox": [
+              32.22,
+              42.03,
+              81.41,
+              48.48
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "12_7",
+          "constraints": {
+            "timespan": [
+              17
+            ],
+            "hitbox": [
+              42.4,
+              82.6,
+              52.22,
+              16.04
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "12_8",
+          "constraints": {
+            "timespan": [
+              17
+            ],
+            "hitbox": [
+              53.7,
+              82.91,
+              63.51,
+              15.93
+            ]
+          }
+        }
+      ],
+      "vsrc": "12b.mp4"
+    }
+  }
+}

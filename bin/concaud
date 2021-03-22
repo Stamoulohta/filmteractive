@@ -1,0 +1,19 @@
+#! /usr/bin/env bash
+
+test -d "$1" || { printf '%s: invalid directory -- %s\n' $(basename "$0") "$1" && exit 4; }
+
+scene_init() {
+    test -f "$1/audio.mp3" && (test ! -e "$1/config.mk" || test -z $(grep -o "DURATION " "$1/config.mk")) && DURATION=$(echo "scale=3; $(mediainfo --Output='Audio;%Duration%' "$1/audio.mp3")/1000" | bc)
+    if [ -n "$DURATION" ]; then
+        CONFIG="DURATION = $DURATION"
+    else
+        CONFIG="FPS = 6"
+    fi
+    jq ". += {\"name\":\"${1#**/}\", \"events\":[], \"vsrc\":\"${1#**/}.mp4\"}" <<< '{}' > "$1/scene.json"
+    echo -e "$CONFIG" > "$1/config.mk"
+}
+
+export -f scene_init
+
+find "$1" -mindepth 1 -type d -execdir bash -c 'scene_init "$0"' {} \;
+find assets_new/*a -iname "audio.mp3" -execdir ffmpeg -i "concat:../../assets_aud/misc/trumpet.mp3|audio.mp3" out.mp3 \;

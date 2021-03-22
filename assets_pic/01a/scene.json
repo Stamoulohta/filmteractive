@@ -1,0 +1,18 @@
+{
+  "name": "01a",
+  "onend": "01b",
+  "events" : [
+    {
+      "type": "timeout",
+      "span": 1,
+      "sound": {
+        "src": "bg/01b.mp3",
+        "loop": true
+      },
+      "scene_span"  : {
+        "startswith" : "01"
+      }
+    }
+  ],
+  "vsrc": "01a.mp4"
+}

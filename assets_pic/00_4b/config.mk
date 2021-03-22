@@ -1,0 +1,2 @@
+DURATION = 17.808
+DURATIONS = frame_001=0.2 frame_002=3.0

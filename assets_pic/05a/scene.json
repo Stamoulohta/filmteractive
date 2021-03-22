@@ -1,0 +1,18 @@
+{
+  "name": "05a",
+  "onend": "05b",
+  "events" : [
+    {
+      "type": "timeout",
+      "span": 1,
+      "sound": {
+        "src": "bg/05.mp3",
+        "loop": true
+      },
+      "scene_span"  : {
+        "startswith" : "05"
+      }
+    }
+  ],
+  "vsrc": "05a.mp4"
+}

@@ -1,0 +1,70 @@
+{
+  "name": "12b",
+  "events": [
+    {
+      "type" : "click",
+      "scene" : "12_1",
+      "constraints" : {
+        "timespan" : [17],
+        "hitbox" : [9.25, 49.89, 20.37, 15.72]
+      }
+    },
+    {
+      "type" : "click",
+      "scene" : "12_2",
+      "constraints" : {
+        "timespan" : [17],
+        "hitbox" : [9.62, 84.06, 20.92, 50.20]
+      }
+    },
+    {
+      "type" : "click",
+      "scene" : "12_3",
+      "constraints" : {
+        "timespan" : [17],
+        "hitbox" : [20.74, 49.79, 30.92, 15.62]
+      }
+    },
+    {
+      "type" : "click",
+      "scene" : "12_4",
+      "constraints" : {
+        "timespan" : [17],
+        "hitbox" : [21.48, 84.27, 31.66, 50.31]
+      }
+    },
+    {
+      "type" : "click",
+      "scene" : "12_5",
+      "constraints" : {
+        "timespan" : [17],
+        "hitbox" : [31.48, 49.52, 40.74, 15.75]
+      }
+    },
+    {
+      "type" : "click",
+      "scene" : "12_6",
+      "constraints" : {
+        "timespan" : [17],
+        "hitbox" : [32.22, 42.03, 81.41, 48.48]
+      }
+    },
+    {
+      "type" : "click",
+      "scene" : "12_7",
+      "constraints" : {
+        "timespan" : [17],
+        "hitbox" : [42.40, 82.60, 52.22, 16.04]
+      }
+    },
+    {
+      "type" : "click",
+      "scene" : "12_8",
+      "constraints" : {
+        "timespan" : [17],
+        "hitbox" : [53.70, 82.91, 63.51, 15.93]
+      }
+    }
+  ],
+  "vsrc": "12b.mp4"
+}

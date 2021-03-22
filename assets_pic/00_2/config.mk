@@ -1,0 +1,1 @@
+DURATIONS = frame_045=0.5

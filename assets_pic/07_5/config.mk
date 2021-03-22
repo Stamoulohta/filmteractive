@@ -1,0 +1,2 @@
+DURATIONS = frame_020=0.5
+DURATION = 5.520

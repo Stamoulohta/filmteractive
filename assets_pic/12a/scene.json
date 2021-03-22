@@ -1,0 +1,18 @@
+{
+  "name": "12a",
+  "onend": "12b",
+  "events" : [
+    {
+      "type": "timeout",
+      "span": 1,
+      "sound": {
+        "src": "bg/12.mp3",
+        "loop": true
+      },
+      "scene_span"  : {
+        "startswith" : "12"
+      }
+    }
+  ],
+  "vsrc": "12a.mp4"
+}

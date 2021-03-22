@@ -1,8 +1,14 @@
-public/
-assets/
 archive/
+
+assets_*/*/*
+!assets_*/*/*.json
+!assets_*/*/*.mk
+
+public/
+
 node_modules/
 http-log/
 
-scenario.json
 todo.md
+frames
+new
