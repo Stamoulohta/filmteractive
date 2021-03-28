@@ -1,37 +1,46 @@
 {
-    "thumb": "thumb.png",
-    "enter": "00_1",
-    "sources": "public",
-    "audio": "audio",
-    "image": "image",
-    "events": [
-        {
-            "type": "click",
-            "sound": "fx/click.mp3"
-        },
-        {
-            "type": "timeout",
-            "span": 120000,
-            "restart": "ON_STEP",
-            "sound": [
-                "clip_01.mp3",
-                "clip_02.mp3",
-                "clip_03.mp3",
-                "clip_04.mp3",
-                "clip_05.mp3",
-                "clip_06.mp3",
-                "clip_07.mp3",
-                "clip_08.mp3",
-                "clip_09.mp3",
-                "clip_10.mp3",
-                "clip_11.mp3",
-                "clip_12.mp3",
-                "clip_13.mp3",
-                "clip_14.mp3",
-                "clip_15.mp3"
-            ]
-        }
-    ],
-    "sizes": null,
-    "scenes": null
+  "thumb": "thumb.png",
+  "enter": "00_1",
+  "sources": "https://drive.google.com/drive/folders/12WCdRHcW-HybjfFihY_LiCtUUTj_UCha?usp=sharing",
+  "audio": "audio",
+  "image": "image",
+  "events": [
+    {
+      "type": "click",
+      "sound": "fx/click.mp3"
+    },
+    {
+      "type": "timeout",
+      "span": 120000,
+      "emergeOn": {
+        "endsWith": "b"
+      },
+      "sound": {
+        "src": [
+          "delay/clip_01.mp3",
+          "delay/clip_02.mp3",
+          "delay/clip_03.mp3",
+          "delay/clip_04.mp3",
+          "delay/clip_05.mp3",
+          "delay/clip_06.mp3",
+          "delay/clip_07.mp3",
+          "delay/clip_08.mp3",
+          "delay/clip_09.mp3",
+          "delay/clip_10.mp3",
+          "delay/clip_11.mp3",
+          "delay/clip_12.mp3",
+          "delay/clip_13.mp3",
+          "delay/clip_14.mp3",
+          "delay/clip_15.mp3"
+        ]
+      }
+    }
+  ],
+  "sizes": null,
+  "scenes": {
+    "13": {
+      "name": "13",
+      "vsrc": "13.mp4"
+    }
+  }
 }

@@ -6,9 +6,7 @@ function Filmteractive(id, scenario, options) {
     const audio_path = `${scenario.sources}/${scenario.audio}/`;
     const image_path = `${scenario.sources}/${scenario.image}/`;
 
-    console.log(image_path);
-
-    const getVideoPath = function() {
+    const getVideoPath = function () {
         const size = scenario.sizes.sort((a, b) => a - b).find((size, index, array) => {
             if (index === array.length - 1) {
                 return size;
@@ -21,22 +19,160 @@ function Filmteractive(id, scenario, options) {
 
     let video_path = getVideoPath();
 
-    const Event = function(evt_opts) {
+    class SoundBite {
+        secondary = false;
 
-        let delete_me = false;
-        
-        let timeout = false;
-        let audio = false;
-        
-        const insideHitbox = function(evt, hitbox) {
+        constructor(opts) {
+            this.opts = opts;
+            this.secondary = opts.secondary;
+            this.audio = new Audio();
+            this.audio.src = this.src;
+            this.audio.loop = this.opts.loop || false;
+            this.audio.volume = this.opts.volume || 1;
+            this.load();
+        }
+
+        load() {
+            this.audio.load();
+        }
+
+        reload(random = true) {
+            if (random && Array.isArray(this.opts.src)) {
+                this.audio.src = this.src;
+                this.load();
+            }
+            this.audio.currentTime = 0;
+            if (this.audio.currentTime) {
+                this.load();
+            }
+        }
+
+        play() {
+            this.audio.play();
+        }
+
+        kill() {
+            this.audio.pause();
+            this.audio = null;
+        }
+
+        dipIf(test, duration, volume) {
+            if (this[test]) {
+                this.dip(duration, volume);
+            }
+        }
+
+        dip(duration, volume) {
+            const volume_orig = this.audio.volume;
+            this.audio.volume = volume;
+            setTimeout(() => this.audio.volume = volume_orig, duration);
+        }
+
+        set volume(value) {
+            this.audio.volume = value;
+        }
+
+        get playing() {
+            return !this.audio.paused
+        }
+
+        get src() {
+            if (!Array.isArray(this.opts.src)) {
+                return audio_path + this.opts.src;
+            }
+            return audio_path + this.opts.src[this.opts.src.length * Math.random() | 0];
+        }
+    }
+
+    class AudioStack {
+
+        static self = false;
+
+        static get instance() {
+            if (!AudioStack.self) {
+                AudioStack.self = new AudioStack();
+            }
+            return AudioStack.self;
+        }
+
+        constructor() {
+            this.data = [];
+        }
+
+        kill(audio_index) {
+            this.data[audio_index].kill();
+            this.data[audio_index] = false;
+            return this.data[audio_index];
+        }
+
+        push(opts) {
+            return this.data.push(new SoundBite(opts)) - 1;
+        }
+
+        runEach(func, args = null) {
+            this.data.forEach(soundbite => soundbite && soundbite[func](...args));
+        }
+
+        killAll() {
+            this.data.forEach(soundbite => soundbite && soundbite.kill())
+        }
+    }
+
+    class Event {
+
+        constructor(opts) {
+            this.opts = opts;
+            this.delete_me = false;
+            this.timeout = false;
+            this.audio_index = false;
+
+            this.handler = this.activate.bind(this);
+
+            if (this.opts.global) {
+                this.emerge();
+            } else {
+                this.init();
+            }
+        }
+
+        sceneComplies(scene_id, key) {
+            if (typeof this.opts[key] === "undefined" || typeof scene_id === "undefined") {
+                return false
+            } else if (Array.isArray(this.opts[key])) {
+                return this.opts[key].includes(scene_id);
+            } else if (this.opts[key].startsWith) {
+                return scene_id.startsWith(this.opts[key].startsWith);
+            } else if (this.opts[key].endsWith) {
+                return scene_id.endsWith(this.opts[key].endsWith);
+            } else return false;
+        }
+
+        emerge(scene_id) {
+            if (this.sceneComplies(scene_id, "emergeOn")) {
+                this.init();
+            }
+        }
+
+        init() {
+            switch (true) {
+                case this.opts.type === "click" :
+                    vplayer.addEventListener(this.opts.type, this.handler);
+                    break;
+                case this.opts.type === "timeout" :
+                    this.timeout = setTimeout(this.handler, this.opts.span);
+                    break;
+            }
+        }
+
+        insideHitbox(evt) {
             // TODO: there may be a difference with aspect ratio
             const vw = vplayer.clientWidth;
             const vh = vplayer.clientHeight;
 
-            const ht = (vh / 100) * hitbox[0];
-            const hr = (vw / 100) * hitbox[1];
-            const hb = (vh / 100) * hitbox[2];
-            const hl = (vw / 100) * hitbox[3];
+            const ht = (vh / 100) * this.opts.constraints.hitbox[0];
+            const hr = (vw / 100) * this.opts.constraints.hitbox[1];
+            const hb = (vh / 100) * this.opts.constraints.hitbox[2];
+            const hl = (vw / 100) * this.opts.constraints.hitbox[3];
 
             return evt.offsetY >= ht
                 && evt.offsetX <= hr
@@ -44,157 +180,139 @@ function Filmteractive(id, scenario, options) {
                 && evt.offsetX >= hl;
         }
 
-        const shouldRun = function(constraints, evt) {
-            console.log("constraints", constraints);
-            if(constraints === undefined) {
+        shouldRun(evt) {
+            if (this.opts.constraints === undefined) {
                 return true
             }
             let run = true;
-            if(constraints.hitbox !== undefined) {
-                run &= insideHitbox(evt, constraints.hitbox)
-                console.log("inside " , run);
+            if (this.opts.constraints.hitbox !== undefined) {
+                run &= this.insideHitbox(evt)
             }
-            if(constraints.timespan !== undefined) {
-                console.log("timespan", constraints.timespan[0]);
-                console.log("current", vplayer.currentTime);
-                run &= vplayer.currentTime >= constraints.timespan[0];
-                if(constraints.timespan[1]) {
-                    run &= vplayer.currentTime <= constraints.timespan[1];
+            if (this.opts.constraints.timespan !== undefined) {
+                run &= vplayer.currentTime >= this.opts.constraints.timespan[0];
+                if (this.opts.constraints.timespan[1]) {
+                    run &= vplayer.currentTime <= this.opts.constraints.timespan[1];
                 }
             }
             return run;
         }
 
-        const activate = function(evt = false) {
-            if(! shouldRun(evt_opts.constraints, evt)) {
+        activate(evt = false) {
+            if (!this.shouldRun(evt)) {
                 return;
             }
-            if(evt && evt.type === "click" && evt_opts.hitbox && ! insideHitbox(evt, evt_opts.hitbox)) {
+            if (evt && evt.type === "click" && this.opts.hitbox && !this.insideHitbox(evt)) {
                 return;
             }
-            if(evt_opts.sound) {
-                audio = new Audio(audio_path + evt_opts.sound.src);
-                audio.loop = evt_opts.sound.loop;
-                audio.play();
+            if (this.opts.sound) {
+                this.audio_index = AudioStack.instance.push(this.opts.sound);
+                AudioStack.instance.data[this.audio_index].play()
             }
-            if(evt_opts.scene) {
-                director.setScene(evt_opts.scene);
-            }
-        }
-
-        const killAudio = function() {
-            if (audio) {
-                audio.stop();
-                audio = null;
+            if (this.opts.scene) {
+                director.setScene(this.opts.scene);
             }
         }
 
-        const abort = function() {
-            console.log("abort")
-            killAudio();
-            switch(true) {
-                case evt_opts.type === "click" :
-                    vplayer.removeEventListener(evt_opts.type, activate)
+        killAudio() {
+            if (this.audio_index !== false) {
+                this.audio_index = AudioStack.instance.kill(this.audio_index);
+            }
+        }
+
+        abort() {
+            switch (true) {
+                case this.opts.type === "click" :
+                    vplayer.removeEventListener(this.opts.type, this.handler)
                     break;
-                case evt_opts.type === "timeout" :
-                    clearTimeout(timeout);
+                case this.opts.type === "timeout" :
+                    clearTimeout(this.timeout);
             }
+            this.killAudio();
+            return true;
         }
 
-        const isDone = function(scene_id) {
-            if(! evt_opts.scene_span) {
-                return true;
-            } else if( Array.isArray(evt_opts.scene_span)) {
-                return !evt_opts.includes(scene_id);
-            } else if(evt_opts.scene_span.startsWith) {
-                return !scene_id.startsWith(evt_opts.scene_span.startsWith);
-            }
+        setDeleteMe(scene_id) {
+            this.delete_me = !this.sceneComplies(scene_id, "scene_span");
         }
 
-        const updateSceneId = function(scene_id) {
-            delete_me = isDone(scene_id);
-            if(delete_me) {
-                abort();
+        updateSceneId(scene_id) {
+            if (this.opts.global) {
+                this.emerge(scene_id)
+            } else {
+                this.setDeleteMe(scene_id);
             }
-            console.log("delete event", delete_me);
-            return !delete_me;
-        }
-
-        const init = function() {
-            switch(true) {
-                case evt_opts.type === "click" :
-                    vplayer.addEventListener(evt_opts.type, activate)
-                    break;
-                case evt_opts.type === "timeout" :
-                    timeout = setTimeout(activate, evt_opts.span);
-                    break;
-                default :
-                    return;
-            }
-        }
-
-        init();
-
-        return {
-            updateSceneId : updateSceneId
+            return !(this.delete_me && this.abort());
         }
     }
 
-    const EventQueue = function() {
+    class EventStack {
+        static self = false;
 
-        let queue = [];
-
-        const push = function(evt_opts) {
-            console.log('push')
-            queue.push(new Event(evt_opts));
-            console.log('after push', queue.length);
+        static get instance() {
+            if (!EventStack.self) {
+                EventStack.self = new EventStack();
+            }
+            return EventStack.self;
         }
 
-        const update = function(scene_id) {
-            console.log("update", queue.length);
-            queue = queue.filter(event => event.updateSceneId(scene_id));
+        constructor() {
+            this.data = [];
         }
 
-        return {
-            push : push,
-            update : update,
+        push(opts) {
+            this.data.push(new Event(opts));
+        }
+
+        update(scene_id) {
+            this.data = this.data.filter(event => event && event.updateSceneId(scene_id));
         }
     }
 
-    const Director = function() {
+    const Director = function () {
 
         const vsource = document.createElement("source");
-        const queue = new EventQueue();
 
-        const ended = function() {
-            console.log("scene ended");
-            if(scene.onend) {
+        const ended = function () {
+            if (scene.onend) {
                 setScene(scene.onend);
             }
         }
 
-        const init = function() {
+        const init = function () {
             vplayer.addEventListener("ended", ended);
             vsource.setAttribute("type", "video/mp4");
             vplayer.appendChild(vsource);
-            addEvents(scenario.events)
+            addEvents(scenario.events.map(evt => ({...evt, global: true})));
             setScene(scenario.enter)
         }
 
-        const setScene = function(scene_id) {
-            queue.update(scene_id);
+        const setScene = function (scene_id) {
+            EventStack.instance.update(scene_id);
             scene = scenario.scenes[scene_id];
             act();
         }
 
-        const act = function() {
-            console.log("act");
+        const act = function () {
             vsource.setAttribute("src", video_path + scene.vsrc);
             vplayer.setAttribute("poster", null);
             vplayer.load();
             vplayer.removeAttribute("loop")
-            if(scene.poster) {
-                vplayer.setAttribute("poster", scene.poster);
+            // TODO: extend last frame
+            // https://stackoverflow.com/questions/19175174/capture-frames-from-video-with-html5-and-javascript
+            if (scene.poster) {
+                const image = typeof(scene.poster) === "object" ? scene.poster.image : scene.poster;
+                const sound = scene.poster.sound;
+
+                vplayer.setAttribute("poster", image);
+                if(sound) {
+                    addEvents([{
+                        "type" : "timeout",
+                        "span": 1,
+                        "sound": {
+                            "src": sound
+                        }
+                    }]);
+                }
                 vplayer.addEventListener("click", function handle() {
                     vplayer.play();
                     addEvents(scene.events);
@@ -206,26 +324,23 @@ function Filmteractive(id, scenario, options) {
             }
         }
 
-        const addEvents = function(evt_arr = []) {
-            evt_arr.forEach(evt_opts => queue.push(evt_opts))
+        const addEvents = function (events = []) {
+            events.forEach(opts => EventStack.instance.push(opts))
         }
 
         init();
 
         return {
-            setScene : setScene
+            setScene: setScene
         }
     }
 
     const init = function () {
-        console.log('filmteractive init');
         scenario.thumb && vplayer.setAttribute("poster", image_path + scenario.thumb);
         vplayer.addEventListener("click", function handle() {
-            console.log('first click');
             //toggleFullScreen(this);
             director = new Director();
             vplayer.removeEventListener("click", handle);
-            console.log(vplayer.offsetTop, vplayer.offsetLeft)
         });
     }
 
@@ -266,16 +381,17 @@ function Filmteractive(id, scenario, options) {
 
     const reset = false; // TODO: implement
     const pause = false; // TODO: implement
-    const play  = false; // TODO: implement
+    const play = false; // TODO: implement
     const event = false; // TODO: implement
 
     return {
-        play  : play,
-        pause : pause,
-        reset : reset,
+        play: play,
+        pause: pause,
+        reset: reset,
 
-        scene : scene,
-        scenario : scenario,
+        scene: scene,
+        scenario: scenario,
     }
 }
+
 // vim: expandtab:ts=4:sw=4

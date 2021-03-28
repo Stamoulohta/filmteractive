@@ -10,7 +10,7 @@
         "loop": true
       },
       "scene_span"  : {
-        "startswith" : "01"
+        "startsWith" : "01"
       }
     }
   ],

@@ -2,8 +2,8 @@ S_ENC = jq
 
 M_ENC = ./bin/mkdmx
 V_ENC = ffmpeg
-#V_ENC_FLAGS = -c:v libx264 -crf 18 -preset veryslow -pix_fmt yuv420p # prod
-V_ENC_FLAGS = -c:v libx264 -crf 18 -preset ultrafast -pix_fmt yuv420p # dev
+V_ENC_FLAGS = -c:v libx264 -crf 18 -preset veryslow -pix_fmt yuv420p # prod
+#V_ENC_FLAGS = -c:v libx264 -crf 18 -preset ultrafast -pix_fmt yuv420p # dev
 A_ENC_FLAGS = -c:a copy # -af "afade=t=in:st=0:d=1,afade=t=out:st=-1:d=1" --shortest
 EXT_OUT = mp4
 

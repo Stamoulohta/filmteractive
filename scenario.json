@@ -1,7 +1,7 @@
 {
   "thumb": "thumb.png",
   "enter": "00_1",
-  "sources": "public",
+  "sources": "https://g.a.stamoulis.gitlab.io/apsurdism/",
   "audio": "audio",
   "image": "image",
   "events": [
@@ -12,30 +12,38 @@
     {
       "type": "timeout",
       "span": 120000,
-      "restart": "ON_STEP",
-      "sound": [
-        "clip_01.mp3",
-        "clip_02.mp3",
-        "clip_03.mp3",
-        "clip_04.mp3",
-        "clip_05.mp3",
-        "clip_06.mp3",
-        "clip_07.mp3",
-        "clip_08.mp3",
-        "clip_09.mp3",
-        "clip_10.mp3",
-        "clip_11.mp3",
-        "clip_12.mp3",
-        "clip_13.mp3",
-        "clip_14.mp3",
-        "clip_15.mp3"
-      ]
+      "emergeOn": {
+        "endsWith": "b"
+      },
+      "sound": {
+        "src": [
+          "delay/clip_01.mp3",
+          "delay/clip_02.mp3",
+          "delay/clip_03.mp3",
+          "delay/clip_04.mp3",
+          "delay/clip_05.mp3",
+          "delay/clip_06.mp3",
+          "delay/clip_07.mp3",
+          "delay/clip_08.mp3",
+          "delay/clip_09.mp3",
+          "delay/clip_10.mp3",
+          "delay/clip_11.mp3",
+          "delay/clip_12.mp3",
+          "delay/clip_13.mp3",
+          "delay/clip_14.mp3",
+          "delay/clip_15.mp3"
+        ]
+      }
     }
   ],
   "sizes": [
     "360"
   ],
   "scenes": {
+    "13": {
+      "name": "13",
+      "vsrc": "13.mp4"
+    },
     "00_1": {
       "name": "00_1",
       "onend": "00_2",
@@ -320,7 +328,7 @@
             "loop": true
           },
           "scene_span": {
-            "startswith": "01"
+            "startsWith": "01"
           }
         }
       ],
@@ -495,6 +503,10 @@
     "02a": {
       "name": "02a",
       "onend": "03b",
+      "poster": {
+        "image": "/public/image/next.png",
+        "sound": "advance/clip_14.mp3"
+      },
       "events": [
         {
           "type": "timeout",
@@ -504,7 +516,7 @@
             "loop": true
           },
           "scene_span": {
-            "startswith": "02"
+            "startsWith": "02"
           }
         }
       ],
@@ -679,6 +691,10 @@
     "03a": {
       "name": "03a",
       "onend": "03b",
+      "poster": {
+        "image": "/public/image/next.png",
+        "sound": "advance/clip_14.mp3"
+      },
       "events": [
         {
           "type": "timeout",
@@ -688,7 +704,7 @@
             "loop": true
           },
           "scene_span": {
-            "startswith": "03"
+            "startsWith": "03"
           }
         }
       ],
@@ -863,6 +879,10 @@
     "04a": {
       "name": "04a",
       "onend": "04b",
+      "poster": {
+        "image": "/public/image/next.png",
+        "sound": "advance/clip_14.mp3"
+      },
       "events": [
         {
           "type": "timeout",
@@ -872,7 +892,7 @@
             "loop": true
           },
           "scene_span": {
-            "startswith": "04"
+            "startsWith": "04"
           }
         }
       ],
@@ -1047,6 +1067,10 @@
     "05a": {
       "name": "05a",
       "onend": "05b",
+      "poster": {
+        "image": "/public/image/next.png",
+        "sound": "advance/clip_14.mp3"
+      },
       "events": [
         {
           "type": "timeout",
@@ -1056,7 +1080,7 @@
             "loop": true
           },
           "scene_span": {
-            "startswith": "05"
+            "startsWith": "05"
           }
         }
       ],
@@ -1231,6 +1255,10 @@
     "07a": {
       "name": "07a",
       "onend": "07b",
+      "poster": {
+        "image": "/public/image/next.png",
+        "sound": "advance/clip_14.mp3"
+      },
       "events": [
         {
           "type": "timeout",
@@ -1240,7 +1268,7 @@
             "loop": true
           },
           "scene_span": {
-            "startswith": "07"
+            "startsWith": "07"
           }
         }
       ],
@@ -1415,6 +1443,10 @@
     "08a": {
       "name": "08a",
       "onend": "08b",
+      "poster": {
+        "image": "/public/image/next.png",
+        "sound": "advance/clip_14.mp3"
+      },
       "events": [
         {
           "type": "timeout",
@@ -1424,7 +1456,7 @@
             "loop": true
           },
           "scene_span": {
-            "startswith": "08"
+            "startsWith": "08"
           }
         }
       ],
@@ -1558,47 +1590,47 @@
     },
     "09_1": {
       "name": "09_1",
-      "events": [],
+      "onend": "10a",
       "vsrc": "09_1.mp4"
     },
     "09_2": {
       "name": "09_2",
-      "events": [],
+      "onend": "10a",
       "vsrc": "09_2.mp4"
     },
     "09_3": {
       "name": "09_3",
-      "events": [],
+      "onend": "10a",
       "vsrc": "09_3.mp4"
     },
     "09_4": {
       "name": "09_4",
-      "events": [],
+      "onend": "10a",
       "vsrc": "09_4.mp4"
     },
     "09_5": {
       "name": "09_5",
-      "events": [],
+      "onend": "10a",
       "vsrc": "09_5.mp4"
     },
     "09_6": {
       "name": "09_6",
-      "events": [],
+      "onend": "10a",
       "vsrc": "09_6.mp4"
     },
     "09_7": {
       "name": "09_7",
-      "events": [],
+      "onend": "10a",
       "vsrc": "09_7.mp4"
     },
     "09_8": {
       "name": "09_8",
-      "events": [],
+      "onend": "10a",
       "vsrc": "09_8.mp4"
     },
     "09_9": {
       "name": "09_9",
-      "events": [],
+      "onend": "09b",
       "vsrc": "09_9.mp4"
     },
     "09a": {
@@ -1749,47 +1781,51 @@
     },
     "10_1": {
       "name": "10_1",
-      "events": [],
+      "onend": "11a",
       "vsrc": "10_1.mp4"
     },
     "10_2": {
       "name": "10_2",
-      "events": [],
+      "onend": "11a",
       "vsrc": "10_2.mp4"
     },
     "10_3": {
       "name": "10_3",
-      "events": [],
+      "onend": "11a",
       "vsrc": "10_3.mp4"
     },
     "10_4": {
       "name": "10_4",
-      "events": [],
+      "onend": "11a",
       "vsrc": "10_4.mp4"
     },
     "10_5": {
       "name": "10_5",
-      "events": [],
+      "onend": "11a",
       "vsrc": "10_5.mp4"
     },
     "10_6": {
       "name": "10_6",
-      "events": [],
+      "onend": "11a",
       "vsrc": "10_6.mp4"
     },
     "10_7": {
       "name": "10_7",
-      "events": [],
+      "onend": "11a",
       "vsrc": "10_7.mp4"
     },
     "10_8": {
       "name": "10_8",
-      "events": [],
+      "onend": "10b",
       "vsrc": "10_8.mp4"
     },
     "10a": {
       "name": "10a",
       "onend": "10b",
+      "poster": {
+        "image": "/public/image/next.png",
+        "sound": "advance/clip_14.mp3"
+      },
       "events": [
         {
           "type": "timeout",
@@ -1799,7 +1835,7 @@
             "loop": true
           },
           "scene_span": {
-            "startswith": "10"
+            "startsWith": "10"
           }
         }
       ],
@@ -1933,47 +1969,51 @@
     },
     "11_1": {
       "name": "11_1",
-      "events": [],
+      "onend": "12a",
       "vsrc": "11_1.mp4"
     },
     "11_2": {
       "name": "11_2",
-      "events": [],
+      "onend": "12a",
       "vsrc": "11_2.mp4"
     },
     "11_3": {
       "name": "11_3",
-      "events": [],
+      "onend": "12a",
       "vsrc": "11_3.mp4"
     },
     "11_4": {
       "name": "11_4",
-      "events": [],
+      "onend": "12a",
       "vsrc": "11_4.mp4"
     },
     "11_5": {
       "name": "11_5",
-      "events": [],
+      "onend": "12a",
       "vsrc": "11_5.mp4"
     },
     "11_6": {
       "name": "11_6",
-      "events": [],
+      "onend": "12a",
       "vsrc": "11_6.mp4"
     },
     "11_7": {
       "name": "11_7",
-      "events": [],
+      "onend": "12a",
       "vsrc": "11_7.mp4"
     },
     "11_8": {
       "name": "11_8",
-      "events": [],
+      "onend": "11b",
       "vsrc": "11_8.mp4"
     },
     "11a": {
       "name": "11a",
       "onend": "11b",
+      "poster": {
+        "image": "/public/image/next.png",
+        "sound": "advance/clip_14.mp3"
+      },
       "events": [
         {
           "type": "timeout",
@@ -1983,7 +2023,7 @@
             "loop": true
           },
           "scene_span": {
-            "startswith": "11"
+            "startsWith": "11"
           }
         }
       ],
@@ -2117,47 +2157,51 @@
     },
     "12_1": {
       "name": "12_1",
-      "events": [],
+      "onend": "13",
       "vsrc": "12_1.mp4"
     },
     "12_2": {
       "name": "12_2",
-      "events": [],
+      "onend": "13",
       "vsrc": "12_2.mp4"
     },
     "12_3": {
       "name": "12_3",
-      "events": [],
+      "onend": "13",
       "vsrc": "12_3.mp4"
     },
     "12_4": {
       "name": "12_4",
-      "events": [],
+      "onend": "13",
       "vsrc": "12_4.mp4"
     },
     "12_5": {
       "name": "12_5",
-      "events": [],
+      "onend": "13",
       "vsrc": "12_5.mp4"
     },
     "12_6": {
       "name": "12_6",
-      "events": [],
+      "onend": "13",
       "vsrc": "12_6.mp4"
     },
     "12_7": {
       "name": "12_7",
-      "events": [],
+      "onend": "13",
       "vsrc": "12_7.mp4"
     },
     "12_8": {
       "name": "12_8",
-      "events": [],
+      "onend": "13",
       "vsrc": "12_8.mp4"
     },
     "12a": {
       "name": "12a",
       "onend": "12b",
+      "poster": {
+        "image": "/public/image/next.png",
+        "sound": "advance/clip_14.mp3"
+      },
       "events": [
         {
           "type": "timeout",
@@ -2167,7 +2211,7 @@
             "loop": true
           },
           "scene_span": {
-            "startswith": "12"
+            "startsWith": "12"
           }
         }
       ],

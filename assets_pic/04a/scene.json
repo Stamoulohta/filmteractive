@@ -1,6 +1,10 @@
 {
   "name": "04a",
   "onend": "04b",
+  "poster": {
+    "image": "/public/image/next.png",
+    "sound": "advance/clip_14.mp3"
+  },
   "events" : [
     {
       "type": "timeout",
@@ -10,7 +14,7 @@
         "loop": true
       },
       "scene_span"  : {
-        "startswith" : "04"
+        "startsWith" : "04"
       }
     }
   ],
