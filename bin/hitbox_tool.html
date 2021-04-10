@@ -1,0 +1,101 @@
+<!doctype html>
+
+<html lang="el">
+<head>
+    <meta charset="utf-8">
+
+    <title>HitBox Tool</title>
+    <meta name="description" content="HitBox Tool">
+    <meta name="author" content="Stamoulohta">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.5/cropper.min.css"
+          integrity="sha512-Aix44jXZerxlqPbbSLJ03lEsUch9H/CmnNfWxShD6vJBbboR+rPdDXmKN+/QjISWT80D4wMjtM4Kx7+xkLVywQ=="
+          crossorigin="anonymous"/>
+    <style>
+        #results {
+            color: red;
+        }
+        .main-asset {
+            display: block;
+            height: 700px;
+            width: auto;
+            max-width: 100%;
+            margin: 50px auto;
+        }
+    </style>
+</head>
+
+<body>
+<div class="main">
+    <article>
+        <header>
+            <h1>HitBox Tool</h1>
+            <p>Adjust the hitbox and press enter to get the values: <span id="results"></span></p>
+        </header>
+        <img id="img-asset" class="main-asset" src="" alt="">
+    </article>
+</div><!-- .main -->
+
+<footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.5/cropper.min.js"
+            integrity="sha512-E4KfIuQAc9ZX6zW1IUJROqxrBqJXPuEcDKP6XesMdu2OV4LW7pj8+gkkyx2y646xEV7yxocPbaTtk2LQIJewXw=="
+            crossorigin="anonymous"></script>
+    <script>
+        window.onload = () => {
+
+            function resultsToClipboard() {
+                if (document.body.createTextRange) {
+                    const range = document.body.createTextRange();
+                    range.moveToElementText(results);
+                    range.select();
+                    document.execCommand("copy");
+                    range.remove();
+                } else if (window.getSelection) {
+                    const selection = window.getSelection();
+                    const range = document.createRange();
+                    range.selectNodeContents(results);
+                    selection.removeAllRanges();
+                    selection.addRange(range);
+                    document.execCommand("copy");
+                    selection.removeAllRanges();
+                } else {
+                    console.warn("Could not select text in node: Unsupported browser.");
+                }
+            }
+
+            const getBox = function () {
+                const hitBoxData = cropper.getData();
+                const imageData = cropper.getImageData();
+
+                const x1 = ((hitBoxData.x / imageData.naturalWidth) * 100).toFixed(2);
+                const y1 = ((hitBoxData.y / imageData.naturalHeight) * 100).toFixed(2);
+                const x2 = (((hitBoxData.x + hitBoxData.width) / imageData.naturalWidth) * 100).toFixed(2);
+                const y2 = (((hitBoxData.y + hitBoxData.height) / imageData.naturalHeight) * 100).toFixed(2);
+
+                results.textContent = `[${y1}, ${x2}, ${y2}, ${x1}]`;
+                resultsToClipboard();
+            }
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const src = urlParams.get("src");
+            const img = document.getElementById("img-asset");
+            const results = document.getElementById("results");
+            img.setAttribute("src", `../assets_pic/${src}`);
+            const cropper = new Cropper(img, {
+                autoCrop: false,
+                checkCrossOrigin: false,
+            });
+
+            document.addEventListener("keyup", (evt) => {
+                if (evt.keyCode === 13) {
+                    getBox();
+                }
+            })
+        }
+    </script>
+</footer>
+</body>
+
+
+</html>
+<!-- vim: set expandtab ts=2 sw=2: -->
