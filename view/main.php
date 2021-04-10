@@ -5,7 +5,7 @@
   <meta charset="utf-8">
 
   <title>AψURDISM</title>
-  <meta name="description" content="WebFormance Show">
+  <meta name="description" content="Filmteractive">
   <meta name="author" content="Stamoulohta">
 
   <!-- TODO: Open Graph -->
