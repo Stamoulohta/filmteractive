@@ -5,19 +5,59 @@ function Filmteractive(id, scenario, options) {
     let scene = null;
     const audio_path = `${scenario.sources}/${scenario.audio}/`;
     const image_path = `${scenario.sources}/${scenario.image}/`;
+    let video_path = getVideoPath();
 
-    const getVideoPath = function () {
+    (function init () {
+        scenario.thumb && vplayer.setAttribute("poster", image_path + scenario.thumb);
+        vplayer.addEventListener("click", function handle() {
+            toggleFullScreen(this);
+            director = new Director();
+            vplayer.removeEventListener("click", handle);
+        });
+    })()
+
+    function toggleFullScreen() {
+        if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+            switch ("function") {
+                case typeof (document.exitFullscreen) :
+                    document.exitFullscreen();
+                    return;
+                case typeof (document.msExitFullscreen) :
+                    document.msExitFullscreen();
+                    return;
+                case typeof (document.mozExitFullscreen) :
+                    document.mozExitFullscreen();
+                    return;
+                case typeof (document.webkitExitFullscreen) :
+                    document.webkitExitFullscreen();
+                    return;
+            }
+        } else {
+            switch ("function") {
+                case typeof vplayer.requestFullscreen :
+                    vplayer.requestFullscreen();
+                    return;
+                case typeof vplayer.msRequestFullscreen :
+                    vplayer.msRequestFullscreen();
+                    return;
+                case typeof vplayer.mozRequestFullscreen :
+                    vplayer.mozRequestFullscreen();
+                    return;
+                case typeof vplayer.webkitRequestFullscreen :
+                    vplayer.webkitRequestFullscreen();
+            }
+        }
+    }
+
+    function getVideoPath() {
         const size = scenario.sizes.sort((a, b) => a - b).find((size, index, array) => {
             if (index === array.length - 1) {
                 return size;
             }
-            size >= window.screen.height;
+            return size >= window.screen.height;
         });
-
         return `${scenario.sources}/${size}/`;
     }
-
-    let video_path = getVideoPath();
 
     class SoundBite {
         secondary = false;
@@ -268,44 +308,45 @@ function Filmteractive(id, scenario, options) {
         }
     }
 
-    const Director = function () {
+    class Director {
 
-        const vsource = document.createElement("source");
+        constructor() {
+            this.vsource = document.createElement("source");
 
-        const ended = function () {
-            if (scene.onend) {
-                setScene(scene.onend);
+            const bound_ended = this.ended.bind(this);
+            vplayer.addEventListener("ended", bound_ended);
+            this.vsource.setAttribute("type", "video/mp4");
+            vplayer.appendChild(this.vsource);
+            this.addEvents(scenario.events.map(evt => ({...evt, global: true})));
+            this.setScene(scenario.enter)
+        }
+
+        ended() {
+            if (this.scene.onend) {
+                this.setScene(this.scene.onend);
             }
         }
 
-        const init = function () {
-            vplayer.addEventListener("ended", ended);
-            vsource.setAttribute("type", "video/mp4");
-            vplayer.appendChild(vsource);
-            addEvents(scenario.events.map(evt => ({...evt, global: true})));
-            setScene(scenario.enter)
-        }
-
-        const setScene = function (scene_id) {
+        setScene(scene_id) {
             EventStack.instance.update(scene_id);
-            scene = scenario.scenes[scene_id];
-            act();
+            this.scene = scenario.scenes[scene_id];
+            this.act();
         }
 
-        const act = function () {
-            vsource.setAttribute("src", video_path + scene.vsrc);
-            vplayer.setAttribute("poster", null);
+        act() {
+            this.vsource.setAttribute("src", video_path + this.scene.vsrc);
+            vplayer.setAttribute("poster", '');
             vplayer.load();
             vplayer.removeAttribute("loop")
             // TODO: extend last frame
             // https://stackoverflow.com/questions/19175174/capture-frames-from-video-with-html5-and-javascript
-            if (scene.poster) {
-                const image = typeof(scene.poster) === "object" ? scene.poster.image : scene.poster;
-                const sound = scene.poster.sound;
+            if (this.scene.poster) {
+                const image = typeof(this.scene.poster) === "object" ? this.scene.poster.image : this.scene.poster;
+                const sound = this.scene.poster.sound;
 
                 vplayer.setAttribute("poster", image);
                 if(sound) {
-                    addEvents([{
+                    this.addEvents([{
                         "type" : "timeout",
                         "span": 1,
                         "sound": {
@@ -315,82 +356,18 @@ function Filmteractive(id, scenario, options) {
                 }
                 vplayer.addEventListener("click", function handle() {
                     vplayer.play();
-                    addEvents(scene.events);
+                    director.addEvents(director.scene.events);
                     vplayer.removeEventListener("click", handle)
                 });
             } else {
                 vplayer.play();
-                addEvents(scene.events);
+                this.addEvents(this.scene.events);
             }
         }
 
-        const addEvents = function (events = []) {
+        addEvents(events = []) {
             events.forEach(opts => EventStack.instance.push(opts))
         }
-
-        init();
-
-        return {
-            setScene: setScene
-        }
-    }
-
-    const init = function () {
-        scenario.thumb && vplayer.setAttribute("poster", image_path + scenario.thumb);
-        vplayer.addEventListener("click", function handle() {
-            //toggleFullScreen(this);
-            director = new Director();
-            vplayer.removeEventListener("click", handle);
-        });
-    }
-
-    const toggleFullScreen = function (vplayer) {
-        if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
-            switch ("function") {
-                case typeof (document.exitFullscreen) :
-                    document.exitFullscreen();
-                    return;
-                case typeof (document.msExitFullscreen) :
-                    document.msExitFullscreen();
-                    return;
-                case typeof (document.mozExitFullscreen) :
-                    document.mozExitFullscreen();
-                    return;
-                case typeof (document.webkitExitFullscreen) :
-                    document.webkitExitFullscreen();
-                    return;
-            }
-        } else {
-            switch ("function") {
-                case typeof vplayer.requestFullscreen :
-                    vplayer.requestFullscreen();
-                    return;
-                case typeof vplayer.msRequestFullscreen :
-                    vplayer.msRequestFullscreen();
-                    return;
-                case typeof vplayer.mozRequestFullscreen :
-                    vplayer.mozRequestFullscreen();
-                    return;
-                case typeof vplayer.webkitRequestFullscreen :
-                    vplayer.webkitRequestFullscreen();
-            }
-        }
-    }
-
-    init();
-
-    const reset = false; // TODO: implement
-    const pause = false; // TODO: implement
-    const play = false; // TODO: implement
-    const event = false; // TODO: implement
-
-    return {
-        play: play,
-        pause: pause,
-        reset: reset,
-
-        scene: scene,
-        scenario: scenario,
     }
 }
 
