@@ -14,6 +14,8 @@ function Filmteractive(id, scenario, options) {
             this.buffers = [];
             this.sources = [];
 
+            this.frameGrabber = document.createElement("canvas");
+
             this.attachElements();
         }
 
@@ -48,6 +50,16 @@ function Filmteractive(id, scenario, options) {
                     }
                 });
 
+                video_buffer.addEventListener("timeupdate", (evt) => {
+                    const buffer = evt.target;
+                    if(this.isCurrent(buffer) && (buffer.currentTime >= buffer.duration)) {
+                        this.frameGrabber.width = buffer.videoWidth;
+                        this.frameGrabber.height = buffer.videoHeight;
+                        this.frameGrabber.getContext("2d").drawImage(buffer, 0, 0);
+                        this.setStatic(this.frameGrabber.toDataURL());
+                    }
+                })
+
                 this.sources.push(video_source);
                 this.buffers.push(video_buffer);
             }
@@ -74,11 +86,11 @@ function Filmteractive(id, scenario, options) {
         }
 
         get currentTime() {
-            return this.getBuffer(false).currentTime;
+            return this.currentBuffer.currentTime;
         }
 
         set currentTime(time) {
-            this.getBuffer(false).currentTime = time;
+            this.currentBuffer.currentTime = time;
         }
 
         play() {
@@ -420,9 +432,6 @@ function Filmteractive(id, scenario, options) {
 
         act() {
             stage.setScene(this.scene);
-            stage.setStatic("");
-            // TODO: extend last frame
-            // https://stackoverflow.com/questions/19175174/capture-frames-from-video-with-html5-and-javascript
             if (this.scene.poster) {
                 const image = typeof (this.scene.poster) === "object" ? this.scene.poster.image : this.scene.poster;
                 const sound = this.scene.poster.sound;
@@ -439,12 +448,12 @@ function Filmteractive(id, scenario, options) {
                 }
                 stage.addEventListener("click", function handle() {
                     stage.play();
-                    // director.addEvents(director.scene.events);
+                    director.addEvents(director.scene.events);
                     stage.removeEventListener("click", handle)
                 });
             } else {
                 stage.play();
-                // this.addEvents(this.scene.events);
+                this.addEvents(this.scene.events);
             }
         }
 
@@ -455,7 +464,6 @@ function Filmteractive(id, scenario, options) {
 
 
     customElements.define('buffered-stage', Stage, {extends: 'div'});
-    // const vplayer = document.getElementById(id);
 
     const stage = document.getElementById(id);
     let director = null;

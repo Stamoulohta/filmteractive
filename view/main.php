@@ -22,7 +22,7 @@
   <div class="main">
     <article>
       <header></header>
-       <video id="stage" height="50%"></video>
+       <buffered-stage id="stage" height="50%"></div>
     </article>
   </div><!-- .main -->
 
