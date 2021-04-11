@@ -162,28 +162,20 @@ function Filmteractive(id, scenario, options) {
         secondary = false;
 
         constructor(opts) {
-            this.opts = opts;
+            this.evt = opts;
+            this.opts = this.evt.sound;
             this.secondary = opts.secondary;
             this.audio = new Audio();
             this.audio.src = this.src;
             this.audio.loop = this.opts.loop || false;
             this.audio.volume = this.opts.volume || 1;
             this.load();
+            const bound_onend = this.onend.bind(this);
+            this.audio.addEventListener("ended", bound_onend)
         }
 
         load() {
             this.audio.load();
-        }
-
-        reload(random = true) {
-            if (random && Array.isArray(this.opts.src)) {
-                this.audio.src = this.src;
-                this.load();
-            }
-            this.audio.currentTime = 0;
-            if (this.audio.currentTime) {
-                this.load();
-            }
         }
 
         play() {
@@ -193,6 +185,19 @@ function Filmteractive(id, scenario, options) {
         kill() {
             this.audio.pause();
             this.audio = null;
+        }
+
+        onend() {
+            const onend = this.opts.onend || false;
+            if(! onend) {
+                console.log('onend cancel')
+                return;
+            }
+            if(onend?.type === "repeat") {
+                const timeout = onend?.timeout || 0;
+                Object.assign({}, this.evt, {span: timeout});
+                EventStack.instance.push(Object.assign({}, this.evt, {span: timeout}));
+            }
         }
 
         dipIf(test, duration, volume) {
@@ -344,7 +349,7 @@ function Filmteractive(id, scenario, options) {
                 return;
             }
             if (this.opts.sound) {
-                this.audio_index = AudioStack.instance.push(this.opts.sound);
+                this.audio_index = AudioStack.instance.push(this.opts);
                 AudioStack.instance.data[this.audio_index].play()
             }
             if (this.opts.scene) {
