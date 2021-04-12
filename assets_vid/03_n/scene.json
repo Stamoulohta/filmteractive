@@ -1,0 +1,13 @@
+{
+  "name": "03_n",
+  "vsrc": "03_n.mp4",
+  "events": [
+    {
+      "type" : "click",
+      "scene" : "04",
+      "constraints" : {
+        "timespan" : [1.3]
+      }
+    }
+  ]
+}

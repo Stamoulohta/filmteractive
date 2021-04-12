@@ -1,0 +1,109 @@
+{
+  "name": "02",
+  "vsrc": "02.mp4",
+  "events": [
+    {
+      "type" : "click",
+      "scene" : "02_1",
+      "constraints" : {
+        "timespan" : [16],
+        "hitbox" : [9.31, 47.66, 19.95, 13.42]
+      }
+    },
+    {
+      "type" : "click",
+      "scene" : "02_2",
+      "constraints" : {
+        "timespan" : [16],
+        "hitbox" : [20.68, 47.80, 31.07, 13.62]
+      }
+    },
+    {
+      "type" : "click",
+      "scene" : "02_3",
+      "constraints" : {
+        "timespan" : [16],
+        "hitbox" : [32.42, 47.80, 42.07, 14.45]
+      }
+    },
+    {
+      "type" : "click",
+      "scene" : "02_4",
+      "constraints" : {
+        "timespan" : [16],
+        "hitbox" : [10.04, 82.87, 20.31, 48.76]
+      }
+    },
+    {
+      "type" : "click",
+      "scene" : "02_5",
+      "constraints" : {
+        "timespan" : [16],
+        "hitbox" : [21.29, 82.39, 31.32, 48.69]
+      }
+    },
+    {
+      "type" : "click",
+      "scene" : "02_6",
+      "constraints" : {
+        "timespan" : [16],
+        "hitbox" : [32.17, 82.46, 42.20, 48.62]
+      }
+    },
+    {
+      "type" : "click",
+      "scene" : "02_7",
+      "constraints" : {
+        "timespan" : [16],
+        "hitbox" : [44.03, 81.98, 53.69, 14.72]
+      }
+    },
+    {
+      "type" : "click",
+      "scene" : "02_8",
+      "constraints" : {
+        "timespan" : [16],
+        "hitbox" : [56.01, 81.91, 65.42, 15.20]
+      }
+    },
+    {
+      "type": "timeout",
+      "span": 21000,
+      "sound": {
+        "src": [
+          "delay/clip_01.mp3",
+          "delay/clip_02.mp3",
+          "delay/clip_03.mp3",
+          "delay/clip_04.mp3",
+          "delay/clip_05.mp3",
+          "delay/clip_06.mp3",
+          "delay/clip_07.mp3",
+          "delay/clip_08.mp3",
+          "delay/clip_09.mp3",
+          "delay/clip_10.mp3",
+          "delay/clip_11.mp3",
+          "delay/clip_12.mp3",
+          "delay/clip_13.mp3",
+          "delay/clip_14.mp3",
+          "delay/clip_15.mp3"
+        ],
+        "onend": {
+          "type": "repeat",
+          "unbound": true,
+          "timeout": 4000
+        }
+      }
+    },
+    {
+      "type": "timeout",
+      "span": 5000,
+      "single": true,
+      "sound": {
+        "src": "bg/02.mp3",
+        "loop": true,
+        "volume": 0.5
+      },
+      "scene_span": ["02", "02_1", "02_2", "02_3", "02_4", "02_5", "02_6", "02_7", "02_8"]
+    }
+  ]
+}

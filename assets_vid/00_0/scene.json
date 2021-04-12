@@ -1,0 +1,8 @@
+{
+  "name": "00_0",
+  "onend": "00_1",
+  "vsrc": "00_0.mp4",
+  "poster": {
+    "image": "http://brechtapp.eu/apsurdism/image/poster.png"
+  }
+}

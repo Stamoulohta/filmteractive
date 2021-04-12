@@ -1,0 +1,78 @@
+{
+  "name": "interuption",
+  "vsrc": "interuption.mp4",
+  "events": [
+    {
+      "type" : "click",
+      "scene" : "interuption_1",
+      "constraints" : {
+        "timespan" : [31.5],
+        "hitbox" : [6.13, 43.33, 17.99, 9.50]
+      }
+    },
+    {
+      "type" : "click",
+      "scene" : "interuption_2",
+      "constraints" : {
+        "timespan" : [31.5],
+        "hitbox" : [6.13, 92.91, 17.99, 58.66]
+      }
+    },
+    {
+      "type" : "click",
+      "scene" : "interuption_3",
+      "constraints" : {
+        "timespan" : [31.5],
+        "hitbox" : [19.70, 43.12, 31.56, 9.50]
+      }
+    },
+    {
+      "type" : "click",
+      "scene" : "interuption_4",
+      "constraints" : {
+        "timespan" : [31.5],
+        "hitbox" : [19.58, 92.63, 32.42, 58.53]
+      }
+    },
+    {
+      "type" : "click",
+      "scene" : "interuption_5",
+      "constraints" : {
+        "timespan" : [31.5],
+        "hitbox" : [34.86, 83.01, 45.99, 16.03]
+      }
+    },
+    {
+      "type" : "click",
+      "scene" : "interuption_6",
+      "constraints" : {
+        "timespan" : [31.5],
+        "hitbox" : [48.31, 45.46, 59.80, 7.09]
+      }
+    },
+    {
+      "type" : "click",
+      "scene" : "interuption_7",
+      "constraints" : {
+        "timespan" : [31.5],
+        "hitbox" : [48.92, 92.43, 60.29, 58.73]
+      }
+    },
+    {
+      "type" : "click",
+      "scene" : "interuption_8",
+      "constraints" : {
+        "timespan" : [31.5],
+        "hitbox" : [62.37, 83.76, 85.23, 16.58]
+      }
+    },
+    {
+      "type" : "click",
+      "scene" : "interuption_9",
+      "constraints" : {
+        "timespan" : [31.5],
+        "hitbox" : [87.31, 82.39, 99.04, 15.48]
+      }
+    }
+  ]
+}

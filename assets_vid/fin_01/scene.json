@@ -1,0 +1,5 @@
+{
+  "name": "fin_01",
+  "onend": "fin_02",
+  "vsrc": "fin_01.mp4"
+}

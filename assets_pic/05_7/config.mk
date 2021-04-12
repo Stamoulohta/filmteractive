@@ -1,2 +1,0 @@
-DURATIONS = frame_018=0.8
-DURATION = 5.520
