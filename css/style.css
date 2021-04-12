@@ -38,3 +38,7 @@ buffered-stage > img {
     margin: 0 auto;
     width: auto;
 }
+
+::-webkit-media-controls {
+  display:none !important;
+}
