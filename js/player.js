@@ -52,7 +52,7 @@ function Filmteractive(id, scenario, options) {
 
                 video_buffer.addEventListener("timeupdate", (evt) => {
                     const buffer = evt.target;
-                    if(this.isCurrent(buffer) && (buffer.currentTime >= buffer.duration)) {
+                    if (this.isCurrent(buffer) && (buffer.currentTime >= buffer.duration)) {
                         this.frameGrabber.width = buffer.videoWidth;
                         this.frameGrabber.height = buffer.videoHeight;
                         this.frameGrabber.getContext("2d").drawImage(buffer, 0, 0);
@@ -127,6 +127,22 @@ function Filmteractive(id, scenario, options) {
             return this.sources[(this.index + 1) % Stage.count];
         }
 
+        get contentDimensions() {
+            if (this.currentBuffer.classList.contains("current")) {
+                const ew = this.currentBuffer.offsetWidth;
+                const eh = this.currentBuffer.offsetHeight;
+                const sw = this.currentBuffer.videoWidth;
+                const sh = this.currentBuffer.videoHeight;
+                const sar = sw / sh;
+                const ear = ew / eh;
+
+                if(ear > sar)  return [eh * sar, eh];
+                else if(ear < sar)  return [ew, ew / sar];
+                else return [ew, eh];
+
+            } else return [this.static?.width, this.static?.height];
+        }
+
         setStatic(poster) {
             this.static.src = poster;
         }
@@ -152,7 +168,7 @@ function Filmteractive(id, scenario, options) {
         preload() {
             const scene = scenario.scenes[this.next_scene?.scene || this.next_scene];
             if (scene) {
-                this.nextSource.setAttribute("src",  video_path + scene.vsrc);
+                this.nextSource.setAttribute("src", video_path + scene.vsrc);
                 this.nextBuffer.load();
                 this.nextBuffer.currentTime = this.next_scene?.time || 0;
                 this.nextBuffer.dataset.loading = "1";
@@ -191,11 +207,10 @@ function Filmteractive(id, scenario, options) {
 
         onend() {
             const onend = this.opts.onend || false;
-            if(! onend) {
-                console.log('onend cancel')
+            if (!onend) {
                 return;
             }
-            if(onend?.type === "repeat") {
+            if (onend?.type === "repeat") {
                 const timeout = onend?.timeout || 0;
                 Object.assign({}, this.evt, {span: timeout});
                 EventStack.instance.push(Object.assign({}, this.evt, {span: timeout}));
@@ -312,19 +327,23 @@ function Filmteractive(id, scenario, options) {
         }
 
         insideHitbox(evt) {
-            // TODO: there may be a difference with aspect ratio
             const vw = stage.clientWidth;
             const vh = stage.clientHeight;
+            const [cw, ch] = stage.contentDimensions;
+            const [mw, mh] = [(vw - cw) / 2, (vh - ch) / 2]
 
-            const ht = (vh / 100) * this.opts.constraints.hitbox[0];
-            const hr = (vw / 100) * this.opts.constraints.hitbox[1];
-            const hb = (vh / 100) * this.opts.constraints.hitbox[2];
-            const hl = (vw / 100) * this.opts.constraints.hitbox[3];
+            const ht = (ch / 100) * this.opts.constraints.hitbox[0];
+            const hr = (cw / 100) * this.opts.constraints.hitbox[1];
+            const hb = (ch / 100) * this.opts.constraints.hitbox[2];
+            const hl = (cw / 100) * this.opts.constraints.hitbox[3];
 
-            return evt.offsetY >= ht
-                && evt.offsetX <= hr
-                && evt.offsetY <= hb
-                && evt.offsetX >= hl;
+            const cr = stage.getBoundingClientRect();
+            const [ex, ey] = [evt.clientX - (cr.left + mw), evt.clientY - (cr.top + mh)];
+
+            return ey >= ht
+                && ex <= hr
+                && ey <= hb
+                && ex >= hl;
         }
 
         shouldRun(evt) {
@@ -412,7 +431,7 @@ function Filmteractive(id, scenario, options) {
 
         push(opts) {
             const evt = new Event(opts);
-            if(evt.single && this.has(evt)) {
+            if (evt.single && this.has(evt)) {
                 return;
             }
             this.data.push(new Event(opts));
