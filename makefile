@@ -9,13 +9,13 @@ EXT_OUT = mp4
 
 RM = rm -rf
 
-SIZES = 360 #1080 720 360
+SIZES = 1080 720 360
 SCENE_MAKE = config.mk
 SCENE_JSON = scene.json
 SCENE_DMX  = input.dmx
 SCENE_AUDIO = audio
 
-DIR_IN = assets_pic
+DIR_IN = assets_vid
 DIR_OUT = public
 
 SCENARIO_OUT = scenario.json
@@ -46,7 +46,8 @@ define configure
 	include $(1)/$(SCENE_MAKE)
 endef
 
-all : $(DEPENDENCIES) $(SCENES_OUT) $(SCENARIO_OUT)
+#all : $(DEPENDENCIES) $(SCENES_OUT) $(SCENARIO_OUT)
+all : $(DEPENDENCIES) $(SCENARIO_OUT)
 
 $(SCENARIO_OUT) : $(wildcard $(DIR_IN)/*/$(SCENE_JSON))
 	$(eval $@_BUFFER = $(shell mktemp))
