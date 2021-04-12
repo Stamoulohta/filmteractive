@@ -79,6 +79,7 @@ function Filmteractive(id, scenario, options) {
 
         hideStatic() {
             this.static.classList.remove("current");
+            this.static.setAttribute("src", "");
         }
 
         isCurrent(buffer) {
@@ -149,10 +150,11 @@ function Filmteractive(id, scenario, options) {
         }
 
         preload() {
-            const scene = scenario.scenes[this.next_scene];
+            const scene = scenario.scenes[this.next_scene?.scene || this.next_scene];
             if (scene) {
                 this.nextSource.setAttribute("src",  video_path + scene.vsrc);
                 this.nextBuffer.load();
+                this.nextBuffer.currentTime = this.next_scene?.time || 0;
                 this.nextBuffer.dataset.loading = "1";
             }
         }
@@ -280,6 +282,7 @@ function Filmteractive(id, scenario, options) {
         }
 
         sceneComplies(scene_id, key) {
+            scene_id = scene_id?.scene || scene_id;
             if (typeof this.opts[key] === "undefined" || typeof scene_id === "undefined") {
                 return false
             } else if (Array.isArray(this.opts[key])) {
@@ -387,6 +390,10 @@ function Filmteractive(id, scenario, options) {
             }
             return !(this.delete_me && this.abort());
         }
+
+        get single() {
+            return this.opts.single || false;
+        }
     }
 
     class EventStack {
@@ -404,11 +411,21 @@ function Filmteractive(id, scenario, options) {
         }
 
         push(opts) {
+            const evt = new Event(opts);
+            if(evt.single && this.has(evt)) {
+                return;
+            }
             this.data.push(new Event(opts));
         }
 
         update(scene_id) {
             this.data = this.data.filter(event => event && event.updateSceneId(scene_id));
+        }
+
+        has(event) {
+            this.data.some((evt) => {
+                return JSON.stringify(evt) === JSON.stringify(event)
+            })
         }
     }
 
@@ -425,7 +442,7 @@ function Filmteractive(id, scenario, options) {
 
         ended() {
             if (this.scene.onend) {
-                this.setScene(this.scene.onend);
+                this.setScene(this.scene.onend?.scene || this.scene.onend);
             }
         }
 
