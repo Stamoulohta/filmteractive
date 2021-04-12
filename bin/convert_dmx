@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+dir_in=$(dirname "$1")
+name=$(basename "$dir_in")
+dir_out=~/lab/js/filmteractive/public/
+
+test -f "$dir_out/360/$name.mp4" && exit;
+
+cd "$dir_in"
+
+ffmpeg -y -f concat -i input.dmx -s 640x360 -acodec copy -vcodec libx264 -crf 18 -preset veryslow $dir_out/360/"$name.mp4" -s 1280x720 -acodec copy -vcodec libx264 -crf 18 -preset veryslow $dir_out/720/"$name.mp4" -s 1920x1080 -acodec copy -vcodec libx264 -crf 18 -preset veryslow $dir_out/1080/"$name.mp4"
