@@ -12,7 +12,7 @@ body {
 
 buffered-stage {
     display: block;
-    position: relative;
+    position: absolute;
     z-index: 0;
     margin: 0;
     padding: 0;

@@ -1,48 +1,22 @@
 {
-  "thumb": "thumb.png",
-  "enter": "00_1",
-  "sources": "https://g.a.stamoulis.gitlab.io/apsurdism/",
+  "thumb": "poster.png",
+  "enter": "00_0",
+  "sources": "http://brechtapp.eu/apsurdism",
   "audio": "audio",
   "image": "image",
-  "events": [
-    {
-      "type": "click",
-      "sound": "fx/click.mp3"
-    },
-    {
-      "type": "timeout",
-      "span": 120000,
-      "emergeOn": {
-        "endsWith": "b"
-      },
-      "sound": {
-        "src": [
-          "delay/clip_01.mp3",
-          "delay/clip_02.mp3",
-          "delay/clip_03.mp3",
-          "delay/clip_04.mp3",
-          "delay/clip_05.mp3",
-          "delay/clip_06.mp3",
-          "delay/clip_07.mp3",
-          "delay/clip_08.mp3",
-          "delay/clip_09.mp3",
-          "delay/clip_10.mp3",
-          "delay/clip_11.mp3",
-          "delay/clip_12.mp3",
-          "delay/clip_13.mp3",
-          "delay/clip_14.mp3",
-          "delay/clip_15.mp3"
-        ]
-      }
-    }
-  ],
+  "events": [],
   "sizes": [
+    "720",
     "360"
   ],
   "scenes": {
-    "13": {
-      "name": "13",
-      "vsrc": "13.mp4"
+    "00_0": {
+      "name": "00_0",
+      "onend": "00_1",
+      "vsrc": "00_0.mp4",
+      "poster": {
+        "image": "http://brechtapp.eu/apsurdism/image/poster.png"
+      }
     },
     "00_1": {
       "name": "00_1",
@@ -51,114 +25,195 @@
     },
     "00_2": {
       "name": "00_2",
-      "onend": "00_3b",
-      "vsrc": "00_2.mp4"
-    },
-    "00_3_1": {
-      "name": "00_3_1",
-      "onend": "00_4b",
-      "vsrc": "00_3_1.mp4"
-    },
-    "00_3_2": {
-      "name": "00_3_2",
-      "onend": "00_4b",
-      "vsrc": "00_3_2.mp4"
-    },
-    "00_3_3": {
-      "name": "00_3_3",
-      "onend": "00_4b",
-      "vsrc": "00_3_3.mp4"
-    },
-    "00_3_4": {
-      "name": "00_3_4",
-      "onend": "00_4b",
-      "vsrc": "00_3_4.mp4"
-    },
-    "00_3_5": {
-      "name": "00_3_5",
-      "onend": "00_4b",
-      "vsrc": "00_3_5.mp4"
-    },
-    "00_3b": {
-      "name": "00_3b",
+      "vsrc": "00_2.mp4",
       "events": [
         {
           "type": "click",
-          "scene": "00_3_1",
+          "scene": "00_2_1",
           "constraints": {
             "timespan": [
-              14
+              8
             ],
             "hitbox": [
-              5.11,
-              54.68,
-              18.51,
-              45.26
+              6.38,
+              54.47,
+              18.6,
+              45.12
             ]
           }
         },
         {
           "type": "click",
-          "scene": "00_3_2",
+          "scene": "00_2_2",
           "constraints": {
             "timespan": [
-              14
+              8
             ],
             "hitbox": [
-              22.96,
-              58.64,
-              34.44,
-              40.2
+              22.51,
+              58.6,
+              34.86,
+              40.03
             ]
           }
         },
         {
           "type": "click",
-          "scene": "00_3_3",
+          "scene": "00_2_3",
           "constraints": {
             "timespan": [
-              14
+              8
             ],
             "hitbox": [
-              39.62,
-              62.39,
-              51.48,
-              37.29
+              39.51,
+              62.17,
+              51.73,
+              36.87
             ]
           }
         },
         {
           "type": "click",
-          "scene": "00_3_4",
+          "scene": "00_2_4",
           "constraints": {
             "timespan": [
-              14
+              8
             ],
             "hitbox": [
-              57.22,
-              75.93,
-              69.25,
-              26.97
+              57.11,
+              76.47,
+              69.21,
+              27.24
             ]
           }
         },
         {
           "type": "click",
-          "scene": "00_3_5",
+          "scene": "00_2_5",
           "constraints": {
             "timespan": [
-              14
+              8
             ],
             "hitbox": [
-              76.66,
-              74.06,
-              88.88,
-              28.43
+              76.55,
+              73.93,
+              88.53,
+              28.13
             ]
           }
         }
-      ],
-      "vsrc": "00_3b.mp4"
+      ]
+    },
+    "00_2_1": {
+      "name": "00_2_1",
+      "onend": "00_3",
+      "vsrc": "00_2_1.mp4"
+    },
+    "00_2_2": {
+      "name": "00_2_2",
+      "onend": "00_3",
+      "vsrc": "00_2_2.mp4"
+    },
+    "00_2_3": {
+      "name": "00_2_3",
+      "onend": "00_3",
+      "vsrc": "00_2_3.mp4"
+    },
+    "00_2_4": {
+      "name": "00_2_4",
+      "onend": "00_3",
+      "vsrc": "00_2_4.mp4"
+    },
+    "00_2_5": {
+      "name": "00_2_5",
+      "onend": "00_3",
+      "vsrc": "00_2_5.mp4"
+    },
+    "00_3": {
+      "name": "00_3",
+      "onend": "00_4",
+      "vsrc": "00_3.mp4"
+    },
+    "00_4": {
+      "name": "00_4",
+      "vsrc": "00_4.mp4",
+      "events": [
+        {
+          "type": "click",
+          "scene": "00_4_1",
+          "constraints": {
+            "timespan": [
+              10
+            ],
+            "hitbox": [
+              27.89,
+              79.57,
+              39.87,
+              22.36
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "00_4_2",
+          "constraints": {
+            "timespan": [
+              10
+            ],
+            "hitbox": [
+              41.71,
+              84.38,
+              53.93,
+              18.09
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "00_4_3",
+          "constraints": {
+            "timespan": [
+              10
+            ],
+            "hitbox": [
+              56.38,
+              80.33,
+              67.99,
+              22.91
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "00_4_4",
+          "constraints": {
+            "timespan": [
+              10
+            ],
+            "hitbox": [
+              70.19,
+              81.91,
+              81.32,
+              20.29
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "00_4_5",
+          "constraints": {
+            "timespan": [
+              10
+            ],
+            "hitbox": [
+              83.64,
+              73.66,
+              95.25,
+              25.86
+            ]
+          }
+        }
+      ]
     },
     "00_4_1": {
       "name": "00_4_1",
@@ -185,87 +240,6 @@
       "onend": "00_5",
       "vsrc": "00_4_5.mp4"
     },
-    "00_4b": {
-      "name": "00_4b",
-      "events": [
-        {
-          "type": "click",
-          "scene": "00_4_1",
-          "constraints": {
-            "timespan": [
-              15
-            ],
-            "hitbox": [
-              27.31,
-              79.88,
-              40.74,
-              22.44
-            ]
-          }
-        },
-        {
-          "type": "click",
-          "scene": "00_4_2",
-          "constraints": {
-            "timespan": [
-              15
-            ],
-            "hitbox": [
-              41.48,
-              84.21,
-              55.09,
-              17.7
-            ]
-          }
-        },
-        {
-          "type": "click",
-          "scene": "00_4_3",
-          "constraints": {
-            "timespan": [
-              15
-            ],
-            "hitbox": [
-              56.01,
-              80.26,
-              68.33,
-              23.07
-            ]
-          }
-        },
-        {
-          "type": "click",
-          "scene": "00_4_4",
-          "constraints": {
-            "timespan": [
-              15
-            ],
-            "hitbox": [
-              69.44,
-              82.13,
-              82.4,
-              20.41
-            ]
-          }
-        },
-        {
-          "type": "click",
-          "scene": "00_4_5",
-          "constraints": {
-            "timespan": [
-              15
-            ],
-            "hitbox": [
-              83.33,
-              73.43,
-              95.92,
-              25.93
-            ]
-          }
-        }
-      ],
-      "vsrc": "00_4b.mp4"
-    },
     "00_5": {
       "name": "00_5",
       "onend": "00_6",
@@ -273,82 +247,25 @@
     },
     "00_6": {
       "name": "00_6",
-      "onend": "01a",
+      "onend": "01",
       "vsrc": "00_6.mp4"
     },
-    "01_1": {
-      "name": "01_1",
-      "onend": "02a",
-      "vsrc": "01_1.mp4"
-    },
-    "01_2": {
-      "name": "01_2",
-      "onend": "02a",
-      "vsrc": "01_2.mp4"
-    },
-    "01_3": {
-      "name": "01_3",
-      "onend": "02a",
-      "vsrc": "01_3.mp4"
-    },
-    "01_4": {
-      "name": "01_4",
-      "onend": "02a",
-      "vsrc": "01_4.mp4"
-    },
-    "01_5": {
-      "name": "01_5",
-      "onend": "02a",
-      "vsrc": "01_5.mp4"
-    },
-    "01_6": {
-      "name": "01_6",
-      "onend": "02a",
-      "vsrc": "01_6.mp4"
-    },
-    "01_7": {
-      "name": "01_7",
-      "onend": "02a",
-      "vsrc": "01_7.mp4"
-    },
-    "01_8": {
-      "name": "01_8",
-      "onend": "01b",
-      "vsrc": "01_8.mp4"
-    },
-    "01a": {
-      "name": "01a",
-      "onend": "01b",
-      "events": [
-        {
-          "type": "timeout",
-          "span": 1,
-          "sound": {
-            "src": "bg/01b.mp3",
-            "loop": true
-          },
-          "scene_span": {
-            "startsWith": "01"
-          }
-        }
-      ],
-      "vsrc": "01a.mp4"
-    },
-    "01b": {
-      "name": "01b",
+    "01": {
+      "name": "01",
+      "vsrc": "01.mp4",
       "events": [
         {
           "type": "click",
           "scene": "01_1",
           "constraints": {
             "timespan": [
-              17
+              21
             ],
             "hitbox": [
-              9.25,
-              49.89,
-              20.37,
-              15.72
+              9.19,
+              49.66,
+              19.7,
+              15.55
             ]
           }
         },
@@ -357,13 +274,13 @@
           "scene": "01_2",
           "constraints": {
             "timespan": [
-              17
+              21
             ],
             "hitbox": [
-              9.62,
-              84.06,
-              20.92,
-              50.2
+              9.19,
+              49.66,
+              19.7,
+              15.55
             ]
           }
         },
@@ -372,13 +289,13 @@
           "scene": "01_3",
           "constraints": {
             "timespan": [
-              17
+              21
             ],
             "hitbox": [
-              20.74,
-              49.79,
-              30.92,
-              15.62
+              31.56,
+              49.59,
+              40.85,
+              16.37
             ]
           }
         },
@@ -387,13 +304,13 @@
           "scene": "01_4",
           "constraints": {
             "timespan": [
-              17
+              21
             ],
             "hitbox": [
-              21.48,
-              84.27,
-              31.66,
-              50.31
+              10.29,
+              83.9,
+              20.93,
+              50.89
             ]
           }
         },
@@ -402,13 +319,13 @@
           "scene": "01_5",
           "constraints": {
             "timespan": [
-              17
+              21
             ],
             "hitbox": [
-              31.48,
-              49.52,
-              40.74,
-              15.75
+              21.78,
+              83.69,
+              30.95,
+              50.28
             ]
           }
         },
@@ -417,13 +334,13 @@
           "scene": "01_6",
           "constraints": {
             "timespan": [
-              17
+              21
             ],
             "hitbox": [
-              32.22,
-              42.03,
-              81.41,
-              48.48
+              32.17,
+              83.83,
+              41.71,
+              50.14
             ]
           }
         },
@@ -432,13 +349,13 @@
           "scene": "01_7",
           "constraints": {
             "timespan": [
-              17
+              21
             ],
             "hitbox": [
-              42.4,
-              82.6,
-              52.22,
-              16.04
+              42.93,
+              83.49,
+              51.73,
+              16.1
             ]
           }
         },
@@ -447,96 +364,144 @@
           "scene": "01_8",
           "constraints": {
             "timespan": [
-              17
+              21
             ],
             "hitbox": [
-              53.7,
-              82.91,
-              63.51,
-              15.93
+              53.2,
+              82.59,
+              63.47,
+              17.41
+            ]
+          }
+        },
+        {
+          "type": "timeout",
+          "span": 25000,
+          "scene_span": [
+            "01"
+          ],
+          "sound": {
+            "src": [
+              "delay/clip_01.mp3",
+              "delay/clip_02.mp3",
+              "delay/clip_03.mp3",
+              "delay/clip_04.mp3",
+              "delay/clip_05.mp3",
+              "delay/clip_06.mp3",
+              "delay/clip_07.mp3",
+              "delay/clip_08.mp3",
+              "delay/clip_09.mp3",
+              "delay/clip_10.mp3",
+              "delay/clip_11.mp3",
+              "delay/clip_12.mp3",
+              "delay/clip_13.mp3",
+              "delay/clip_14.mp3",
+              "delay/clip_15.mp3"
+            ],
+            "onend": {
+              "type": "repeat",
+              "unbound": true,
+              "timeout": 4000
+            }
+          }
+        },
+        {
+          "type": "timeout",
+          "span": 11000,
+          "single": true,
+          "sound": {
+            "src": "bg/01.mp3",
+            "loop": true,
+            "volume": 0.5
+          },
+          "scene_span": [
+            "01",
+            "01_1",
+            "01_2",
+            "01_3",
+            "01_4",
+            "01_5",
+            "01_6",
+            "01_7",
+            "01_8"
+          ]
+        }
+      ]
+    },
+    "01_1": {
+      "name": "01_1",
+      "onend": "01_n",
+      "vsrc": "01_1.mp4"
+    },
+    "01_2": {
+      "name": "01_2",
+      "onend": "01_n",
+      "vsrc": "01_2.mp4"
+    },
+    "01_3": {
+      "name": "01_3",
+      "onend": "01_n",
+      "vsrc": "01_3.mp4"
+    },
+    "01_4": {
+      "name": "01_4",
+      "onend": "01_n",
+      "vsrc": "01_4.mp4"
+    },
+    "01_5": {
+      "name": "01_5",
+      "onend": "01_n",
+      "vsrc": "01_5.mp4"
+    },
+    "01_6": {
+      "name": "01_6",
+      "onend": "01_n",
+      "vsrc": "01_6.mp4"
+    },
+    "01_7": {
+      "name": "01_7",
+      "onend": "01_n",
+      "vsrc": "01_7.mp4"
+    },
+    "01_8": {
+      "name": "01_8",
+      "onend": {
+        "scene": "01",
+        "time": 22.3
+      },
+      "vsrc": "01_8.mp4"
+    },
+    "01_n": {
+      "name": "01_n",
+      "vsrc": "01_n.mp4",
+      "events": [
+        {
+          "type": "click",
+          "scene": "02",
+          "constraints": {
+            "timespan": [
+              1.9
             ]
           }
         }
-      ],
-      "vsrc": "01b.mp4"
+      ]
     },
-    "02_1": {
-      "name": "02_1",
-      "onend": "03a",
-      "vsrc": "02_1.mp4"
-    },
-    "02_2": {
-      "name": "02_2",
-      "onend": "03a",
-      "vsrc": "02_2.mp4"
-    },
-    "02_3": {
-      "name": "02_3",
-      "onend": "03a",
-      "vsrc": "02_3.mp4"
-    },
-    "02_4": {
-      "name": "02_4",
-      "onend": "03a",
-      "vsrc": "02_4.mp4"
-    },
-    "02_5": {
-      "name": "02_5",
-      "onend": "03a",
-      "vsrc": "02_5.mp4"
-    },
-    "02_6": {
-      "name": "02_6",
-      "onend": "03a",
-      "vsrc": "02_6.mp4"
-    },
-    "02_7": {
-      "name": "02_7",
-      "onend": "03a",
-      "vsrc": "02_7.mp4"
-    },
-    "02_8": {
-      "name": "02_8",
-      "onend": "02b",
-      "vsrc": "02_8.mp4"
-    },
-    "02a": {
-      "name": "02a",
-      "onend": "03b",
-      "poster": {
-        "image": "/public/image/next.png",
-        "sound": "advance/clip_14.mp3"
-      },
-      "events": [
-        {
-          "type": "timeout",
-          "span": 1,
-          "sound": {
-            "src": "bg/02.mp3",
-            "loop": true
-          },
-          "scene_span": {
-            "startsWith": "02"
-          }
-        }
-      ],
-      "vsrc": "02a.mp4"
-    },
-    "02b": {
-      "name": "02b",
+    "02": {
+      "name": "02",
+      "vsrc": "02.mp4",
       "events": [
         {
           "type": "click",
           "scene": "02_1",
           "constraints": {
             "timespan": [
-              17
+              16
             ],
             "hitbox": [
-              9.25,
-              49.89,
-              20.37,
-              15.72
+              9.31,
+              47.66,
+              19.95,
+              13.42
             ]
           }
         },
@@ -545,13 +510,13 @@
           "scene": "02_2",
           "constraints": {
             "timespan": [
-              17
+              16
             ],
             "hitbox": [
-              9.62,
-              84.06,
-              20.92,
-              50.2
+              20.68,
+              47.8,
+              31.07,
+              13.62
             ]
           }
         },
@@ -560,13 +525,13 @@
           "scene": "02_3",
           "constraints": {
             "timespan": [
-              17
+              16
             ],
             "hitbox": [
-              20.74,
-              49.79,
-              30.92,
-              15.62
+              32.42,
+              47.8,
+              42.07,
+              14.45
             ]
           }
         },
@@ -575,13 +540,13 @@
           "scene": "02_4",
           "constraints": {
             "timespan": [
-              17
+              16
             ],
             "hitbox": [
-              21.48,
-              84.27,
-              31.66,
-              50.31
+              10.04,
+              82.87,
+              20.31,
+              48.76
             ]
           }
         },
@@ -590,13 +555,13 @@
           "scene": "02_5",
           "constraints": {
             "timespan": [
-              17
+              16
             ],
             "hitbox": [
-              31.48,
-              49.52,
-              40.74,
-              15.75
+              21.29,
+              82.39,
+              31.32,
+              48.69
             ]
           }
         },
@@ -605,13 +570,13 @@
           "scene": "02_6",
           "constraints": {
             "timespan": [
-              17
+              16
             ],
             "hitbox": [
-              32.22,
-              42.03,
-              81.41,
-              48.48
+              32.17,
+              82.46,
+              42.2,
+              48.62
             ]
           }
         },
@@ -620,13 +585,13 @@
           "scene": "02_7",
           "constraints": {
             "timespan": [
-              17
+              16
             ],
             "hitbox": [
-              42.4,
-              82.6,
-              52.22,
-              16.04
+              44.03,
+              81.98,
+              53.69,
+              14.72
             ]
           }
         },
@@ -635,96 +600,141 @@
           "scene": "02_8",
           "constraints": {
             "timespan": [
-              17
+              16
             ],
             "hitbox": [
-              53.7,
-              82.91,
-              63.51,
-              15.93
+              56.01,
+              81.91,
+              65.42,
+              15.2
+            ]
+          }
+        },
+        {
+          "type": "timeout",
+          "span": 21000,
+          "sound": {
+            "src": [
+              "delay/clip_01.mp3",
+              "delay/clip_02.mp3",
+              "delay/clip_03.mp3",
+              "delay/clip_04.mp3",
+              "delay/clip_05.mp3",
+              "delay/clip_06.mp3",
+              "delay/clip_07.mp3",
+              "delay/clip_08.mp3",
+              "delay/clip_09.mp3",
+              "delay/clip_10.mp3",
+              "delay/clip_11.mp3",
+              "delay/clip_12.mp3",
+              "delay/clip_13.mp3",
+              "delay/clip_14.mp3",
+              "delay/clip_15.mp3"
+            ],
+            "onend": {
+              "type": "repeat",
+              "unbound": true,
+              "timeout": 4000
+            }
+          }
+        },
+        {
+          "type": "timeout",
+          "span": 5000,
+          "single": true,
+          "sound": {
+            "src": "bg/02.mp3",
+            "loop": true,
+            "volume": 0.5
+          },
+          "scene_span": [
+            "02",
+            "02_1",
+            "02_2",
+            "02_3",
+            "02_4",
+            "02_5",
+            "02_6",
+            "02_7",
+            "02_8"
+          ]
+        }
+      ]
+    },
+    "02_1": {
+      "name": "02_1",
+      "onend": "02_n",
+      "vsrc": "02_1.mp4"
+    },
+    "02_2": {
+      "name": "02_2",
+      "onend": "02_n",
+      "vsrc": "02_2.mp4"
+    },
+    "02_3": {
+      "name": "02_3",
+      "onend": "02_n",
+      "vsrc": "02_3.mp4"
+    },
+    "02_4": {
+      "name": "02_4",
+      "onend": "02_n",
+      "vsrc": "02_4.mp4"
+    },
+    "02_5": {
+      "name": "02_5",
+      "onend": "02_n",
+      "vsrc": "02_5.mp4"
+    },
+    "02_6": {
+      "name": "02_6",
+      "onend": "02_n",
+      "vsrc": "02_6.mp4"
+    },
+    "02_7": {
+      "name": "02_7",
+      "onend": "02_n",
+      "vsrc": "02_7.mp4"
+    },
+    "02_8": {
+      "name": "02_8",
+      "onend": {
+        "scene": "02",
+        "time": 16.3
+      },
+      "vsrc": "02_8.mp4"
+    },
+    "02_n": {
+      "name": "02_n",
+      "vsrc": "02_n.mp4",
+      "events": [
+        {
+          "type": "click",
+          "scene": "03",
+          "constraints": {
+            "timespan": [
+              1
             ]
           }
         }
-      ],
-      "vsrc": "02b.mp4"
+      ]
     },
-    "03_1": {
-      "name": "03_1",
-      "onend": "04a",
-      "vsrc": "03_1.mp4"
-    },
-    "03_2": {
-      "name": "03_2",
-      "onend": "04a",
-      "vsrc": "03_2.mp4"
-    },
-    "03_3": {
-      "name": "03_3",
-      "onend": "04a",
-      "vsrc": "03_3.mp4"
-    },
-    "03_4": {
-      "name": "03_4",
-      "onend": "04a",
-      "vsrc": "03_4.mp4"
-    },
-    "03_5": {
-      "name": "03_5",
-      "onend": "04a",
-      "vsrc": "03_5.mp4"
-    },
-    "03_6": {
-      "name": "03_6",
-      "onend": "04a",
-      "vsrc": "03_6.mp4"
-    },
-    "03_7": {
-      "name": "03_7",
-      "onend": "04a",
-      "vsrc": "03_7.mp4"
-    },
-    "03_8": {
-      "name": "03_8",
-      "onend": "03b",
-      "vsrc": "03_8.mp4"
-    },
-    "03a": {
-      "name": "03a",
-      "onend": "03b",
-      "poster": {
-        "image": "/public/image/next.png",
-        "sound": "advance/clip_14.mp3"
-      },
-      "events": [
-        {
-          "type": "timeout",
-          "span": 1,
-          "sound": {
-            "src": "bg/03.mp3",
-            "loop": true
-          },
-          "scene_span": {
-            "startsWith": "03"
-          }
-        }
-      ],
-      "vsrc": "03a.mp4"
-    },
-    "03b": {
-      "name": "03b",
+    "03": {
+      "name": "03",
+      "vsrc": "03.mp4",
       "events": [
         {
           "type": "click",
           "scene": "03_1",
           "constraints": {
             "timespan": [
-              17
+              16
             ],
             "hitbox": [
-              9.25,
-              49.89,
-              20.37,
-              15.72
+              9.8,
+              48.21,
+              22.15,
+              13.69
             ]
           }
         },
@@ -733,13 +743,13 @@
           "scene": "03_2",
           "constraints": {
             "timespan": [
-              17
+              16
             ],
             "hitbox": [
-              9.62,
-              84.06,
-              20.92,
-              50.2
+              22.88,
+              48.07,
+              34.49,
+              14.45
             ]
           }
         },
@@ -748,13 +758,13 @@
           "scene": "03_3",
           "constraints": {
             "timespan": [
-              17
+              16
             ],
             "hitbox": [
-              20.74,
-              49.79,
-              30.92,
-              15.62
+              35.35,
+              48.21,
+              46.84,
+              14.52
             ]
           }
         },
@@ -763,13 +773,13 @@
           "scene": "03_4",
           "constraints": {
             "timespan": [
-              17
+              16
             ],
             "hitbox": [
-              21.48,
-              84.27,
-              31.66,
-              50.31
+              10.9,
+              83.08,
+              22.27,
+              49.04
             ]
           }
         },
@@ -778,13 +788,13 @@
           "scene": "03_5",
           "constraints": {
             "timespan": [
-              17
+              16
             ],
             "hitbox": [
-              31.48,
-              49.52,
-              40.74,
-              15.75
+              23.13,
+              82.73,
+              34.74,
+              49.04
             ]
           }
         },
@@ -793,13 +803,13 @@
           "scene": "03_6",
           "constraints": {
             "timespan": [
-              17
+              16
             ],
             "hitbox": [
-              32.22,
-              42.03,
-              81.41,
-              48.48
+              35.59,
+              83.08,
+              47.21,
+              49.11
             ]
           }
         },
@@ -808,13 +818,13 @@
           "scene": "03_7",
           "constraints": {
             "timespan": [
-              17
+              16
             ],
             "hitbox": [
-              42.4,
-              82.6,
-              52.22,
-              16.04
+              48.31,
+              83.14,
+              59.31,
+              15.96
             ]
           }
         },
@@ -823,96 +833,141 @@
           "scene": "03_8",
           "constraints": {
             "timespan": [
-              17
+              16
             ],
             "hitbox": [
-              53.7,
-              82.91,
-              63.51,
-              15.93
+              61.02,
+              82.73,
+              72.27,
+              15.75
+            ]
+          }
+        },
+        {
+          "type": "timeout",
+          "span": 21000,
+          "sound": {
+            "src": [
+              "delay/clip_01.mp3",
+              "delay/clip_02.mp3",
+              "delay/clip_03.mp3",
+              "delay/clip_04.mp3",
+              "delay/clip_05.mp3",
+              "delay/clip_06.mp3",
+              "delay/clip_07.mp3",
+              "delay/clip_08.mp3",
+              "delay/clip_09.mp3",
+              "delay/clip_10.mp3",
+              "delay/clip_11.mp3",
+              "delay/clip_12.mp3",
+              "delay/clip_13.mp3",
+              "delay/clip_14.mp3",
+              "delay/clip_15.mp3"
+            ],
+            "onend": {
+              "type": "repeat",
+              "unbound": true,
+              "timeout": 4000
+            }
+          }
+        },
+        {
+          "type": "timeout",
+          "span": 4000,
+          "single": true,
+          "sound": {
+            "src": "bg/03.mp3",
+            "loop": true,
+            "volume": 0.5
+          },
+          "scene_span": [
+            "03",
+            "03_1",
+            "03_2",
+            "03_3",
+            "03_4",
+            "03_5",
+            "03_6",
+            "03_7",
+            "03_8"
+          ]
+        }
+      ]
+    },
+    "03_1": {
+      "name": "03_1",
+      "onend": "03_n",
+      "vsrc": "03_1.mp4"
+    },
+    "03_2": {
+      "name": "03_2",
+      "onend": "03_n",
+      "vsrc": "03_2.mp4"
+    },
+    "03_3": {
+      "name": "03_3",
+      "onend": "03_n",
+      "vsrc": "03_3.mp4"
+    },
+    "03_4": {
+      "name": "03_4",
+      "onend": "03_n",
+      "vsrc": "03_4.mp4"
+    },
+    "03_5": {
+      "name": "03_5",
+      "onend": "03_n",
+      "vsrc": "03_5.mp4"
+    },
+    "03_6": {
+      "name": "03_6",
+      "onend": "03_n",
+      "vsrc": "03_6.mp4"
+    },
+    "03_7": {
+      "name": "03_7",
+      "onend": "03_n",
+      "vsrc": "03_7.mp4"
+    },
+    "03_8": {
+      "name": "03_8",
+      "onend": {
+        "scene": "03",
+        "time": 16.3
+      },
+      "vsrc": "03_8.mp4"
+    },
+    "03_n": {
+      "name": "03_n",
+      "vsrc": "03_n.mp4",
+      "events": [
+        {
+          "type": "click",
+          "scene": "04",
+          "constraints": {
+            "timespan": [
+              1.3
             ]
           }
         }
-      ],
-      "vsrc": "03b.mp4"
+      ]
     },
-    "04_1": {
-      "name": "04_1",
-      "onend": "05a",
-      "vsrc": "04_1.mp4"
-    },
-    "04_2": {
-      "name": "04_2",
-      "onend": "05a",
-      "vsrc": "04_2.mp4"
-    },
-    "04_3": {
-      "name": "04_3",
-      "onend": "05a",
-      "vsrc": "04_3.mp4"
-    },
-    "04_4": {
-      "name": "04_4",
-      "onend": "05a",
-      "vsrc": "04_4.mp4"
-    },
-    "04_5": {
-      "name": "04_5",
-      "onend": "05a",
-      "vsrc": "04_5.mp4"
-    },
-    "04_6": {
-      "name": "04_6",
-      "onend": "05a",
-      "vsrc": "04_6.mp4"
-    },
-    "04_7": {
-      "name": "04_7",
-      "onend": "05a",
-      "vsrc": "04_7.mp4"
-    },
-    "04_8": {
-      "name": "04_8",
-      "onend": "04b",
-      "vsrc": "04_8.mp4"
-    },
-    "04a": {
-      "name": "04a",
-      "onend": "04b",
-      "poster": {
-        "image": "/public/image/next.png",
-        "sound": "advance/clip_14.mp3"
-      },
-      "events": [
-        {
-          "type": "timeout",
-          "span": 1,
-          "sound": {
-            "src": "bg/04.mp3",
-            "loop": true
-          },
-          "scene_span": {
-            "startsWith": "04"
-          }
-        }
-      ],
-      "vsrc": "04a.mp4"
-    },
-    "04b": {
-      "name": "04b",
+    "04": {
+      "name": "04",
+      "vsrc": "04.mp4",
       "events": [
         {
           "type": "click",
           "scene": "04_1",
           "constraints": {
             "timespan": [
-              17
+              20.5
             ],
             "hitbox": [
-              9.25,
-              49.89,
-              20.37,
-              15.72
+              9.8,
+              48.07,
+              20.93,
+              14.24
             ]
           }
         },
@@ -921,13 +976,13 @@
           "scene": "04_2",
           "constraints": {
             "timespan": [
-              17
+              20.5
             ],
             "hitbox": [
-              9.62,
-              84.06,
-              20.92,
-              50.2
+              22.27,
+              48.21,
+              33.88,
+              14.31
             ]
           }
         },
@@ -936,13 +991,13 @@
           "scene": "04_3",
           "constraints": {
             "timespan": [
-              17
+              20.5
             ],
             "hitbox": [
-              20.74,
-              49.79,
-              30.92,
-              15.62
+              34.74,
+              48.21,
+              46.84,
+              14.72
             ]
           }
         },
@@ -951,13 +1006,13 @@
           "scene": "04_4",
           "constraints": {
             "timespan": [
-              17
+              20.5
             ],
             "hitbox": [
-              21.48,
-              84.27,
-              31.66,
-              50.31
+              10.78,
+              83.56,
+              22.39,
+              49.59
             ]
           }
         },
@@ -966,13 +1021,13 @@
           "scene": "04_5",
           "constraints": {
             "timespan": [
-              17
+              20.5
             ],
             "hitbox": [
-              31.48,
-              49.52,
-              40.74,
-              15.75
+              23.61,
+              83.08,
+              34.98,
+              49.38
             ]
           }
         },
@@ -981,13 +1036,13 @@
           "scene": "04_6",
           "constraints": {
             "timespan": [
-              17
+              20.5
             ],
             "hitbox": [
-              32.22,
-              42.03,
-              81.41,
-              48.48
+              36.08,
+              82.8,
+              47.7,
+              49.38
             ]
           }
         },
@@ -996,13 +1051,13 @@
           "scene": "04_7",
           "constraints": {
             "timespan": [
-              17
+              20.5
             ],
             "hitbox": [
-              42.4,
-              82.6,
-              52.22,
-              16.04
+              49.41,
+              82.73,
+              59.68,
+              16.44
             ]
           }
         },
@@ -1011,284 +1066,607 @@
           "scene": "04_8",
           "constraints": {
             "timespan": [
-              17
+              20.5
             ],
             "hitbox": [
-              53.7,
-              82.91,
-              63.51,
-              15.93
+              61.76,
+              82.18,
+              73.86,
+              15.89
+            ]
+          }
+        },
+        {
+          "type": "timeout",
+          "span": 25000,
+          "scene_span": "04",
+          "sound": {
+            "src": [
+              "delay/clip_01.mp3",
+              "delay/clip_02.mp3",
+              "delay/clip_03.mp3",
+              "delay/clip_04.mp3",
+              "delay/clip_05.mp3",
+              "delay/clip_06.mp3",
+              "delay/clip_07.mp3",
+              "delay/clip_08.mp3",
+              "delay/clip_09.mp3",
+              "delay/clip_10.mp3",
+              "delay/clip_11.mp3",
+              "delay/clip_12.mp3",
+              "delay/clip_13.mp3",
+              "delay/clip_14.mp3",
+              "delay/clip_15.mp3"
+            ],
+            "onend": {
+              "type": "repeat",
+              "unbound": true,
+              "timeout": 4000
+            }
+          }
+        },
+        {
+          "type": "timeout",
+          "span": 7000,
+          "sound": {
+            "src": "bg/04.mp3",
+            "loop": true,
+            "volume": 0.5
+          },
+          "scene_span": [
+            "04",
+            "04_1",
+            "04_2",
+            "04_3",
+            "04_4",
+            "04_5",
+            "04_6",
+            "04_7",
+            "04_8"
+          ]
+        }
+      ]
+    },
+    "04_1": {
+      "name": "04_1",
+      "onend": "04_n",
+      "vsrc": "04_1.mp4"
+    },
+    "04_2": {
+      "name": "04_2",
+      "onend": "04_n",
+      "vsrc": "04_2.mp4"
+    },
+    "04_3": {
+      "name": "04_3",
+      "onend": "04_n",
+      "vsrc": "04_3.mp4"
+    },
+    "04_4": {
+      "name": "04_4",
+      "onend": "04_n",
+      "vsrc": "04_4.mp4"
+    },
+    "04_5": {
+      "name": "04_5",
+      "onend": "04_n",
+      "vsrc": "04_5.mp4"
+    },
+    "04_6": {
+      "name": "04_6",
+      "onend": "04_n",
+      "vsrc": "04_6.mp4"
+    },
+    "04_7": {
+      "name": "04_7",
+      "onend": "04_n",
+      "vsrc": "04_7.mp4"
+    },
+    "04_8": {
+      "name": "04_8",
+      "onend": {
+        "scene": "04",
+        "time": 20.9
+      },
+      "vsrc": "04_8.mp4"
+    },
+    "04_n": {
+      "name": "04_n",
+      "vsrc": "04_n.mp4",
+      "events": [
+        {
+          "type": "click",
+          "scene": "05",
+          "constraints": {
+            "timespan": [
+              2.6
             ]
           }
         }
-      ],
-      "vsrc": "04b.mp4"
+      ]
     },
-    "05_1": {
-      "name": "05_1",
-      "onend": "07a",
-      "vsrc": "05_1.mp4"
-    },
-    "05_2": {
-      "name": "05_2",
-      "onend": "07a",
-      "vsrc": "05_2.mp4"
-    },
-    "05_3": {
-      "name": "05_3",
-      "onend": "07a",
-      "vsrc": "05_3.mp4"
-    },
-    "05_4": {
-      "name": "05_4",
-      "onend": "07a",
-      "vsrc": "05_4.mp4"
-    },
-    "05_5": {
-      "name": "05_5",
-      "onend": "07a",
-      "vsrc": "05_5.mp4"
-    },
-    "05_6": {
-      "name": "05_6",
-      "onend": "07a",
-      "vsrc": "05_6.mp4"
-    },
-    "05_7": {
-      "name": "05_7",
-      "onend": "07a",
-      "vsrc": "05_7.mp4"
-    },
-    "05_8": {
-      "name": "05_8",
-      "onend": "05b",
-      "vsrc": "05_8.mp4"
-    },
-    "05a": {
-      "name": "05a",
-      "onend": "05b",
-      "poster": {
-        "image": "/public/image/next.png",
-        "sound": "advance/clip_14.mp3"
-      },
-      "events": [
-        {
-          "type": "timeout",
-          "span": 1,
-          "sound": {
-            "src": "bg/05.mp3",
-            "loop": true
-          },
-          "scene_span": {
-            "startsWith": "05"
-          }
-        }
-      ],
-      "vsrc": "05a.mp4"
-    },
-    "05b": {
-      "name": "05b",
+    "05": {
+      "name": "05",
+      "vsrc": "05.mp4",
       "events": [
         {
           "type": "click",
           "scene": "05_1",
           "constraints": {
             "timespan": [
-              17
+              21.5
             ],
             "hitbox": [
-              9.25,
-              49.89,
-              20.37,
-              15.72
+              8.94,
+              48.14,
+              21.29,
+              13.69
             ]
           }
         },
         {
           "type": "click",
-          "scene": "05_2",
+          "scene": "05_1",
           "constraints": {
             "timespan": [
-              17
+              21.5
             ],
             "hitbox": [
-              9.62,
-              84.06,
-              20.92,
-              50.2
+              21.9,
+              48.42,
+              33.64,
+              14.04
             ]
           }
         },
         {
           "type": "click",
-          "scene": "05_3",
+          "scene": "05_1",
           "constraints": {
             "timespan": [
-              17
+              21.5
             ],
             "hitbox": [
-              20.74,
-              49.79,
-              30.92,
-              15.62
+              35.23,
+              48.49,
+              46.23,
+              14.93
             ]
           }
         },
         {
           "type": "click",
-          "scene": "05_4",
+          "scene": "05_1",
           "constraints": {
             "timespan": [
-              17
+              21.5
             ],
             "hitbox": [
-              21.48,
-              84.27,
-              31.66,
-              50.31
+              10.04,
+              83.14,
+              21.66,
+              49.17
             ]
           }
         },
         {
           "type": "click",
-          "scene": "05_5",
+          "scene": "05_1",
           "constraints": {
             "timespan": [
-              17
+              21.5
             ],
             "hitbox": [
-              31.48,
-              49.52,
-              40.74,
+              22.39,
+              83.01,
+              33.76,
+              49.04
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "05_1",
+          "constraints": {
+            "timespan": [
+              21.5
+            ],
+            "hitbox": [
+              34.74,
+              83.28,
+              46.72,
+              49.45
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "05_1",
+          "constraints": {
+            "timespan": [
+              21.5
+            ],
+            "hitbox": [
+              47.7,
+              82.66,
+              58.94,
               15.75
             ]
           }
         },
         {
           "type": "click",
-          "scene": "05_6",
+          "scene": "05_1",
           "constraints": {
             "timespan": [
-              17
+              21.5
             ],
             "hitbox": [
-              32.22,
-              42.03,
-              81.41,
-              48.48
+              59.92,
+              82.8,
+              72.76,
+              16.31
             ]
           }
         },
-        {
-          "type": "click",
-          "scene": "05_7",
-          "constraints": {
-            "timespan": [
-              17
-            ],
-            "hitbox": [
-              42.4,
-              82.6,
-              52.22,
-              16.04
-            ]
-          }
-        },
-        {
-          "type": "click",
-          "scene": "05_8",
-          "constraints": {
-            "timespan": [
-              17
-            ],
-            "hitbox": [
-              53.7,
-              82.91,
-              63.51,
-              15.93
-            ]
-          }
-        }
-      ],
-      "vsrc": "05b.mp4"
-    },
-    "07_1": {
-      "name": "07_1",
-      "onend": "08a",
-      "vsrc": "07_1.mp4"
-    },
-    "07_2": {
-      "name": "07_2",
-      "onend": "08a",
-      "vsrc": "07_2.mp4"
-    },
-    "07_3": {
-      "name": "07_3",
-      "onend": "08a",
-      "vsrc": "07_3.mp4"
-    },
-    "07_4": {
-      "name": "07_4",
-      "onend": "08a",
-      "vsrc": "07_4.mp4"
-    },
-    "07_5": {
-      "name": "07_5",
-      "onend": "08a",
-      "vsrc": "07_5.mp4"
-    },
-    "07_6": {
-      "name": "07_6",
-      "onend": "08a",
-      "vsrc": "07_6.mp4"
-    },
-    "07_7": {
-      "name": "07_7",
-      "onend": "08a",
-      "vsrc": "07_7.mp4"
-    },
-    "07_8": {
-      "name": "07_8",
-      "onend": "07b",
-      "vsrc": "07_8.mp4"
-    },
-    "07a": {
-      "name": "07a",
-      "onend": "07b",
-      "poster": {
-        "image": "/public/image/next.png",
-        "sound": "advance/clip_14.mp3"
-      },
-      "events": [
         {
           "type": "timeout",
-          "span": 1,
+          "span": 26000,
           "sound": {
-            "src": "bg/07.mp3",
-            "loop": true
+            "src": [
+              "delay/clip_01.mp3",
+              "delay/clip_02.mp3",
+              "delay/clip_03.mp3",
+              "delay/clip_04.mp3",
+              "delay/clip_05.mp3",
+              "delay/clip_06.mp3",
+              "delay/clip_07.mp3",
+              "delay/clip_08.mp3",
+              "delay/clip_09.mp3",
+              "delay/clip_10.mp3",
+              "delay/clip_11.mp3",
+              "delay/clip_12.mp3",
+              "delay/clip_13.mp3",
+              "delay/clip_14.mp3",
+              "delay/clip_15.mp3"
+            ],
+            "onend": {
+              "type": "repeat",
+              "unbound": true,
+              "timeout": 4000
+            }
+          }
+        },
+        {
+          "type": "timeout",
+          "span": 6000,
+          "single": true,
+          "sound": {
+            "src": "bg/05.mp3",
+            "loop": true,
+            "volume": 0.5
           },
-          "scene_span": {
-            "startsWith": "07"
+          "scene_span": [
+            "05",
+            "05_1",
+            "05_2",
+            "05_3",
+            "05_4",
+            "05_5",
+            "05_6",
+            "05_7",
+            "05_8"
+          ]
+        }
+      ]
+    },
+    "05_1": {
+      "name": "05_1",
+      "onend": "break",
+      "vsrc": "05_1.mp4"
+    },
+    "05_2": {
+      "name": "05_2",
+      "onend": "break",
+      "vsrc": "05_2.mp4"
+    },
+    "05_3": {
+      "name": "05_3",
+      "onend": "break",
+      "vsrc": "05_3.mp4"
+    },
+    "05_4": {
+      "name": "05_4",
+      "onend": "break",
+      "vsrc": "05_4.mp4"
+    },
+    "05_5": {
+      "name": "05_5",
+      "onend": "break",
+      "vsrc": "05_5.mp4"
+    },
+    "05_6": {
+      "name": "05_6",
+      "onend": "break",
+      "vsrc": "05_6.mp4"
+    },
+    "05_7": {
+      "name": "05_7",
+      "onend": "break",
+      "vsrc": "05_7.mp4"
+    },
+    "05_8": {
+      "name": "05_8",
+      "onend": {
+        "scene": "05",
+        "time": 21.8
+      },
+      "vsrc": "05_8.mp4"
+    },
+    "05_n": {
+      "name": "05_n",
+      "vsrc": "05_n.mp4",
+      "events": [
+        {
+          "type": "click",
+          "scene": "06",
+          "constraints": {
+            "timespan": [
+              2.8
+            ]
           }
         }
-      ],
-      "vsrc": "07a.mp4"
+      ]
     },
-    "07b": {
-      "name": "07b",
+    "06": {
+      "name": "06",
+      "vsrc": "06.mp4",
+      "events": [
+        {
+          "type": "click",
+          "scene": "06_1",
+          "constraints": {
+            "timespan": [
+              27
+            ],
+            "hitbox": [
+              11.63,
+              47.66,
+              23.49,
+              13.69
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "06_2",
+          "constraints": {
+            "timespan": [
+              27
+            ],
+            "hitbox": [
+              24.1,
+              48.28,
+              35.84,
+              14.1
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "06_3",
+          "constraints": {
+            "timespan": [
+              27
+            ],
+            "hitbox": [
+              36.82,
+              48.21,
+              47.94,
+              14.65
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "06_4",
+          "constraints": {
+            "timespan": [
+              27
+            ],
+            "hitbox": [
+              11.27,
+              82.32,
+              21.66,
+              48.21
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "06_5",
+          "constraints": {
+            "timespan": [
+              27
+            ],
+            "hitbox": [
+              24.47,
+              82.39,
+              34.74,
+              48.76
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "06_6",
+          "constraints": {
+            "timespan": [
+              27
+            ],
+            "hitbox": [
+              35.72,
+              82.73,
+              47.58,
+              48.76
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "06_7",
+          "constraints": {
+            "timespan": [
+              27
+            ],
+            "hitbox": [
+              49.41,
+              82.53,
+              60.29,
+              15.27
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "06_8",
+          "constraints": {
+            "timespan": [
+              27
+            ],
+            "hitbox": [
+              62.73,
+              82.87,
+              73,
+              15.82
+            ]
+          }
+        },
+        {
+          "type": "timeout",
+          "span": 32000,
+          "sound": {
+            "src": [
+              "delay/clip_01.mp3",
+              "delay/clip_02.mp3",
+              "delay/clip_03.mp3",
+              "delay/clip_04.mp3",
+              "delay/clip_05.mp3",
+              "delay/clip_06.mp3",
+              "delay/clip_07.mp3",
+              "delay/clip_08.mp3",
+              "delay/clip_09.mp3",
+              "delay/clip_10.mp3",
+              "delay/clip_11.mp3",
+              "delay/clip_12.mp3",
+              "delay/clip_13.mp3",
+              "delay/clip_14.mp3",
+              "delay/clip_15.mp3"
+            ],
+            "onend": {
+              "type": "repeat",
+              "unbound": true,
+              "timeout": 4000
+            }
+          }
+        },
+        {
+          "type": "timeout",
+          "span": 5000,
+          "single": true,
+          "sound": {
+            "src": "bg/06.mp3",
+            "loop": true,
+            "volume": 0.5
+          },
+          "scene_span": [
+            "06",
+            "06_1",
+            "06_2",
+            "06_3",
+            "06_4",
+            "06_5",
+            "06_6",
+            "06_7",
+            "06_8"
+          ]
+        }
+      ]
+    },
+    "06_1": {
+      "name": "06_1",
+      "onend": "06_n",
+      "vsrc": "06_1.mp4"
+    },
+    "06_2": {
+      "name": "06_2",
+      "onend": "06_n",
+      "vsrc": "06_2.mp4"
+    },
+    "06_3": {
+      "name": "06_3",
+      "onend": "06_n",
+      "vsrc": "06_3.mp4"
+    },
+    "06_4": {
+      "name": "06_4",
+      "onend": "06_n",
+      "vsrc": "06_4.mp4"
+    },
+    "06_5": {
+      "name": "06_5",
+      "onend": "06_n",
+      "vsrc": "06_5.mp4"
+    },
+    "06_6": {
+      "name": "06_6",
+      "onend": "06_n",
+      "vsrc": "06_6.mp4"
+    },
+    "06_7": {
+      "name": "06_7",
+      "onend": "06_n",
+      "vsrc": "06_7.mp4"
+    },
+    "06_8": {
+      "name": "06_8",
+      "onend": {
+        "scene": "06",
+        "time": 27.4
+      },
+      "vsrc": "06_8.mp4"
+    },
+    "06_n": {
+      "name": "06_n",
+      "vsrc": "06_n.mp4",
+      "events": [
+        {
+          "type": "click",
+          "scene": "07",
+          "constraints": {
+            "timespan": [
+              2.5
+            ]
+          }
+        }
+      ]
+    },
+    "07": {
+      "name": "07",
+      "vsrc": "07.mp4",
       "events": [
         {
           "type": "click",
           "scene": "07_1",
           "constraints": {
             "timespan": [
-              17
+              27
             ],
             "hitbox": [
-              9.25,
-              49.89,
-              20.37,
-              15.72
+              10.53,
+              48.21,
+              22.64,
+              14.04
             ]
           }
         },
@@ -1297,13 +1675,13 @@
           "scene": "07_2",
           "constraints": {
             "timespan": [
-              17
+              27
             ],
             "hitbox": [
-              9.62,
-              84.06,
-              20.92,
-              50.2
+              23.74,
+              47.94,
+              34.13,
+              14.38
             ]
           }
         },
@@ -1312,13 +1690,13 @@
           "scene": "07_3",
           "constraints": {
             "timespan": [
-              17
+              27
             ],
             "hitbox": [
-              20.74,
-              49.79,
-              30.92,
-              15.62
+              35.72,
+              48.01,
+              46.96,
+              14.72
             ]
           }
         },
@@ -1327,13 +1705,13 @@
           "scene": "07_4",
           "constraints": {
             "timespan": [
-              17
+              27
             ],
             "hitbox": [
-              21.48,
-              84.27,
-              31.66,
-              50.31
+              11.02,
+              83.56,
+              22.51,
+              49.45
             ]
           }
         },
@@ -1342,13 +1720,13 @@
           "scene": "07_5",
           "constraints": {
             "timespan": [
-              17
+              27
             ],
             "hitbox": [
-              31.48,
-              49.52,
-              40.74,
-              15.75
+              23.86,
+              83.56,
+              34.74,
+              49.52
             ]
           }
         },
@@ -1357,13 +1735,13 @@
           "scene": "07_6",
           "constraints": {
             "timespan": [
-              17
+              27
             ],
             "hitbox": [
-              32.22,
-              42.03,
-              81.41,
-              48.48
+              36.21,
+              83.35,
+              47.09,
+              49.66
             ]
           }
         },
@@ -1372,13 +1750,13 @@
           "scene": "07_7",
           "constraints": {
             "timespan": [
-              17
+              27
             ],
             "hitbox": [
-              42.4,
-              82.6,
-              52.22,
-              16.04
+              48.55,
+              83.14,
+              60.29,
+              16.17
             ]
           }
         },
@@ -1387,96 +1765,141 @@
           "scene": "07_8",
           "constraints": {
             "timespan": [
-              17
+              27
             ],
             "hitbox": [
-              53.7,
-              82.91,
-              63.51,
-              15.93
+              61.63,
+              82.8,
+              73.37,
+              16.24
+            ]
+          }
+        },
+        {
+          "type": "timeout",
+          "span": 32000,
+          "sound": {
+            "src": [
+              "delay/clip_01.mp3",
+              "delay/clip_02.mp3",
+              "delay/clip_03.mp3",
+              "delay/clip_04.mp3",
+              "delay/clip_05.mp3",
+              "delay/clip_06.mp3",
+              "delay/clip_07.mp3",
+              "delay/clip_08.mp3",
+              "delay/clip_09.mp3",
+              "delay/clip_10.mp3",
+              "delay/clip_11.mp3",
+              "delay/clip_12.mp3",
+              "delay/clip_13.mp3",
+              "delay/clip_14.mp3",
+              "delay/clip_15.mp3"
+            ],
+            "onend": {
+              "type": "repeat",
+              "unbound": true,
+              "timeout": 4000
+            }
+          }
+        },
+        {
+          "type": "timeout",
+          "span": 5000,
+          "single": true,
+          "sound": {
+            "src": "bg/07.mp3",
+            "loop": true,
+            "volume": 0.5
+          },
+          "scene_span": [
+            "07",
+            "07_1",
+            "07_2",
+            "07_3",
+            "07_4",
+            "07_5",
+            "07_6",
+            "07_7",
+            "07_8"
+          ]
+        }
+      ]
+    },
+    "07_1": {
+      "name": "07_1",
+      "onend": "interruption",
+      "vsrc": "07_1.mp4"
+    },
+    "07_2": {
+      "name": "07_2",
+      "onend": "interruption",
+      "vsrc": "07_2.mp4"
+    },
+    "07_3": {
+      "name": "07_3",
+      "onend": "interruption",
+      "vsrc": "07_3.mp4"
+    },
+    "07_4": {
+      "name": "07_4",
+      "onend": "interruption",
+      "vsrc": "07_4.mp4"
+    },
+    "07_5": {
+      "name": "07_5",
+      "onend": "interruption",
+      "vsrc": "07_5.mp4"
+    },
+    "07_6": {
+      "name": "07_6",
+      "onend": "interruption",
+      "vsrc": "07_6.mp4"
+    },
+    "07_7": {
+      "name": "07_7",
+      "onend": "interruption",
+      "vsrc": "07_7.mp4"
+    },
+    "07_8": {
+      "name": "07_8",
+      "onend": {
+        "scene": "07",
+        "time": 27.6
+      },
+      "vsrc": "07_8.mp4"
+    },
+    "07_n": {
+      "name": "07_n",
+      "vsrc": "07_n.mp4",
+      "events": [
+        {
+          "type": "click",
+          "scene": "08",
+          "constraints": {
+            "timespan": [
+              1.1
             ]
           }
         }
-      ],
-      "vsrc": "07b.mp4"
+      ]
     },
-    "08_1": {
-      "name": "08_1",
-      "onend": "09a",
-      "vsrc": "08_1.mp4"
-    },
-    "08_2": {
-      "name": "08_2",
-      "onend": "09a",
-      "vsrc": "08_2.mp4"
-    },
-    "08_3": {
-      "name": "08_3",
-      "onend": "09a",
-      "vsrc": "08_3.mp4"
-    },
-    "08_4": {
-      "name": "08_4",
-      "onend": "09a",
-      "vsrc": "08_4.mp4"
-    },
-    "08_5": {
-      "name": "08_5",
-      "onend": "09a",
-      "vsrc": "08_5.mp4"
-    },
-    "08_6": {
-      "name": "08_6",
-      "onend": "09a",
-      "vsrc": "08_6.mp4"
-    },
-    "08_7": {
-      "name": "08_7",
-      "onend": "09a",
-      "vsrc": "08_7.mp4"
-    },
-    "08_8": {
-      "name": "08_8",
-      "onend": "08b",
-      "vsrc": "08_8.mp4"
-    },
-    "08a": {
-      "name": "08a",
-      "onend": "08b",
-      "poster": {
-        "image": "/public/image/next.png",
-        "sound": "advance/clip_14.mp3"
-      },
-      "events": [
-        {
-          "type": "timeout",
-          "span": 1,
-          "sound": {
-            "src": "bg/08.mp3",
-            "loop": true
-          },
-          "scene_span": {
-            "startsWith": "08"
-          }
-        }
-      ],
-      "vsrc": "08a.mp4"
-    },
-    "08b": {
-      "name": "08b",
+    "08": {
+      "name": "08",
+      "vsrc": "08.mp4",
       "events": [
         {
           "type": "click",
           "scene": "08_1",
           "constraints": {
             "timespan": [
-              17
+              21
             ],
             "hitbox": [
-              9.25,
-              49.89,
-              20.37,
-              15.72
+              10.66,
+              47.94,
+              22.51,
+              13.69
             ]
           }
         },
@@ -1485,13 +1908,13 @@
           "scene": "08_2",
           "constraints": {
             "timespan": [
-              17
+              21
             ],
             "hitbox": [
-              9.62,
-              84.06,
-              20.92,
-              50.2
+              23.37,
+              48.14,
+              34.86,
+              14.1
             ]
           }
         },
@@ -1500,13 +1923,13 @@
           "scene": "08_3",
           "constraints": {
             "timespan": [
-              17
+              21
             ],
             "hitbox": [
-              20.74,
-              49.79,
-              30.92,
-              15.62
+              35.96,
+              48.21,
+              47.09,
+              14.59
             ]
           }
         },
@@ -1515,13 +1938,13 @@
           "scene": "08_4",
           "constraints": {
             "timespan": [
-              17
+              21
             ],
             "hitbox": [
-              21.48,
-              84.27,
-              31.66,
-              50.31
+              9.92,
+              82.73,
+              21.54,
+              48.42
             ]
           }
         },
@@ -1530,13 +1953,13 @@
           "scene": "08_5",
           "constraints": {
             "timespan": [
-              17
+              21
             ],
             "hitbox": [
-              31.48,
-              49.52,
-              40.74,
-              15.75
+              22.88,
+              82.94,
+              34.37,
+              48.76
             ]
           }
         },
@@ -1545,13 +1968,13 @@
           "scene": "08_6",
           "constraints": {
             "timespan": [
-              17
+              21
             ],
             "hitbox": [
-              32.22,
-              42.03,
-              81.41,
-              48.48
+              35.96,
+              82.53,
+              46.84,
+              48.9
             ]
           }
         },
@@ -1560,13 +1983,13 @@
           "scene": "08_7",
           "constraints": {
             "timespan": [
-              17
+              21
             ],
             "hitbox": [
-              42.4,
-              82.6,
-              52.22,
-              16.04
+              49.04,
+              82.25,
+              59.68,
+              15.34
             ]
           }
         },
@@ -1575,84 +1998,141 @@
           "scene": "08_8",
           "constraints": {
             "timespan": [
-              17
+              21
             ],
             "hitbox": [
-              53.7,
-              82.91,
-              63.51,
-              15.93
+              62,
+              82.25,
+              73,
+              15.48
+            ]
+          }
+        },
+        {
+          "type": "timeout",
+          "span": 26000,
+          "sound": {
+            "src": [
+              "delay/clip_01.mp3",
+              "delay/clip_02.mp3",
+              "delay/clip_03.mp3",
+              "delay/clip_04.mp3",
+              "delay/clip_05.mp3",
+              "delay/clip_06.mp3",
+              "delay/clip_07.mp3",
+              "delay/clip_08.mp3",
+              "delay/clip_09.mp3",
+              "delay/clip_10.mp3",
+              "delay/clip_11.mp3",
+              "delay/clip_12.mp3",
+              "delay/clip_13.mp3",
+              "delay/clip_14.mp3",
+              "delay/clip_15.mp3"
+            ],
+            "onend": {
+              "type": "repeat",
+              "unbound": true,
+              "timeout": 4000
+            }
+          }
+        },
+        {
+          "type": "timeout",
+          "span": 4000,
+          "single": true,
+          "sound": {
+            "src": "bg/08.mp3",
+            "loop": true,
+            "volume": 0.5
+          },
+          "scene_span": [
+            "08",
+            "08_1",
+            "08_2",
+            "08_3",
+            "08_4",
+            "08_5",
+            "08_6",
+            "08_7",
+            "08_8"
+          ]
+        }
+      ]
+    },
+    "08_1": {
+      "name": "08_1",
+      "onend": "08_n",
+      "vsrc": "08_1.mp4"
+    },
+    "08_2": {
+      "name": "08_2",
+      "onend": "08_n",
+      "vsrc": "08_2.mp4"
+    },
+    "08_3": {
+      "name": "08_3",
+      "onend": "08_n",
+      "vsrc": "08_3.mp4"
+    },
+    "08_4": {
+      "name": "08_4",
+      "onend": "08_n",
+      "vsrc": "08_4.mp4"
+    },
+    "08_5": {
+      "name": "08_5",
+      "onend": "08_n",
+      "vsrc": "08_5.mp4"
+    },
+    "08_6": {
+      "name": "08_6",
+      "onend": "08_n",
+      "vsrc": "08_6.mp4"
+    },
+    "08_7": {
+      "name": "08_7",
+      "onend": "08_n",
+      "vsrc": "08_7.mp4"
+    },
+    "08_8": {
+      "name": "08_8",
+      "onend": {
+        "scene": "08",
+        "time": 21.6
+      },
+      "vsrc": "08_8.mp4"
+    },
+    "08_n": {
+      "name": "08_n",
+      "vsrc": "08_n.mp4",
+      "events": [
+        {
+          "type": "click",
+          "scene": "09",
+          "constraints": {
+            "timespan": [
+              1.2
             ]
           }
         }
-      ],
-      "vsrc": "08b.mp4"
+      ]
     },
-    "09_1": {
-      "name": "09_1",
-      "onend": "10a",
-      "vsrc": "09_1.mp4"
-    },
-    "09_2": {
-      "name": "09_2",
-      "onend": "10a",
-      "vsrc": "09_2.mp4"
-    },
-    "09_3": {
-      "name": "09_3",
-      "onend": "10a",
-      "vsrc": "09_3.mp4"
-    },
-    "09_4": {
-      "name": "09_4",
-      "onend": "10a",
-      "vsrc": "09_4.mp4"
-    },
-    "09_5": {
-      "name": "09_5",
-      "onend": "10a",
-      "vsrc": "09_5.mp4"
-    },
-    "09_6": {
-      "name": "09_6",
-      "onend": "10a",
-      "vsrc": "09_6.mp4"
-    },
-    "09_7": {
-      "name": "09_7",
-      "onend": "10a",
-      "vsrc": "09_7.mp4"
-    },
-    "09_8": {
-      "name": "09_8",
-      "onend": "10a",
-      "vsrc": "09_8.mp4"
-    },
-    "09_9": {
-      "name": "09_9",
-      "onend": "09b",
-      "vsrc": "09_9.mp4"
-    },
-    "09a": {
-      "name": "09a",
-      "onend": "09b",
-      "vsrc": "09a.mp4"
-    },
-    "09b": {
-      "name": "09b",
+    "09": {
+      "name": "09",
+      "vsrc": "09.mp4",
       "events": [
         {
           "type": "click",
           "scene": "09_1",
           "constraints": {
             "timespan": [
-              35
+              23
             ],
             "hitbox": [
-              6.11,
-              43.75,
-              18.15,
-              9.27
+              12.25,
+              48.62,
+              24.35,
+              14.24
             ]
           }
         },
@@ -1661,13 +2141,13 @@
           "scene": "09_2",
           "constraints": {
             "timespan": [
-              35
+              23
             ],
             "hitbox": [
-              5.93,
-              92.92,
-              17.59,
-              58.33
+              25.69,
+              48.76,
+              37.18,
+              14.65
             ]
           }
         },
@@ -1676,13 +2156,13 @@
           "scene": "09_3",
           "constraints": {
             "timespan": [
-              35
+              23
             ],
             "hitbox": [
-              19.26,
-              43.12,
-              30.93,
-              9.27
+              38.65,
+              48.69,
+              50.02,
+              15.07
             ]
           }
         },
@@ -1691,13 +2171,13 @@
           "scene": "09_4",
           "constraints": {
             "timespan": [
-              35
+              23
             ],
             "hitbox": [
-              19.63,
-              92.92,
-              31.67,
-              58.54
+              11.76,
+              84.59,
+              22.51,
+              50.34
             ]
           }
         },
@@ -1706,13 +2186,13 @@
           "scene": "09_5",
           "constraints": {
             "timespan": [
-              35
+              23
             ],
             "hitbox": [
-              34.26,
-              83.54,
-              46.48,
-              15.73
+              25.33,
+              84.31,
+              36.45,
+              50.48
             ]
           }
         },
@@ -1721,13 +2201,13 @@
           "scene": "09_6",
           "constraints": {
             "timespan": [
-              35
+              23
             ],
             "hitbox": [
-              47.41,
-              45.42,
-              59.44,
-              6.88
+              38.16,
+              84.18,
+              49.41,
+              50.55
             ]
           }
         },
@@ -1736,13 +2216,13 @@
           "scene": "09_7",
           "constraints": {
             "timespan": [
-              35
+              23
             ],
             "hitbox": [
-              48.7,
-              92.71,
-              60.19,
-              58.44
+              51.49,
+              82.8,
+              61.76,
+              15.82
             ]
           }
         },
@@ -1751,98 +2231,128 @@
           "scene": "09_8",
           "constraints": {
             "timespan": [
-              35
+              23
             ],
             "hitbox": [
-              62.22,
-              83.85,
-              85.19,
-              16.46
+              64.69,
+              82.94,
+              75.45,
+              16.1
             ]
           }
         },
-        {
-          "type": "click",
-          "scene": "09_8",
-          "constraints": {
-            "timespan": [
-              35
-            ],
-            "hitbox": [
-              86.67,
-              82.6,
-              97.96,
-              15.42
-            ]
-          }
-        }
-      ],
-      "vsrc": "09b.mp4"
-    },
-    "10_1": {
-      "name": "10_1",
-      "onend": "11a",
-      "vsrc": "10_1.mp4"
-    },
-    "10_2": {
-      "name": "10_2",
-      "onend": "11a",
-      "vsrc": "10_2.mp4"
-    },
-    "10_3": {
-      "name": "10_3",
-      "onend": "11a",
-      "vsrc": "10_3.mp4"
-    },
-    "10_4": {
-      "name": "10_4",
-      "onend": "11a",
-      "vsrc": "10_4.mp4"
-    },
-    "10_5": {
-      "name": "10_5",
-      "onend": "11a",
-      "vsrc": "10_5.mp4"
-    },
-    "10_6": {
-      "name": "10_6",
-      "onend": "11a",
-      "vsrc": "10_6.mp4"
-    },
-    "10_7": {
-      "name": "10_7",
-      "onend": "11a",
-      "vsrc": "10_7.mp4"
-    },
-    "10_8": {
-      "name": "10_8",
-      "onend": "10b",
-      "vsrc": "10_8.mp4"
-    },
-    "10a": {
-      "name": "10a",
-      "onend": "10b",
-      "poster": {
-        "image": "/public/image/next.png",
-        "sound": "advance/clip_14.mp3"
-      },
-      "events": [
         {
           "type": "timeout",
-          "span": 1,
+          "span": 28000,
           "sound": {
-            "src": "bg/10.mp3",
-            "loop": true
+            "src": [
+              "delay/clip_01.mp3",
+              "delay/clip_02.mp3",
+              "delay/clip_03.mp3",
+              "delay/clip_04.mp3",
+              "delay/clip_05.mp3",
+              "delay/clip_06.mp3",
+              "delay/clip_07.mp3",
+              "delay/clip_08.mp3",
+              "delay/clip_09.mp3",
+              "delay/clip_10.mp3",
+              "delay/clip_11.mp3",
+              "delay/clip_12.mp3",
+              "delay/clip_13.mp3",
+              "delay/clip_14.mp3",
+              "delay/clip_15.mp3"
+            ],
+            "onend": {
+              "type": "repeat",
+              "unbound": true,
+              "timeout": 4000
+            }
+          }
+        },
+        {
+          "type": "timeout",
+          "span": 6000,
+          "single": true,
+          "sound": {
+            "src": "bg/09.mp3",
+            "loop": true,
+            "volume": 0.5
           },
-          "scene_span": {
-            "startsWith": "10"
+          "scene_span": [
+            "09",
+            "09_1",
+            "09_2",
+            "09_3",
+            "09_4",
+            "09_5",
+            "09_6",
+            "09_7",
+            "09_8"
+          ]
+        }
+      ]
+    },
+    "09_1": {
+      "name": "09_1",
+      "onend": "09_n",
+      "vsrc": "09_1.mp4"
+    },
+    "09_2": {
+      "name": "09_2",
+      "onend": "09_n",
+      "vsrc": "09_2.mp4"
+    },
+    "09_3": {
+      "name": "09_3",
+      "onend": "09_n",
+      "vsrc": "09_3.mp4"
+    },
+    "09_4": {
+      "name": "09_4",
+      "onend": "09_n",
+      "vsrc": "09_4.mp4"
+    },
+    "09_5": {
+      "name": "09_5",
+      "onend": "09_n",
+      "vsrc": "09_5.mp4"
+    },
+    "09_6": {
+      "name": "09_6",
+      "onend": "09_n",
+      "vsrc": "09_6.mp4"
+    },
+    "09_7": {
+      "name": "09_7",
+      "onend": "09_n",
+      "vsrc": "09_7.mp4"
+    },
+    "09_8": {
+      "name": "09_8",
+      "onend": {
+        "scene": "09",
+        "time": 23.5
+      },
+      "vsrc": "09_8.mp4"
+    },
+    "09_n": {
+      "name": "09_n",
+      "vsrc": "09_n.mp4",
+      "events": [
+        {
+          "type": "click",
+          "scene": "02",
+          "constraints": {
+            "timespan": [
+              0.6
+            ]
           }
         }
-      ],
-      "vsrc": "10a.mp4"
+      ]
     },
-    "10b": {
-      "name": "10b",
+    "10": {
+      "name": "10",
+      "vsrc": "10.mp4",
       "events": [
         {
           "type": "click",
@@ -1852,10 +2362,10 @@
               17
             ],
             "hitbox": [
-              9.25,
-              49.89,
-              20.37,
-              15.72
+              12.73,
+              48.42,
+              23.61,
+              14.24
             ]
           }
         },
@@ -1867,10 +2377,10 @@
               17
             ],
             "hitbox": [
-              9.62,
-              84.06,
-              20.92,
-              50.2
+              24.96,
+              48.62,
+              36.08,
+              14.86
             ]
           }
         },
@@ -1882,9 +2392,9 @@
               17
             ],
             "hitbox": [
-              20.74,
-              49.79,
-              30.92,
+              37.92,
+              48.69,
+              49.53,
               15.62
             ]
           }
@@ -1897,10 +2407,10 @@
               17
             ],
             "hitbox": [
-              21.48,
-              84.27,
-              31.66,
-              50.31
+              12.12,
+              83.49,
+              22.88,
+              49.52
             ]
           }
         },
@@ -1912,10 +2422,10 @@
               17
             ],
             "hitbox": [
-              31.48,
-              49.52,
-              40.74,
-              15.75
+              24.84,
+              83.56,
+              35.72,
+              49.59
             ]
           }
         },
@@ -1927,10 +2437,10 @@
               17
             ],
             "hitbox": [
-              32.22,
-              42.03,
-              81.41,
-              48.48
+              37.92,
+              83.63,
+              49.04,
+              49.52
             ]
           }
         },
@@ -1942,10 +2452,10 @@
               17
             ],
             "hitbox": [
-              42.4,
-              82.6,
-              52.22,
-              16.04
+              50.63,
+              82.94,
+              62.61,
+              15.96
             ]
           }
         },
@@ -1957,391 +2467,312 @@
               17
             ],
             "hitbox": [
-              53.7,
-              82.91,
-              63.51,
-              15.93
-            ]
-          }
-        }
-      ],
-      "vsrc": "10b.mp4"
-    },
-    "11_1": {
-      "name": "11_1",
-      "onend": "12a",
-      "vsrc": "11_1.mp4"
-    },
-    "11_2": {
-      "name": "11_2",
-      "onend": "12a",
-      "vsrc": "11_2.mp4"
-    },
-    "11_3": {
-      "name": "11_3",
-      "onend": "12a",
-      "vsrc": "11_3.mp4"
-    },
-    "11_4": {
-      "name": "11_4",
-      "onend": "12a",
-      "vsrc": "11_4.mp4"
-    },
-    "11_5": {
-      "name": "11_5",
-      "onend": "12a",
-      "vsrc": "11_5.mp4"
-    },
-    "11_6": {
-      "name": "11_6",
-      "onend": "12a",
-      "vsrc": "11_6.mp4"
-    },
-    "11_7": {
-      "name": "11_7",
-      "onend": "12a",
-      "vsrc": "11_7.mp4"
-    },
-    "11_8": {
-      "name": "11_8",
-      "onend": "11b",
-      "vsrc": "11_8.mp4"
-    },
-    "11a": {
-      "name": "11a",
-      "onend": "11b",
-      "poster": {
-        "image": "/public/image/next.png",
-        "sound": "advance/clip_14.mp3"
-      },
-      "events": [
-        {
-          "type": "timeout",
-          "span": 1,
-          "sound": {
-            "src": "bg/11.mp3",
-            "loop": true
-          },
-          "scene_span": {
-            "startsWith": "11"
-          }
-        }
-      ],
-      "vsrc": "11a.mp4"
-    },
-    "11b": {
-      "name": "11b",
-      "events": [
-        {
-          "type": "click",
-          "scene": "11_1",
-          "constraints": {
-            "timespan": [
-              17
-            ],
-            "hitbox": [
-              9.25,
-              49.89,
-              20.37,
-              15.72
-            ]
-          }
-        },
-        {
-          "type": "click",
-          "scene": "11_2",
-          "constraints": {
-            "timespan": [
-              17
-            ],
-            "hitbox": [
-              9.62,
-              84.06,
-              20.92,
-              50.2
-            ]
-          }
-        },
-        {
-          "type": "click",
-          "scene": "11_3",
-          "constraints": {
-            "timespan": [
-              17
-            ],
-            "hitbox": [
-              20.74,
-              49.79,
-              30.92,
-              15.62
-            ]
-          }
-        },
-        {
-          "type": "click",
-          "scene": "11_4",
-          "constraints": {
-            "timespan": [
-              17
-            ],
-            "hitbox": [
-              21.48,
-              84.27,
-              31.66,
-              50.31
-            ]
-          }
-        },
-        {
-          "type": "click",
-          "scene": "11_5",
-          "constraints": {
-            "timespan": [
-              17
-            ],
-            "hitbox": [
-              31.48,
-              49.52,
-              40.74,
+              64.32,
+              82.73,
+              75.81,
               15.75
             ]
           }
         },
         {
-          "type": "click",
-          "scene": "11_6",
-          "constraints": {
-            "timespan": [
-              17
+          "type": "timeout",
+          "span": 22000,
+          "sound": {
+            "src": [
+              "delay/clip_01.mp3",
+              "delay/clip_02.mp3",
+              "delay/clip_03.mp3",
+              "delay/clip_04.mp3",
+              "delay/clip_05.mp3",
+              "delay/clip_06.mp3",
+              "delay/clip_07.mp3",
+              "delay/clip_08.mp3",
+              "delay/clip_09.mp3",
+              "delay/clip_10.mp3",
+              "delay/clip_11.mp3",
+              "delay/clip_12.mp3",
+              "delay/clip_13.mp3",
+              "delay/clip_14.mp3",
+              "delay/clip_15.mp3"
             ],
-            "hitbox": [
-              32.22,
-              42.03,
-              81.41,
-              48.48
-            ]
+            "onend": {
+              "type": "repeat",
+              "unbound": true,
+              "timeout": 4000
+            }
           }
         },
-        {
-          "type": "click",
-          "scene": "11_7",
-          "constraints": {
-            "timespan": [
-              17
-            ],
-            "hitbox": [
-              42.4,
-              82.6,
-              52.22,
-              16.04
-            ]
-          }
-        },
-        {
-          "type": "click",
-          "scene": "11_8",
-          "constraints": {
-            "timespan": [
-              17
-            ],
-            "hitbox": [
-              53.7,
-              82.91,
-              63.51,
-              15.93
-            ]
-          }
-        }
-      ],
-      "vsrc": "11b.mp4"
-    },
-    "12_1": {
-      "name": "12_1",
-      "onend": "13",
-      "vsrc": "12_1.mp4"
-    },
-    "12_2": {
-      "name": "12_2",
-      "onend": "13",
-      "vsrc": "12_2.mp4"
-    },
-    "12_3": {
-      "name": "12_3",
-      "onend": "13",
-      "vsrc": "12_3.mp4"
-    },
-    "12_4": {
-      "name": "12_4",
-      "onend": "13",
-      "vsrc": "12_4.mp4"
-    },
-    "12_5": {
-      "name": "12_5",
-      "onend": "13",
-      "vsrc": "12_5.mp4"
-    },
-    "12_6": {
-      "name": "12_6",
-      "onend": "13",
-      "vsrc": "12_6.mp4"
-    },
-    "12_7": {
-      "name": "12_7",
-      "onend": "13",
-      "vsrc": "12_7.mp4"
-    },
-    "12_8": {
-      "name": "12_8",
-      "onend": "13",
-      "vsrc": "12_8.mp4"
-    },
-    "12a": {
-      "name": "12a",
-      "onend": "12b",
-      "poster": {
-        "image": "/public/image/next.png",
-        "sound": "advance/clip_14.mp3"
-      },
-      "events": [
         {
           "type": "timeout",
-          "span": 1,
+          "span": 5000,
+          "single": true,
           "sound": {
-            "src": "bg/12.mp3",
-            "loop": true
+            "src": "bg/10.mp3",
+            "loop": true,
+            "volume": 0.5
           },
-          "scene_span": {
-            "startsWith": "12"
-          }
+          "scene_span": [
+            "10",
+            "10_1",
+            "10_2",
+            "10_3",
+            "10_4",
+            "10_5",
+            "10_6",
+            "10_7",
+            "10_8"
+          ]
         }
-      ],
-      "vsrc": "12a.mp4"
+      ]
     },
-    "12b": {
-      "name": "12b",
+    "10_1": {
+      "name": "10_1",
+      "onend": "fin_01",
+      "vsrc": "10_1.mp4"
+    },
+    "10_2": {
+      "name": "10_2",
+      "onend": "fin_01",
+      "vsrc": "10_2.mp4"
+    },
+    "10_3": {
+      "name": "10_3",
+      "onend": "fin_01",
+      "vsrc": "10_3.mp4"
+    },
+    "10_4": {
+      "name": "10_4",
+      "onend": "fin_01",
+      "vsrc": "10_4.mp4"
+    },
+    "10_5": {
+      "name": "10_5",
+      "onend": "fin_01",
+      "vsrc": "10_5.mp4"
+    },
+    "10_6": {
+      "name": "10_6",
+      "onend": "fin_01",
+      "vsrc": "10_6.mp4"
+    },
+    "10_7": {
+      "name": "10_7",
+      "onend": "finale",
+      "vsrc": "10_7.mp4"
+    },
+    "10_8": {
+      "name": "10_8",
+      "onend": {
+        "scene": "10",
+        "time": 17.1
+      },
+      "vsrc": "10_8.mp4"
+    },
+    "break": {
+      "name": "break",
+      "onend": "05_n",
+      "vsrc": "break.mp4"
+    },
+    "fin_01": {
+      "name": "fin_01",
+      "onend": "fin_02",
+      "vsrc": "fin_01.mp4"
+    },
+    "fin_02": {
+      "name": "fin_02",
+      "onend": "fin_03",
+      "vsrc": "fin_02.mp4"
+    },
+    "fin_03": {
+      "name": "fin_03",
+      "onend": "00_1",
+      "vsrc": "fin_03.mp4"
+    },
+    "interruption": {
+      "name": "interuption",
+      "vsrc": "interuption.mp4",
       "events": [
         {
           "type": "click",
-          "scene": "12_1",
+          "scene": "interuption_1",
           "constraints": {
             "timespan": [
-              17
+              31.5
             ],
             "hitbox": [
-              9.25,
-              49.89,
-              20.37,
-              15.72
+              6.13,
+              43.33,
+              17.99,
+              9.5
             ]
           }
         },
         {
           "type": "click",
-          "scene": "12_2",
+          "scene": "interuption_2",
           "constraints": {
             "timespan": [
-              17
+              31.5
             ],
             "hitbox": [
-              9.62,
-              84.06,
-              20.92,
-              50.2
+              6.13,
+              92.91,
+              17.99,
+              58.66
             ]
           }
         },
         {
           "type": "click",
-          "scene": "12_3",
+          "scene": "interuption_3",
           "constraints": {
             "timespan": [
-              17
+              31.5
             ],
             "hitbox": [
-              20.74,
-              49.79,
-              30.92,
-              15.62
+              19.7,
+              43.12,
+              31.56,
+              9.5
             ]
           }
         },
         {
           "type": "click",
-          "scene": "12_4",
+          "scene": "interuption_4",
           "constraints": {
             "timespan": [
-              17
+              31.5
             ],
             "hitbox": [
-              21.48,
-              84.27,
-              31.66,
-              50.31
+              19.58,
+              92.63,
+              32.42,
+              58.53
             ]
           }
         },
         {
           "type": "click",
-          "scene": "12_5",
+          "scene": "interuption_5",
           "constraints": {
             "timespan": [
-              17
+              31.5
             ],
             "hitbox": [
-              31.48,
-              49.52,
-              40.74,
-              15.75
+              34.86,
+              83.01,
+              45.99,
+              16.03
             ]
           }
         },
         {
           "type": "click",
-          "scene": "12_6",
+          "scene": "interuption_6",
           "constraints": {
             "timespan": [
-              17
+              31.5
             ],
             "hitbox": [
-              32.22,
-              42.03,
-              81.41,
-              48.48
+              48.31,
+              45.46,
+              59.8,
+              7.09
             ]
           }
         },
         {
           "type": "click",
-          "scene": "12_7",
+          "scene": "interuption_7",
           "constraints": {
             "timespan": [
-              17
+              31.5
             ],
             "hitbox": [
-              42.4,
-              82.6,
-              52.22,
-              16.04
+              48.92,
+              92.43,
+              60.29,
+              58.73
             ]
           }
         },
         {
           "type": "click",
-          "scene": "12_8",
+          "scene": "interuption_8",
           "constraints": {
             "timespan": [
-              17
+              31.5
             ],
             "hitbox": [
-              53.7,
-              82.91,
-              63.51,
-              15.93
+              62.37,
+              83.76,
+              85.23,
+              16.58
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "interuption_9",
+          "constraints": {
+            "timespan": [
+              31.5
+            ],
+            "hitbox": [
+              87.31,
+              82.39,
+              99.04,
+              15.48
             ]
           }
         }
-      ],
-      "vsrc": "12b.mp4"
+      ]
+    },
+    "interruption_1": {
+      "name": "interruption_1",
+      "onend": "07_n",
+      "vsrc": "interruption_1.mp4"
+    },
+    "interruption_2": {
+      "name": "interruption_2",
+      "onend": "07_n",
+      "vsrc": "interruption_2.mp4"
+    },
+    "interruption_3": {
+      "name": "interruption_3",
+      "onend": "07_n",
+      "vsrc": "interruption_3.mp4"
+    },
+    "interruption_4": {
+      "name": "interruption_4",
+      "onend": "07_n",
+      "vsrc": "interruption_4.mp4"
+    },
+    "interruption_5": {
+      "name": "interruption_5",
+      "onend": "07_n",
+      "vsrc": "interruption_5.mp4"
+    },
+    "interruption_6": {
+      "name": "interruption_6",
+      "onend": "07_n",
+      "vsrc": "interruption_6.mp4"
+    },
+    "interruption_7": {
+      "name": "interruption_7",
+      "onend": "07_n",
+      "vsrc": "interruption_7.mp4"
+    },
+    "interruption_8": {
+      "name": "interruption_8",
+      "onend": "07_n",
+      "vsrc": "interruption_8.mp4"
+    },
+    "interruption_9": {
+      "name": "interruption_9",
+      "onend": "07_n",
+      "vsrc": "interruption_9.mp4"
     }
   }
 }

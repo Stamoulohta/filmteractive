@@ -1,46 +1,10 @@
 {
-  "thumb": "thumb.png",
-  "enter": "00_1",
-  "sources": "https://drive.google.com/drive/folders/12WCdRHcW-HybjfFihY_LiCtUUTj_UCha?usp=sharing",
+  "thumb": "poster.png",
+  "enter": "00_0",
+  "sources": "http://brechtapp.eu/apsurdism",
   "audio": "audio",
   "image": "image",
-  "events": [
-    {
-      "type": "click",
-      "sound": "fx/click.mp3"
-    },
-    {
-      "type": "timeout",
-      "span": 120000,
-      "emergeOn": {
-        "endsWith": "b"
-      },
-      "sound": {
-        "src": [
-          "delay/clip_01.mp3",
-          "delay/clip_02.mp3",
-          "delay/clip_03.mp3",
-          "delay/clip_04.mp3",
-          "delay/clip_05.mp3",
-          "delay/clip_06.mp3",
-          "delay/clip_07.mp3",
-          "delay/clip_08.mp3",
-          "delay/clip_09.mp3",
-          "delay/clip_10.mp3",
-          "delay/clip_11.mp3",
-          "delay/clip_12.mp3",
-          "delay/clip_13.mp3",
-          "delay/clip_14.mp3",
-          "delay/clip_15.mp3"
-        ]
-      }
-    }
-  ],
+  "events": [],
   "sizes": null,
-  "scenes": {
-    "13": {
-      "name": "13",
-      "vsrc": "13.mp4"
-    }
-  }
+  "scenes": {}
 }

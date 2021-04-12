@@ -9,7 +9,7 @@ EXT_OUT = mp4
 
 RM = rm -rf
 
-SIZES = 1080 720 360
+SIZES = 720 360 # 1080
 SCENE_MAKE = config.mk
 SCENE_JSON = scene.json
 SCENE_DMX  = input.dmx

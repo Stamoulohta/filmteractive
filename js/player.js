@@ -29,8 +29,11 @@ function Filmteractive(id, scenario, options) {
                 const video_buffer = document.createElement("video");
                 const video_source = document.createElement("source");
                 video_source.setAttribute("type", "video/mp4");
+                video_source.setAttribute("src", "");
 
                 video_buffer.id = `stage-buffer-${i}`;
+                video_buffer.crossOrigin = "";
+                video_buffer.setAttribute("preload", "none");
                 video_buffer.appendChild(video_source);
                 video_buffer.removeAttribute("controls");
                 video_buffer.addEventListener("ended", (evt) => {
@@ -69,6 +72,7 @@ function Filmteractive(id, scenario, options) {
         attachStatic() {
             this.static = document.createElement("img");
             this.static.id = "stage-poster";
+            this.static.crossOrigin = "";
             this.appendChild(this.static);
             this.showStatic();
         }
@@ -95,9 +99,15 @@ function Filmteractive(id, scenario, options) {
         }
 
         play() {
-            this.hideStatic();
-            this.currentBuffer.classList.add("current");
+            const bound_hideStatic = this.hideStatic.bind(this);
             this.currentBuffer.play();
+            this.currentBuffer.addEventListener("timeupdate", function handle(e) {
+                if(e.target.currentTime) {
+                    bound_hideStatic();
+                    e.target.classList.add("current");
+                    e.target.removeEventListener("timeupdate", handle);
+                }
+            })
         }
 
         increment() {
@@ -202,6 +212,8 @@ function Filmteractive(id, scenario, options) {
 
         kill() {
             this.audio.pause();
+            this.audio.removeAttribute("src");
+            this.audio.load();
             this.audio = null;
         }
 
@@ -211,9 +223,8 @@ function Filmteractive(id, scenario, options) {
                 return;
             }
             if (onend?.type === "repeat") {
-                const timeout = onend?.timeout || 0;
-                Object.assign({}, this.evt, {span: timeout});
-                EventStack.instance.push(Object.assign({}, this.evt, {span: timeout}));
+                const timeout = onend?.timeout || this.evt.span;
+                EventStack.instance.push(Object.assign({}, this.evt, {span: timeout, unbound: onend?.unbound || false}));
             }
         }
 
@@ -289,10 +300,10 @@ function Filmteractive(id, scenario, options) {
 
             this.handler = this.activate.bind(this);
 
-            if (this.opts.global) {
-                this.emerge();
-            } else {
-                this.init();
+            if(this.opts?.unbound || ! stage.currentBuffer.paused ) this.init();
+            else {
+                const bound_init = this.init.bind(this);
+                stage.currentBuffer.addEventListener("play", bound_init);
             }
         }
 
@@ -409,10 +420,6 @@ function Filmteractive(id, scenario, options) {
             }
             return !(this.delete_me && this.abort());
         }
-
-        get single() {
-            return this.opts.single || false;
-        }
     }
 
     class EventStack {
@@ -430,8 +437,7 @@ function Filmteractive(id, scenario, options) {
         }
 
         push(opts) {
-            const evt = new Event(opts);
-            if (evt.single && this.has(evt)) {
+            if (opts.single && this.has(opts)) {
                 return;
             }
             this.data.push(new Event(opts));
@@ -441,18 +447,14 @@ function Filmteractive(id, scenario, options) {
             this.data = this.data.filter(event => event && event.updateSceneId(scene_id));
         }
 
-        has(event) {
-            this.data.some((evt) => {
-                return JSON.stringify(evt) === JSON.stringify(event)
-            })
+        has(opts) {
+            return this.data.some((evt) => { return evt.opts === opts});
         }
     }
 
     class Director {
 
         constructor() {
-            this.vsource = document.createElement("source");
-
             const bound_ended = this.ended.bind(this);
             stage.addEventListener("current-buffer-ended", bound_ended);
             this.addEvents(scenario.events.map(evt => ({...evt, global: true})));
@@ -508,7 +510,6 @@ function Filmteractive(id, scenario, options) {
 
     const stage = document.getElementById(id);
     let director = null;
-    let scene = null;
     const audio_path = `${scenario.sources}/${scenario.audio}/`;
     const image_path = `${scenario.sources}/${scenario.image}/`;
     let video_path = getVideoPath();
@@ -516,9 +517,11 @@ function Filmteractive(id, scenario, options) {
     (function init() {
         scenario.thumb && stage.setStatic(image_path + scenario.thumb, false);
         stage.addEventListener("click", function handle() {
-            toggleFullScreen(this);
+            toggleFullScreen();
             director = new Director();
             stage.removeEventListener("click", handle);
+            stage.click();
+            stage.addEventListener("dblclick", () => toggleFullScreen());
         });
     })()
 
@@ -539,6 +542,7 @@ function Filmteractive(id, scenario, options) {
                     return;
             }
         } else {
+            screen.orientation?.lock("landscape").catch(() => {});
             switch ("function") {
                 case typeof stage.requestFullscreen :
                     stage.requestFullscreen();
