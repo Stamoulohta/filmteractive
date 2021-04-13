@@ -458,7 +458,7 @@ function Filmteractive(id, scenario, options) {
             const bound_ended = this.ended.bind(this);
             stage.addEventListener("current-buffer-ended", bound_ended);
             this.addEvents(scenario.events.map(evt => ({...evt, global: true})));
-            this.setScene(scenario.enter)
+            this.setScene(window.location.hash.replace("#", "") || scenario.enter)
         }
 
         ended() {
@@ -468,6 +468,7 @@ function Filmteractive(id, scenario, options) {
         }
 
         setScene(scene_id) {
+            window.location.href = `#${scene_id}`;
             EventStack.instance.update(scene_id);
             this.scene = scenario.scenes[scene_id];
             this.act();
