@@ -10,7 +10,7 @@ body {
     height: 100vh;
 }
 
-buffered-stage {
+#stage {
     display: block;
     position: absolute;
     z-index: 0;
@@ -21,7 +21,7 @@ buffered-stage {
     height: 50vh;
 }
 
-buffered-stage > * {
+#stage > * {
     display: none;
     position: relative;
     margin:0;
@@ -30,11 +30,11 @@ buffered-stage > * {
     height: 100%;
 }
 
-buffered-stage > *.current {
+#stage > *.current {
     display: block;
 }
 
-buffered-stage > img {
+#stage > img {
     margin: 0 auto;
     width: auto;
 }
