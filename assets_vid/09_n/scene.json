@@ -4,7 +4,7 @@
   "events": [
     {
       "type" : "click",
-      "scene" : "02",
+      "scene" : "10",
       "constraints" : {
         "timespan" : [0.6]
       }

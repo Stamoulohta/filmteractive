@@ -1,7 +1,7 @@
 {
   "thumb": "poster.png",
   "enter": "00_0",
-  "sources": "http://brechtapp.eu/apsurdism",
+  "sources": "public",
   "audio": "audio",
   "image": "image",
   "events": [],
@@ -2341,7 +2341,7 @@
       "events": [
         {
           "type": "click",
-          "scene": "02",
+          "scene": "10",
           "constraints": {
             "timespan": [
               0.6
@@ -2589,12 +2589,12 @@
       "vsrc": "fin_03.mp4"
     },
     "interruption": {
-      "name": "interuption",
-      "vsrc": "interuption.mp4",
+      "name": "interruption",
+      "vsrc": "interruption.mp4",
       "events": [
         {
           "type": "click",
-          "scene": "interuption_1",
+          "scene": "interruption_1",
           "constraints": {
             "timespan": [
               31.5
@@ -2609,7 +2609,7 @@
         },
         {
           "type": "click",
-          "scene": "interuption_2",
+          "scene": "interruption_2",
           "constraints": {
             "timespan": [
               31.5
@@ -2624,7 +2624,7 @@
         },
         {
           "type": "click",
-          "scene": "interuption_3",
+          "scene": "interruption_3",
           "constraints": {
             "timespan": [
               31.5
@@ -2639,7 +2639,7 @@
         },
         {
           "type": "click",
-          "scene": "interuption_4",
+          "scene": "interruption_4",
           "constraints": {
             "timespan": [
               31.5
@@ -2654,7 +2654,7 @@
         },
         {
           "type": "click",
-          "scene": "interuption_5",
+          "scene": "interruption_5",
           "constraints": {
             "timespan": [
               31.5
@@ -2669,7 +2669,7 @@
         },
         {
           "type": "click",
-          "scene": "interuption_6",
+          "scene": "interruption_6",
           "constraints": {
             "timespan": [
               31.5
@@ -2684,7 +2684,7 @@
         },
         {
           "type": "click",
-          "scene": "interuption_7",
+          "scene": "interruption_7",
           "constraints": {
             "timespan": [
               31.5
@@ -2699,7 +2699,7 @@
         },
         {
           "type": "click",
-          "scene": "interuption_8",
+          "scene": "interruption_8",
           "constraints": {
             "timespan": [
               31.5
@@ -2714,7 +2714,7 @@
         },
         {
           "type": "click",
-          "scene": "interuption_9",
+          "scene": "interruption_9",
           "constraints": {
             "timespan": [
               31.5
