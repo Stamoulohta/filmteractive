@@ -4,7 +4,8 @@ assets_*/*/*
 !assets_*/*/*.json
 !assets_*/*/*.mk
 
-public/
+public/*
+!public/.htaccess
 
 node_modules/
 http-log/

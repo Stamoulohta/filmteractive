@@ -1,0 +1,13 @@
+<IfModule mod_headers.c>
+	Header always set Access-Control-Allow-Origin "http://opero.gr"
+	Header always set Access-Control-Allow-Methods "GET"
+	Header always set Access-Control-Max-Age "600"
+</ifModule>
+
+SetEnv dontlog
+SetEnvIfExpr "req('Range') =~ /bytes=0-/ && %{REQUEST_URI} =~ /\.mp4$/" apsurdism
+
+# VHOST CONF:
+# LogFormat "%h,%{sec}t,%f,%>s" test
+# CustomLog ${APACHE_LOG_DIR}/app-access.log combined env=!dontlog
+# CustomLog /path/to/stats.csv test env=apsurdism
