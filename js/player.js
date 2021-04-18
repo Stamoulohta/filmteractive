@@ -14,8 +14,6 @@ function Filmteractive(id, scenario, options) {
             this.buffers = [];
             this.sources = [];
 
-            this.frameGrabber = document.createElement("canvas");
-
             this.attachElements();
         }
 
@@ -36,16 +34,6 @@ function Filmteractive(id, scenario, options) {
                 video_buffer.setAttribute("preload", "none");
                 video_buffer.appendChild(video_source);
                 video_buffer.removeAttribute("controls");
-                video_buffer.addEventListener("ended", (evt) => {
-                    const buffer = evt.target;
-                    if (this.isCurrent(buffer)) {
-                        this.showStatic();
-                        const event = document.createEvent('Event');
-                        event.initEvent("current-buffer-ended", true, true);
-                        this.dispatchEvent(event);
-                    }
-                    buffer.classList.remove("current");
-                });
 
                 video_buffer.addEventListener("canplaythrough", (evt) => {
                     if (this.next_scene && this.isCurrent(evt.target)) {
@@ -56,10 +44,10 @@ function Filmteractive(id, scenario, options) {
                 video_buffer.addEventListener("timeupdate", (evt) => {
                     const buffer = evt.target;
                     if (this.isCurrent(buffer) && (buffer.currentTime >= buffer.duration)) {
-                        this.frameGrabber.width = buffer.videoWidth;
-                        this.frameGrabber.height = buffer.videoHeight;
-                        this.frameGrabber.getContext("2d").drawImage(buffer, 0, 0);
-                        this.setStatic(this.frameGrabber.toDataURL());
+                        buffer.pause();
+                        const event = document.createEvent('Event');
+                        event.initEvent("current-buffer-ended", true, true);
+                        this.dispatchEvent(event);
                     }
                 })
 
@@ -72,9 +60,9 @@ function Filmteractive(id, scenario, options) {
         attachStatic() {
             this.static = document.createElement("img");
             this.static.id = "stage-poster";
+            this.static.setAttribute("align", "middle");
             this.static.crossOrigin = "";
             this.appendChild(this.static);
-            this.showStatic();
         }
 
         showStatic() {
@@ -99,12 +87,12 @@ function Filmteractive(id, scenario, options) {
         }
 
         play() {
-            const bound_hideStatic = this.hideStatic.bind(this);
             this.currentBuffer.play();
+            const rest_buffers = this.buffers.filter((_, i) => i !== this.index);
             this.currentBuffer.addEventListener("timeupdate", function handle(e) {
                 if(e.target.currentTime) {
-                    bound_hideStatic();
                     e.target.classList.add("current");
+                    rest_buffers.forEach((buffer) => buffer.classList.remove("current"));
                     e.target.removeEventListener("timeupdate", handle);
                 }
             })
@@ -112,13 +100,6 @@ function Filmteractive(id, scenario, options) {
 
         increment() {
             this.index = ++this.index % Stage.count;
-        }
-
-        swapBuffers() {
-            this.increment();
-            this.buffers.forEach((buffer) => {
-                buffer.classList.remove("current")
-            })
         }
 
         get currentBuffer() {
@@ -158,7 +139,6 @@ function Filmteractive(id, scenario, options) {
         }
 
         setScene(scene) {
-            this.showStatic();
             const src = video_path + scene.vsrc;
             if (this.nextSource.getAttribute("src") !== src) {
                 this.nextSource.setAttribute("src", src);
@@ -172,16 +152,32 @@ function Filmteractive(id, scenario, options) {
 
             this.next_scene = scene.onend;
 
-            this.swapBuffers();
+            this.increment();
         }
 
         preload() {
             const scene = scenario.scenes[this.next_scene?.scene || this.next_scene];
-            if (scene) {
-                this.nextSource.setAttribute("src", video_path + scene.vsrc);
-                this.nextBuffer.load();
-                this.nextBuffer.currentTime = this.next_scene?.time || 0;
-                this.nextBuffer.dataset.loading = "1";
+            // TODO: wait for current buffer to play before loading because this may still be shown
+            // TODO: then remove the class control
+
+            function load(stage) {
+                if(scene) {
+                    stage.nextSource.setAttribute("src", video_path + scene.vsrc);
+                    stage.nextBuffer.load();
+                    stage.nextBuffer.currentTime = stage.next_scene?.time || 0;
+                    stage.nextBuffer.dataset.loading = "1";
+                }
+            }
+
+            if(this.currentBuffer.paused) {
+                this.currentBuffer.addEventListener("timeupdate", function handle(e) {
+                if(e.target.currentTime) {
+                    load(this)
+                    e.target.removeEventListener("timeupdate", handle);
+                }
+            })
+            } else{
+                load(this);
             }
         }
     }
@@ -480,7 +476,7 @@ function Filmteractive(id, scenario, options) {
                 const image = typeof (this.scene.poster) === "object" ? this.scene.poster.image : this.scene.poster;
                 const sound = this.scene.poster.sound;
 
-                stage.setStatic(image);
+                stage.setStatic(image)
                 if (sound) {
                     this.addEvents([{
                         "type": "timeout",
@@ -492,11 +488,13 @@ function Filmteractive(id, scenario, options) {
                 }
                 stage.addEventListener("click", function handle() {
                     stage.play();
+                    stage.hideStatic();
                     director.addEvents(director.scene.events);
                     stage.removeEventListener("click", handle)
                 });
             } else {
                 stage.play();
+                stage.hideStatic();
                 this.addEvents(this.scene.events);
             }
         }
@@ -516,7 +514,7 @@ function Filmteractive(id, scenario, options) {
     let video_path = getVideoPath();
 
     (function init() {
-        scenario.thumb && stage.setStatic(image_path + scenario.thumb, false);
+        scenario.thumb && stage.setStatic(image_path + scenario.thumb) || stage.showStatic();
         stage.addEventListener("click", function handle() {
             toggleFullScreen();
             director = new Director();
