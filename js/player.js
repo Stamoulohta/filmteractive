@@ -1,6 +1,6 @@
 function Filmteractive(id, scenario, options) {
 
-    class Stage extends HTMLDivElement {
+    class Stage extends HTMLElement {
 
         static count = 2;
 
@@ -31,7 +31,8 @@ function Filmteractive(id, scenario, options) {
 
                 video_buffer.id = `stage-buffer-${i}`;
                 video_buffer.crossOrigin = "";
-                video_buffer.setAttribute("preload", "none");
+                video_buffer.preload = "none";
+                video_buffer.poster = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAJEAAAAABO0S+tAAAADUlEQVQY02NgGAVEAQABKQABQ8duRgAAAABJRU5ErkJggg==";
                 video_buffer.appendChild(video_source);
                 video_buffer.removeAttribute("controls");
 
@@ -60,7 +61,6 @@ function Filmteractive(id, scenario, options) {
         attachStatic() {
             this.static = document.createElement("img");
             this.static.id = "stage-poster";
-            this.static.setAttribute("align", "middle");
             this.static.crossOrigin = "";
             this.appendChild(this.static);
         }
@@ -71,7 +71,7 @@ function Filmteractive(id, scenario, options) {
 
         hideStatic() {
             this.static.classList.remove("current");
-            this.static.setAttribute("src", "");
+            this.static.src = poster_null;
         }
 
         isCurrent(buffer) {
@@ -455,11 +455,25 @@ function Filmteractive(id, scenario, options) {
             stage.addEventListener("current-buffer-ended", bound_ended);
             this.addEvents(scenario.events.map(evt => ({...evt, global: true})));
             this.setScene(window.location.hash.replace("#", "") || scenario.enter)
+            this.wakeLock();
+        }
+
+        async wakeLock() {
+            this.lock = null;
+            if ('wakeLock' in navigator) {
+                try {
+                    this.lock = await navigator.wakeLock.request('screen');
+                } catch (err) {
+                    console.log(`${err.name}, ${err.message}`);
+                }
+            }
         }
 
         ended() {
             if (this.scene.onend) {
                 this.setScene(this.scene.onend?.scene || this.scene.onend);
+            } else if (this.scene?.last === true && this.lock) {
+                this.lock.release().then(() => this.lock = null)
             }
         }
 
@@ -493,6 +507,7 @@ function Filmteractive(id, scenario, options) {
                     stage.removeEventListener("click", handle)
                 });
             } else {
+                stage.setStatic(poster_null);
                 stage.play();
                 stage.hideStatic();
                 this.addEvents(this.scene.events);
@@ -504,14 +519,15 @@ function Filmteractive(id, scenario, options) {
         }
     }
 
+    customElements.define('buffered-stage', Stage);
 
-    customElements.define('buffered-stage', Stage, {extends: 'div'});
-
+    const poster_null = "data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAJEAAAAABO0S+tAAAADUlEQVQY02NgGAVEAQABKQABQ8duRgAAAABJRU5ErkJggg==";
     const stage = document.getElementById(id);
     let director = null;
     const audio_path = `${scenario.sources}/${scenario.audio}/`;
     const image_path = `${scenario.sources}/${scenario.image}/`;
     let video_path = getVideoPath();
+    window.lastTapTime = (new Date).getTime();
 
     (function init() {
         scenario.thumb && stage.setStatic(image_path + scenario.thumb) || stage.showStatic();
@@ -520,12 +536,22 @@ function Filmteractive(id, scenario, options) {
             director = new Director();
             stage.removeEventListener("click", handle);
             stage.click();
-            stage.addEventListener("dblclick", () => toggleFullScreen());
+            window.addEventListener("click",  clickHandler);
+            window.addEventListener("touchstart",  clickHandler);
         });
     })()
 
+    function clickHandler(e) {
+        const currentTapTime = (new Date).getTime();
+        const delta = currentTapTime - window.lastTapTime;
+        if(delta < 200 && delta > 100) {
+            toggleFullScreen();
+        }
+        window.lastTapTime = currentTapTime;
+    }
+
     function toggleFullScreen() {
-        if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+        if (typeof screen.orientation !== undefined && (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement)) {
             switch ("function") {
                 case typeof (document.exitFullscreen) :
                     document.exitFullscreen();
