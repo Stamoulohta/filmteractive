@@ -1,5 +1,13 @@
 {
-  "name": "00_6",
-  "onend": "01",
-  "vsrc": "00_6.mp4"
+  "name": "00_n",
+  "vsrc": "00_n.mp4",
+  "events": [
+    {
+      "type" : "click",
+      "scene" : "01",
+      "constraints" : {
+        "timespan" : [0.8]
+      }
+    }
+  ]
 }

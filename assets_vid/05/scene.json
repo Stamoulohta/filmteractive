@@ -12,7 +12,7 @@
     },
     {
       "type" : "click",
-      "scene" : "05_1",
+      "scene" : "05_2",
       "constraints" : {
         "timespan" : [21.5],
         "hitbox" : [21.90, 48.42, 33.64, 14.04]
@@ -20,7 +20,7 @@
     },
     {
       "type" : "click",
-      "scene" : "05_1",
+      "scene" : "05_3",
       "constraints" : {
         "timespan" : [21.5],
         "hitbox" : [35.23, 48.49, 46.23, 14.93]
@@ -28,7 +28,7 @@
     },
     {
       "type" : "click",
-      "scene" : "05_1",
+      "scene" : "05_4",
       "constraints" : {
         "timespan" : [21.5],
         "hitbox" : [10.04, 83.14, 21.66, 49.17]
@@ -36,7 +36,7 @@
     },
     {
       "type" : "click",
-      "scene" : "05_1",
+      "scene" : "05_5",
       "constraints" : {
         "timespan" : [21.5],
         "hitbox" : [22.39, 83.01, 33.76, 49.04]
@@ -44,7 +44,7 @@
     },
     {
       "type" : "click",
-      "scene" : "05_1",
+      "scene" : "05_6",
       "constraints" : {
         "timespan" : [21.5],
         "hitbox" : [34.74, 83.28, 46.72, 49.45]
@@ -52,7 +52,7 @@
     },
     {
       "type" : "click",
-      "scene" : "05_1",
+      "scene" : "05_7",
       "constraints" : {
         "timespan" : [21.5],
         "hitbox" : [47.70, 82.66, 58.94, 15.75]
@@ -60,7 +60,7 @@
     },
     {
       "type" : "click",
-      "scene" : "05_1",
+      "scene" : "05_8",
       "constraints" : {
         "timespan" : [21.5],
         "hitbox" : [59.92, 82.80, 72.76, 16.31]
@@ -68,7 +68,7 @@
     },
     {
       "type": "timeout",
-      "span": 26000,
+      "span": 28000,
       "sound": {
         "src": [
           "delay/clip_01.mp3",

@@ -20,10 +20,7 @@
 
 <body>
   <div class="main">
-    <article>
-      <header></header>
-       <buffered-stage id="stage" height="50%"></buffered-stage>
-    </article>
+       <buffered-stage id="stage"></buffered-stage>
   </div><!-- .main -->
 
   <footer>

@@ -68,7 +68,7 @@
     },
     {
       "type": "timeout",
-      "span": 21000,
+      "span": 22350,
       "sound": {
         "src": [
           "delay/clip_01.mp3",

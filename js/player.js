@@ -2,10 +2,9 @@ function Filmteractive(id, scenario, options) {
 
     class Stage extends HTMLElement {
 
-        static count = 2;
-
         constructor() {
             super();
+            this.count = 2
             this.index = 0;
 
             this.next_scene = null;
@@ -23,7 +22,7 @@ function Filmteractive(id, scenario, options) {
         }
 
         attachBuffers() {
-            for (let i = 0; i < Stage.count; i++) {
+            for (let i = 0; i < this.count; i++) {
                 const video_buffer = document.createElement("video");
                 const video_source = document.createElement("source");
                 video_source.setAttribute("type", "video/mp4");
@@ -99,7 +98,7 @@ function Filmteractive(id, scenario, options) {
         }
 
         increment() {
-            this.index = ++this.index % Stage.count;
+            this.index = ++this.index % this.count;
         }
 
         get currentBuffer() {
@@ -107,7 +106,7 @@ function Filmteractive(id, scenario, options) {
         }
 
         get nextBuffer() {
-            return this.buffers[(this.index + 1) % Stage.count];
+            return this.buffers[(this.index + 1) % this.count];
         }
 
         get currentSource() {
@@ -115,7 +114,7 @@ function Filmteractive(id, scenario, options) {
         }
 
         get nextSource() {
-            return this.sources[(this.index + 1) % Stage.count];
+            return this.sources[(this.index + 1) % this.count];
         }
 
         get contentDimensions() {
@@ -254,13 +253,11 @@ function Filmteractive(id, scenario, options) {
 
     class AudioStack {
 
-        static self = false;
-
         static get instance() {
-            if (!AudioStack.self) {
-                AudioStack.self = new AudioStack();
+            if (!audioStack) {
+                audioStack = new AudioStack();
             }
-            return AudioStack.self;
+            return audioStack;
         }
 
         constructor() {
@@ -419,13 +416,12 @@ function Filmteractive(id, scenario, options) {
     }
 
     class EventStack {
-        static self = false;
 
         static get instance() {
-            if (!EventStack.self) {
-                EventStack.self = new EventStack();
+            if (!eventStack) {
+                eventStack = new EventStack();
             }
-            return EventStack.self;
+            return eventStack;
         }
 
         constructor() {
@@ -524,6 +520,8 @@ function Filmteractive(id, scenario, options) {
     const poster_null = "data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAJEAAAAABO0S+tAAAADUlEQVQY02NgGAVEAQABKQABQ8duRgAAAABJRU5ErkJggg==";
     const stage = document.getElementById(id);
     let director = null;
+    let audioStack = null;
+    let eventStack = null;
     const audio_path = `${scenario.sources}/${scenario.audio}/`;
     const image_path = `${scenario.sources}/${scenario.image}/`;
     let video_path = getVideoPath();

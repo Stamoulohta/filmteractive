@@ -68,7 +68,7 @@
     },
     {
       "type": "timeout",
-      "span": 28000,
+      "span": 29500,
       "sound": {
         "src": [
           "delay/clip_01.mp3",
@@ -101,7 +101,7 @@
       "sound": {
         "src": "bg/09.mp3",
         "loop": true,
-        "volume": 0.5
+        "volume": 0.2
       },
       "scene_span": ["09", "09_1", "09_2", "09_3", "09_4", "09_5", "09_6", "09_7", "09_8"]
     }

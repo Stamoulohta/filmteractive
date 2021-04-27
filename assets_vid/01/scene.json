@@ -15,7 +15,7 @@
       "scene" : "01_2",
       "constraints" : {
         "timespan" : [21],
-        "hitbox" : [9.19, 49.66, 19.70, 15.55]
+        "hitbox" : [21.01, 49.52, 30.48, 15.87]
       }
     },
     {
@@ -68,7 +68,7 @@
     },
     {
       "type": "timeout",
-      "span": 25000,
+      "span": 28300,
       "scene_span": ["01"],
       "sound": {
         "src": [

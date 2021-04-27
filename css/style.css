@@ -20,10 +20,15 @@ body {
     height: 50vh;
 }
 
+#stage:-webkit-full-screen {
+    top: 0;
+    height: 100%;
+}
+
 #stage > * {
     display: none;
-    /*cursor: none; */
     position: relative;
+    background-color: #222;
     z-index:0;
     margin:0;
     padding:0;

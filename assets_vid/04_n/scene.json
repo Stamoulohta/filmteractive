@@ -6,7 +6,7 @@
       "type" : "click",
       "scene" : "05",
       "constraints" : {
-        "timespan" : [2.6]
+        "timespan" : [1.3]
       }
     }
   ]

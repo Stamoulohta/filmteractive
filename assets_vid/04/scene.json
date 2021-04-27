@@ -68,7 +68,7 @@
     },
     {
       "type": "timeout",
-      "span": 25000,
+      "span": 27000,
       "scene_span": "04",
       "sound": {
         "src": [
