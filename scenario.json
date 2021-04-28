@@ -1,6 +1,6 @@
 {
   "thumb": "poster.png",
-  "enter": "00_0",
+  "enter": "00_l",
   "sources": "http://brechtapp.eu/apsurdism",
   "audio": "audio",
   "image": "image",
@@ -12,11 +12,8 @@
   "scenes": {
     "00_0": {
       "name": "00_0",
-      "onend": "00_1",
-      "vsrc": "00_0.mp4",
-      "poster": {
-        "image": "http://brechtapp.eu/apsurdism/image/poster.png"
-      }
+      "onend": "intro",
+      "vsrc": "00_0.mp4"
     },
     "00_1": {
       "name": "00_1",
@@ -244,6 +241,11 @@
       "name": "00_5",
       "onend": "00_n",
       "vsrc": "00_5.mp4"
+    },
+    "00_l": {
+      "name": "00_l",
+      "onend": "intro",
+      "vsrc": "00_l.mp4"
     },
     "00_n": {
       "name": "00_n",
@@ -2785,9 +2787,196 @@
       "onend": "07_n",
       "vsrc": "interruption_9.mp4"
     },
+    "intro": {
+      "name": "intro",
+      "onend": "00_1",
+      "vsrc": "intro.mp4"
+    },
     "outro": {
       "name": "outro",
-      "vsrc": "outro.mp4"
+      "vsrc": "outro.mp4",
+      "events": [
+        {
+          "type": "click",
+          "scene": "intro",
+          "constraints": {
+            "timespan": [
+              0.4
+            ],
+            "hitbox": [
+              49.53,
+              31.2,
+              58.7,
+              10.5
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "01",
+          "constraints": {
+            "timespan": [
+              0.4
+            ],
+            "hitbox": [
+              59.8,
+              31.05,
+              68.97,
+              10.35
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "02",
+          "constraints": {
+            "timespan": [
+              0.4
+            ],
+            "hitbox": [
+              69.7,
+              31.13,
+              78.87,
+              10.42
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "03",
+          "constraints": {
+            "timespan": [
+              0.4
+            ],
+            "hitbox": [
+              80.22,
+              31.13,
+              89.38,
+              10.42
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "04",
+          "constraints": {
+            "timespan": [
+              0.4
+            ],
+            "hitbox": [
+              49.29,
+              60.54,
+              58.46,
+              39.84
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "05",
+          "constraints": {
+            "timespan": [
+              0.4
+            ],
+            "hitbox": [
+              59.8,
+              60.24,
+              68.97,
+              39.53
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "06",
+          "constraints": {
+            "timespan": [
+              0.4
+            ],
+            "hitbox": [
+              69.34,
+              60.09,
+              78.5,
+              39.38
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "07",
+          "constraints": {
+            "timespan": [
+              0.4
+            ],
+            "hitbox": [
+              79.6,
+              60.39,
+              88.77,
+              39.69
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "08",
+          "constraints": {
+            "timespan": [
+              0.4
+            ],
+            "hitbox": [
+              49.29,
+              89.43,
+              58.46,
+              68.72
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "09",
+          "constraints": {
+            "timespan": [
+              0.4
+            ],
+            "hitbox": [
+              60.17,
+              89.35,
+              69.34,
+              68.64
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "10",
+          "constraints": {
+            "timespan": [
+              0.4
+            ],
+            "hitbox": [
+              70.19,
+              89.65,
+              79.36,
+              68.95
+            ]
+          }
+        },
+        {
+          "type": "click",
+          "scene": "fin_03",
+          "constraints": {
+            "timespan": [
+              0.4
+            ],
+            "hitbox": [
+              80.34,
+              89.43,
+              89.51,
+              68.72
+            ]
+          }
+        }
+      ]
     }
   }
 }

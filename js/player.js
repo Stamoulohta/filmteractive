@@ -533,7 +533,6 @@ function Filmteractive(id, scenario, options) {
             toggleFullScreen();
             director = new Director();
             stage.removeEventListener("click", handle);
-            stage.click();
             window.addEventListener("click",  clickHandler);
             window.addEventListener("touchstart",  clickHandler);
         });
@@ -550,6 +549,9 @@ function Filmteractive(id, scenario, options) {
 
     function toggleFullScreen() {
         if (typeof screen.orientation !== undefined && (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement)) {
+            if(typeof screen.orientation?.unlock === "function") {
+                screen.orientation.unlock();
+            }
             switch ("function") {
                 case typeof (document.exitFullscreen) :
                     document.exitFullscreen();
@@ -565,7 +567,6 @@ function Filmteractive(id, scenario, options) {
                     return;
             }
         } else {
-            screen.orientation?.lock("landscape").catch(() => {});
             switch ("function") {
                 case typeof stage.requestFullscreen :
                     stage.requestFullscreen();
@@ -578,6 +579,9 @@ function Filmteractive(id, scenario, options) {
                     return;
                 case typeof stage.webkitRequestFullscreen :
                     stage.webkitRequestFullscreen();
+            }
+            if(typeof screen.orientation?.lock === "function") {
+                screen.orientation.lock("landscape").catch(() => {});
             }
         }
     }

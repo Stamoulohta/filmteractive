@@ -7,7 +7,8 @@ function bust($filename)
 
 $app = 'js/app.js';
 $player = 'js/player.js';
-$json = 'scenario.json';
+$scenario = 'scenario.json';
+$manifest = 'manifest.json';
 $style = 'css/style.css';
 
 include('view/main.php');

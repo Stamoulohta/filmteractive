@@ -1,5 +1,13 @@
 /* vim: set expandtab ts=4 sw=4: */
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
 html {
     background-color: #222;
     height: 100vh;
@@ -20,7 +28,12 @@ body {
     height: 50vh;
 }
 
-#stage:-webkit-full-screen {
+#stage:-webkit-full-screen{
+    top: 0;
+    height: 100%;
+}
+
+#stage:fullscreen {
     top: 0;
     height: 100%;
 }

@@ -10,10 +10,11 @@
 
   <!-- TODO: Open Graph -->
 
+  <link rel="manifest" href="<?= bust($manifest) ?>">
   <link rel="stylesheet" href="<?= bust($style) ?>">
 
   <script id="scenario" type="application/json">
-    <?php include($json) ?>
+    <?php include($scenario) ?>
   </script>
 
 </head>
