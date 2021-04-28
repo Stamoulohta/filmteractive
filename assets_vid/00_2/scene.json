@@ -41,6 +41,13 @@
         "timespan" : [8],
         "hitbox" : [76.55, 73.93, 88.53, 28.13]
       }
+    },
+    {
+      "type": "timeout",
+      "span": 13500,
+      "sound": {
+        "src": "nudge/00_2.m4a"
+      }
     }
   ]
 }

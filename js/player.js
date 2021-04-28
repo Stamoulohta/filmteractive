@@ -42,6 +42,7 @@ function Filmteractive(id, scenario, options) {
                 });
 
                 video_buffer.addEventListener("timeupdate", (evt) => {
+                    this.dispatchEvent(new evt.constructor(evt.type, evt));
                     const buffer = evt.target;
                     if (this.isCurrent(buffer) && (buffer.currentTime >= buffer.duration)) {
                         buffer.pause();
@@ -283,10 +284,68 @@ function Filmteractive(id, scenario, options) {
         }
     }
 
+    class HitBox {
+
+        constructor(constraints) {
+            this.audio = new Audio();
+            this.audio.src = audio_path + "click.mp3";
+            this.element = document.createElement("div");
+            this.element.className = "stage-hitbox";
+            this.dimentions = constraints?.hitbox;
+            if(constraints?.timespan) {
+                const bound_attachBox = this.attachBox.bind(this);
+                stage.addEventListener("timeupdate", function handler() {
+                    if(stage.currentTime >= constraints.timespan) {
+                        stage.removeEventListener("timeupdate", handler);
+                        bound_attachBox();
+                    }
+                });
+            } else {
+                this.attachBox();
+            }
+        }
+
+        attachBox() {
+            stage.appendChild(this.element);
+            this.setDimensions();
+            this.element.addEventListener("click",(e) => {
+                this.audio.play();
+                e.hit = true;
+            });
+            new ResizeObserver(this.setDimensions.bind(this)).observe(stage);
+        }
+
+        setDimensions() {
+            if(typeof this.dimentions === "undefined") {
+                this.dimentions = ["0", "100", "100", "0"];
+            }
+
+            const vw = stage.clientWidth;
+            const cw = stage.contentDimensions[0];
+            const cp = (cw / vw);
+            const mp = ((vw - cw) / vw) * 50;
+
+            let left = (this.dimentions[3] * cp) + mp;
+            let right = (this.dimentions[1] * cp) + mp
+
+            this.element.style.top =`${this.dimentions[0]}%`;
+            this.element.style.left = `${left}%`;
+            this.element.style.width = `${right - left}%`
+            this.element.style.height = `${this.dimentions[2] - this.dimentions[0]}%`;
+        }
+
+        detachBox() {
+            this.element.remove();
+            this.element = null;
+            console.log("detach")
+        }
+    }
+
     class Event {
 
         constructor(opts) {
             this.opts = opts;
+            this.hitbox = false;
             this.delete_me = false;
             this.timeout = false;
             this.audio_index = false;
@@ -322,6 +381,7 @@ function Filmteractive(id, scenario, options) {
         init() {
             switch (true) {
                 case this.opts.type === "click" :
+                    this.hitbox = new HitBox(this.opts?.constraints);
                     stage.addEventListener(this.opts.type, this.handler);
                     break;
                 case this.opts.type === "timeout" :
@@ -392,6 +452,7 @@ function Filmteractive(id, scenario, options) {
         abort() {
             switch (true) {
                 case this.opts.type === "click" :
+                    this.hitbox.detachBox();
                     stage.removeEventListener(this.opts.type, this.handler)
                     break;
                 case this.opts.type === "timeout" :
@@ -531,6 +592,13 @@ function Filmteractive(id, scenario, options) {
         scenario.thumb && stage.setStatic(image_path + scenario.thumb) || stage.showStatic();
         stage.addEventListener("click", function handle() {
             toggleFullScreen();
+            stage.classList.add("playing");
+            stage.addEventListener("click", (evt) => {
+                if(evt.hit) {
+                    return;
+                }
+                (new Audio(audio_path + "error.mp3")).play();
+            });
             director = new Director();
             stage.removeEventListener("click", handle);
             window.addEventListener("click",  clickHandler);

@@ -1,7 +1,7 @@
 {
   "thumb": "poster.png",
   "enter": "00_l",
-  "sources": "http://brechtapp.eu/apsurdism",
+  "sources": "https://brechtapp.eu/apsurdism",
   "audio": "audio",
   "image": "image",
   "events": [],
@@ -12,7 +12,7 @@
   "scenes": {
     "00_0": {
       "name": "00_0",
-      "onend": "intro",
+      "onend": "00_1",
       "vsrc": "00_0.mp4"
     },
     "00_1": {
@@ -97,6 +97,13 @@
               88.53,
               28.13
             ]
+          }
+        },
+        {
+          "type": "timeout",
+          "span": 13500,
+          "sound": {
+            "src": "nudge/00_2.m4a"
           }
         }
       ]
@@ -209,6 +216,13 @@
               25.86
             ]
           }
+        },
+        {
+          "type": "timeout",
+          "span": 14500,
+          "sound": {
+            "src": "nudge/00_4.m4a"
+          }
         }
       ]
     },
@@ -244,7 +258,7 @@
     },
     "00_l": {
       "name": "00_l",
-      "onend": "intro",
+      "onend": "00_0",
       "vsrc": "00_l.mp4"
     },
     "00_n": {
@@ -2786,11 +2800,6 @@
       "name": "interruption_9",
       "onend": "07_n",
       "vsrc": "interruption_9.mp4"
-    },
-    "intro": {
-      "name": "intro",
-      "onend": "00_1",
-      "vsrc": "intro.mp4"
     },
     "outro": {
       "name": "outro",
