@@ -654,18 +654,18 @@ function Filmteractive(id, scenario, options) {
             switch ("function") {
                 case typeof stage.requestFullscreen :
                     stage.requestFullscreen();
-                    return;
+                    break;
                 case typeof stage.msRequestFullscreen :
                     stage.msRequestFullscreen();
-                    return;
+                    break;
                 case typeof stage.mozRequestFullscreen :
                     stage.mozRequestFullscreen();
-                    return;
+                    break;
                 case typeof stage.webkitRequestFullscreen :
                     stage.webkitRequestFullscreen();
             }
             if(typeof screen.orientation?.lock === "function") {
-                screen.orientation.lock("landscape").catch(() => {});
+                screen.orientation.lock("landscape").catch((_) => {/* PASS */});
             }
         }
     }
