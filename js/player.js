@@ -287,8 +287,6 @@ function Filmteractive(id, scenario, options) {
     class HitBox {
 
         constructor(constraints) {
-            this.audio = new Audio();
-            this.audio.src = audio_path + "click.mp3";
             this.element = document.createElement("div");
             this.element.className = "stage-hitbox";
             this.dimentions = constraints?.hitbox;
@@ -309,13 +307,16 @@ function Filmteractive(id, scenario, options) {
             stage.appendChild(this.element);
             this.setDimensions();
             this.element.addEventListener("click",(e) => {
-                this.audio.play();
+                audio_hit.play();
                 e.hit = true;
             });
             new ResizeObserver(this.setDimensions.bind(this)).observe(stage);
         }
 
         setDimensions() {
+            if(! this.element) {
+                return;
+            }
             if(typeof this.dimentions === "undefined") {
                 this.dimentions = ["0", "100", "100", "0"];
             }
@@ -337,7 +338,6 @@ function Filmteractive(id, scenario, options) {
         detachBox() {
             this.element.remove();
             this.element = null;
-            console.log("detach")
         }
     }
 
@@ -586,6 +586,8 @@ function Filmteractive(id, scenario, options) {
     const audio_path = `${scenario.sources}/${scenario.audio}/`;
     const image_path = `${scenario.sources}/${scenario.image}/`;
     let video_path = getVideoPath();
+    const audio_hit = new Audio(audio_path + "click.mp3");
+    const audio_error = new Audio(audio_path + "error.mp3");
     window.lastTapTime = (new Date).getTime();
 
     (function init() {
@@ -594,14 +596,15 @@ function Filmteractive(id, scenario, options) {
             toggleFullScreen();
             stage.classList.add("playing");
             stage.addEventListener("click", (evt) => {
+                evt.stopPropagation();
                 if(evt.hit) {
                     return;
                 }
-                (new Audio(audio_path + "error.mp3")).play();
+                audio_error.play();
             });
             director = new Director();
             stage.removeEventListener("click", handle);
-            window.addEventListener("click",  clickHandler);
+            window.addEventListener("dblclick",  toggleFullScreen);
             window.addEventListener("touchstart",  clickHandler);
         });
     })()
