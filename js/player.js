@@ -87,7 +87,13 @@ function Filmteractive(id, scenario, options) {
         }
 
         play() {
-            this.currentBuffer.play();
+            this.currentBuffer.play().catch(() => {
+                ignore_click = true;
+                window.addEventListener("touchstart", function temp(evt) {
+                    stage.play();
+                    ignore_click = false;
+                })
+            });
             const rest_buffers = this.buffers.filter((_, i) => i !== this.index);
             this.currentBuffer.addEventListener("timeupdate", function handle(e) {
                 if(e.target.currentTime) {
@@ -588,6 +594,7 @@ function Filmteractive(id, scenario, options) {
     let video_path = getVideoPath();
     const audio_hit = new Audio(audio_path + "click.mp3");
     const audio_error = new Audio(audio_path + "error.mp3");
+    let ignore_click = false;
     window.lastTapTime = (new Date).getTime();
 
     (function init() {
@@ -597,7 +604,7 @@ function Filmteractive(id, scenario, options) {
             stage.classList.add("playing");
             stage.addEventListener("click", (evt) => {
                 evt.stopPropagation();
-                if(evt.hit) {
+                if(evt.hit || ignore_click) {
                     return;
                 }
                 audio_error.play();
@@ -666,7 +673,6 @@ function Filmteractive(id, scenario, options) {
         });
         return `${scenario.sources}/${size}/`;
     }
-
 }
 
 // vim: expandtab:ts=4:sw=4
