@@ -176,7 +176,7 @@ function Filmteractive(id, scenario, options) {
                 if(scene) {
                     stage.nextSource.setAttribute("src", video_path + scene.vsrc);
                     stage.nextBuffer.load();
-                    stage.nextBuffer.currentTime = stage.next_scene?.time || 0;
+                    stage.nextBuffer.currentTime = stage.next_scene?.time -.1 || 0;
                     stage.nextBuffer.dataset.loading = "1";
                 }
             }
