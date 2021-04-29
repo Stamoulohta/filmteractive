@@ -86,11 +86,19 @@ function Filmteractive(id, scenario, options) {
             this.currentBuffer.currentTime = time;
         }
 
+        setPoster(poster) {
+            this.currentBuffer.poster = poster;
+            this.currentBuffer.classList.add("current");
+        }
+
         play() {
             this.currentBuffer.play().catch(() => {
                 ignore_click = true;
-                window.addEventListener("touchstart", function temp(evt) {
+                stage.setPoster("assets/messenger_play.png");
+                window.addEventListener("touchstart", function temp() {
                     stage.play();
+                    stage.setPoster("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAJEAAAAABO0S+tAAAADUlEQVQY02NgGAVEAQABKQABQ8duRgAAAABJRU5ErkJggg==");
+                    window.removeEventListener("touchstart", temp)
                     ignore_click = false;
                 })
             });
@@ -163,10 +171,8 @@ function Filmteractive(id, scenario, options) {
 
         preload() {
             const scene = scenario.scenes[this.next_scene?.scene || this.next_scene];
-            // TODO: wait for current buffer to play before loading because this may still be shown
-            // TODO: then remove the class control
 
-            function load(stage) {
+            function load() {
                 if(scene) {
                     stage.nextSource.setAttribute("src", video_path + scene.vsrc);
                     stage.nextBuffer.load();
@@ -178,12 +184,12 @@ function Filmteractive(id, scenario, options) {
             if(this.currentBuffer.paused) {
                 this.currentBuffer.addEventListener("timeupdate", function handle(e) {
                 if(e.target.currentTime) {
-                    load(this)
+                    load()
                     e.target.removeEventListener("timeupdate", handle);
                 }
             })
             } else{
-                load(this);
+                load();
             }
         }
     }

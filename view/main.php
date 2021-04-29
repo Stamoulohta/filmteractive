@@ -8,13 +8,13 @@
   <meta name="description" content="An interactive web performance">
   <meta name="author" content="Stamoulohta">
 
-  <meta name="description" content="AψURDISM is an interactive web performance by OPER(o)" />
-  <meta name="keywords" content="stamoulohta, apsurdism, aψourdism, interactive, performance, filmteractive, opero, oper(o)" />
+  <meta name="description" content="AψURDISM is an interactive web performance by opero(o)" />
+  <meta name="keywords" content="stamoulohta, apsurdism, aψourdism, interactive, performance, filmteractive, opero, oper(o), αψούρντισμ" />
 
   <meta property="fb:app_id" content="908041063322452" />
   <meta property="og:type" content="video.other" />
   <meta property="og:title" content="AψURDISM" />
-  <meta property="og:description" content="An interactive web performance by OPER(o)" />
+  <meta property="og:description" content="An interactive web performance by opero(o)" />
   <meta property="og:url" content="https://opero.gr/apsurdism/" />
   <meta property="og:image" content="https://opero.gr/apsurdism/assets/facebook.jpg" />
 
