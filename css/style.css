@@ -86,3 +86,14 @@ html, body {
 ::-webkit-media-controls {
   display:none !important;
 }
+
+#back, #back:hover, #back:active, #back:visited{
+    display:block;
+    width: 100%;
+    font-size: 1.5rem;
+    text-align: center;
+    position: absolute;
+    bottom: 10px;
+    text-decoration: none;
+    color: black;
+}

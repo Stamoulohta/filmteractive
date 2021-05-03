@@ -51,6 +51,7 @@
   </div><!-- .main -->
 
   <footer>
+    <a id="back" href="https://opero.gr/productions.php">oper(o)</a>
     <script src="<?= bust($player) ?>"></script>
     <script src="<?= bust($app) ?>"></script>
   </footer>
