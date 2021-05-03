@@ -30,6 +30,8 @@ function Filmteractive(id, scenario, options) {
 
                 video_buffer.id = `stage-buffer-${i}`;
                 video_buffer.crossOrigin = "";
+                video_buffer.playsInline = true;
+                video_buffer.WebKitPlaysInline = true;
                 video_buffer.preload = "none";
                 video_buffer.poster = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAJEAAAAABO0S+tAAAADUlEQVQY02NgGAVEAQABKQABQ8duRgAAAABJRU5ErkJggg==";
                 video_buffer.appendChild(video_source);
@@ -88,6 +90,7 @@ function Filmteractive(id, scenario, options) {
 
         setPoster(poster) {
             this.currentBuffer.poster = poster;
+            this.nextBuffer.classList.remove("current");
             this.currentBuffer.classList.add("current");
         }
 
@@ -146,6 +149,10 @@ function Filmteractive(id, scenario, options) {
                 else return [ew, eh];
 
             } else return [this.static?.width, this.static?.height];
+        }
+
+        get paused() {
+            return this.currentBuffer.paused;
         }
 
         setStatic(poster) {
@@ -301,10 +308,14 @@ function Filmteractive(id, scenario, options) {
         constructor(constraints) {
             this.element = document.createElement("div");
             this.element.className = "stage-hitbox";
-            this.dimentions = constraints?.hitbox;
+            this.dimensions = constraints?.hitbox;
             if(constraints?.timespan) {
                 const bound_attachBox = this.attachBox.bind(this);
                 stage.addEventListener("timeupdate", function handler() {
+                    // Race condition very ugly fix
+                    if(stage.contentDimensions[0] === 16 && stage.contentDimensions[1] === 9) {
+                        return;
+                    }
                     if(stage.currentTime >= constraints.timespan) {
                         stage.removeEventListener("timeupdate", handler);
                         bound_attachBox();
@@ -329,22 +340,28 @@ function Filmteractive(id, scenario, options) {
             if(! this.element) {
                 return;
             }
-            if(typeof this.dimentions === "undefined") {
-                this.dimentions = ["0", "100", "100", "0"];
+            if(typeof this.dimensions === "undefined") {
+                this.dimensions = ["0", "100", "100", "0"];
             }
 
             const vw = stage.clientWidth;
-            const cw = stage.contentDimensions[0];
-            const cp = (cw / vw);
-            const mp = ((vw - cw) / vw) * 50;
+            const vh = stage.clientHeight;
 
-            let left = (this.dimentions[3] * cp) + mp;
-            let right = (this.dimentions[1] * cp) + mp
+            const [cw, ch] = stage.contentDimensions;
+            const wp = (cw / vw);
+            const hp = (ch / vh);
+            const mxp = ((vw - cw) / vw) * 50;
+            const myp = ((vh - ch) / vh) * 50;
 
-            this.element.style.top =`${this.dimentions[0]}%`;
+            const top = (this.dimensions[0] * hp) + myp;
+            const right = (this.dimensions[1] * wp) + mxp;
+            const bottom = (this.dimensions[2] * hp) + myp;
+            const left = (this.dimensions[3] * wp) + mxp;
+
+            this.element.style.top =`${top}%`;
             this.element.style.left = `${left}%`;
             this.element.style.width = `${right - left}%`
-            this.element.style.height = `${this.dimentions[2] - this.dimentions[0]}%`;
+            this.element.style.height = `${bottom - top}%`;
         }
 
         detachBox() {
@@ -631,11 +648,8 @@ function Filmteractive(id, scenario, options) {
         window.lastTapTime = currentTapTime;
     }
 
-    function toggleFullScreen() {
-        if (typeof screen.orientation !== undefined && (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement)) {
-            if(typeof screen.orientation?.unlock === "function") {
-                screen.orientation.unlock();
-            }
+    function toggleFullScreen(e) {
+        if (typeof screen.orientation !== undefined && (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement || stage.classList.contains("foolscreen"))) {
             switch ("function") {
                 case typeof (document.exitFullscreen) :
                     document.exitFullscreen();
@@ -649,6 +663,7 @@ function Filmteractive(id, scenario, options) {
                 case typeof (document.webkitExitFullscreen) :
                     document.webkitExitFullscreen();
                     return;
+                default: stage.classList.remove("foolscreen");
             }
         } else {
             switch ("function") {
@@ -663,6 +678,9 @@ function Filmteractive(id, scenario, options) {
                     break;
                 case typeof stage.webkitRequestFullscreen :
                     stage.webkitRequestFullscreen();
+                    break;
+                default:
+                    stage.classList.add("foolscreen");
             }
             if(typeof screen.orientation?.lock === "function") {
                 screen.orientation.lock("landscape").catch((_) => {/* PASS */});
