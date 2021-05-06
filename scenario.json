@@ -264,6 +264,7 @@
     "00_n": {
       "name": "00_n",
       "vsrc": "00_n.mp4",
+      "volume": 0.5,
       "events": [
         {
           "type": "click",
@@ -500,6 +501,7 @@
     "01_n": {
       "name": "01_n",
       "vsrc": "01_n.mp4",
+      "volume": 0.5,
       "events": [
         {
           "type": "click",
@@ -733,6 +735,7 @@
     "02_n": {
       "name": "02_n",
       "vsrc": "02_n.mp4",
+      "volume": 0.5,
       "events": [
         {
           "type": "click",
@@ -966,6 +969,7 @@
     "03_n": {
       "name": "03_n",
       "vsrc": "03_n.mp4",
+      "volume": 0.5,
       "events": [
         {
           "type": "click",
@@ -1199,6 +1203,7 @@
     "04_n": {
       "name": "04_n",
       "vsrc": "04_n.mp4",
+      "volume": 0.5,
       "events": [
         {
           "type": "click",
@@ -1432,6 +1437,7 @@
     "05_n": {
       "name": "05_n",
       "vsrc": "05_n.mp4",
+      "volume": 0.5,
       "events": [
         {
           "type": "click",
@@ -1665,6 +1671,7 @@
     "06_n": {
       "name": "06_n",
       "vsrc": "06_n.mp4",
+      "volume": 0.5,
       "events": [
         {
           "type": "click",
@@ -1898,6 +1905,7 @@
     "07_n": {
       "name": "07_n",
       "vsrc": "07_n.mp4",
+      "volume": 0.5,
       "events": [
         {
           "type": "click",
@@ -2131,6 +2139,7 @@
     "08_n": {
       "name": "08_n",
       "vsrc": "08_n.mp4",
+      "volume": 0.5,
       "events": [
         {
           "type": "click",
@@ -2364,6 +2373,7 @@
     "09_n": {
       "name": "09_n",
       "vsrc": "09_n.mp4",
+      "volume": 0.5,
       "events": [
         {
           "type": "click",

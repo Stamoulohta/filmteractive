@@ -19,20 +19,20 @@ html, body {
 
 #stage {
     display: block;
-    position: relative;
-    top: 25%;
-    top: 25vh;
+    position: absolute;
+    top: 50%;
+    top: 50vh;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
     width: 100%;
     width: 100vw;
-    height: 50%;
-    height: 50vh;
 }
 
 #stage.playing {
     cursor: not-allowed;
 }
 
-#stage:-webkit-full-screen{
+#stage:-webkit-full-screen {
     top: 0;
     height: 100%;
     height: 100vh;
@@ -46,7 +46,7 @@ html, body {
 
 #stage.foolscreen {
     top: 0;
-    height:100%;
+    height: 100%;
     height: 100vh;
 }
 
@@ -54,9 +54,9 @@ html, body {
     display: none;
     position: relative;
     background-color: #222;
-    z-index:0;
-    margin:0;
-    padding:0;
+    z-index: 0;
+    margin: 0;
+    padding: 0;
     width: 100%;
     height: 100%;
     max-width: 100%;
@@ -71,7 +71,7 @@ html, body {
 #stage > img {
     margin: 0 auto;
     width: auto;
-    height:auto;
+    height: auto;
 }
 
 .stage-hitbox {
@@ -84,11 +84,12 @@ html, body {
 }
 
 ::-webkit-media-controls {
-  display:none !important;
+    display: none !important;
+    -webkit-appearance: none !important;
 }
 
-#back, #back:hover, #back:active, #back:visited{
-    display:block;
+#back, #back:hover, #back:active, #back:visited {
+    display: block;
     width: 100%;
     font-size: 1.5rem;
     text-align: center;
@@ -96,4 +97,11 @@ html, body {
     bottom: 10px;
     text-decoration: none;
     color: black;
+}
+
+@media (min-width: 800px){
+    #stage {
+        height: 50%;
+        height: 50vh;
+    }
 }

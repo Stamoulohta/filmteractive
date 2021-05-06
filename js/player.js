@@ -67,6 +67,11 @@ function Filmteractive(id, scenario, options) {
             this.appendChild(this.static);
         }
 
+        init() {
+            this.sources.forEach(source => source.setAttribute("src", video_path + "blank.mp4"))
+            this.buffers.forEach(buffer => buffer.play());
+        }
+
         showStatic() {
             this.static.classList.add("current");
         }
@@ -164,6 +169,7 @@ function Filmteractive(id, scenario, options) {
             if (this.nextSource.getAttribute("src") !== src) {
                 this.nextSource.setAttribute("src", src);
                 this.nextBuffer.dataset.loading = "0";
+                this.nextBuffer.volume = scene.volume || 1;
             }
 
             if (this.nextBuffer.dataset.loading === "0") {
@@ -208,7 +214,7 @@ function Filmteractive(id, scenario, options) {
             this.evt = opts;
             this.opts = this.evt.sound;
             this.secondary = opts.secondary;
-            this.audio = new Audio();
+            this.audio = this.src.startsWith(audio_path + "bg") ? audio_music : audio_delay;
             this.audio.src = this.src;
             this.audio.loop = this.opts.loop || false;
             this.audio.volume = this.opts.volume || 1;
@@ -222,7 +228,7 @@ function Filmteractive(id, scenario, options) {
         }
 
         play() {
-            this.audio.play();
+            this.audio.play().then(() => {}).catch(() => {});
         }
 
         kill() {
@@ -617,8 +623,17 @@ function Filmteractive(id, scenario, options) {
     let video_path = getVideoPath();
     const audio_hit = new Audio(audio_path + "click.mp3");
     const audio_error = new Audio(audio_path + "error.mp3");
+    const audio_delay = new Audio(audio_path + "blank2.mp3");
+    const audio_music = new Audio(audio_path + "blank2.mp3");
     let ignore_click = false;
     window.lastTapTime = (new Date).getTime();
+
+    stage.addEventListener("touchend", function media_init() {
+        audio_delay.play().then(() => {}).catch(() => {});
+        audio_music.play().then(() => {}).catch(() => {});
+        stage.init();
+        stage.removeEventListener("touchend", media_init)
+    });
 
     (function init() {
         scenario.thumb && stage.setStatic(image_path + scenario.thumb) || stage.showStatic();
@@ -630,7 +645,7 @@ function Filmteractive(id, scenario, options) {
                 if(evt.hit || ignore_click) {
                     return;
                 }
-                audio_error.play();
+                audio_error.play().then(() => {});
             });
             director = new Director();
             stage.removeEventListener("click", handle);

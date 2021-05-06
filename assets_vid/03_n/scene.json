@@ -1,6 +1,7 @@
 {
   "name": "03_n",
   "vsrc": "03_n.mp4",
+  "volume" : 0.5,
   "events": [
     {
       "type" : "click",

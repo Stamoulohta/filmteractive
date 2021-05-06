@@ -44,7 +44,7 @@
   </script>
 
 </head>
-
+<h2 id="malert" style="color:white;"></h2>
 <body>
   <div class="main">
        <buffered-stage id="stage"></buffered-stage>
