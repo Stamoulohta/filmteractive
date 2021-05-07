@@ -19,13 +19,18 @@ html, body {
 
 #stage {
     display: block;
-    position: absolute;
-    top: 50%;
-    top: 50vh;
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
     width: 100%;
     width: 100vw;
+    /*position: absolute;*/
+    /*top: 50%;*/
+    /*top: 50vh;*/
+    /*-ms-transform: translateY(-50%);*/
+    /*transform: translateY(-50%);*/
+    position: relative;
+    top: 25%;
+    top: 25vh;
+    height: 50%;
+    height: 50vh;
 }
 
 #stage.playing {
@@ -98,10 +103,11 @@ html, body {
     text-decoration: none;
     color: black;
 }
-
+/*
 @media (min-width: 800px){
     #stage {
         height: 50%;
         height: 50vh;
     }
 }
+*/

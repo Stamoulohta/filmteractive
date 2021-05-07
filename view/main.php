@@ -16,7 +16,7 @@
   <meta property="og:title" content="AψURDISM" />
   <meta property="og:description" content="An interactive web performance by opero(o)" />
   <meta property="og:url" content="https://opero.gr/apsurdism/" />
-  <meta property="og:image" content="https://opero.gr/apsurdism/assets/facebook.jpg" />
+  <meta property="og:image" content="https://opero.gr/apsurdism/assets/facebook.png" />
 
   <link rel="apple-touch-icon" sizes="57x57" href="assets/apple-icon-57x57.png">
   <link rel="apple-touch-icon" sizes="60x60" href="assets/apple-icon-60x60.png">
